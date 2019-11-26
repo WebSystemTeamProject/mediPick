@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1b1adbf36d0ae9f7eeb8af681d1cd83c"></script>
+    <script>
+      var container = document.getElementById('map');
+      var options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3
+      };
+  
+      var map = new kakao.maps.Map(container, options);
+    </script>
     <title>vue</title>
   </head>
   <body>

@@ -4,6 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <div id="map" style="width:500px;height:400px;"></div>
     <router-view/>
   </div>
 </template>
