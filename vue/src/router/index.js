@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import appHome from '../views/mainPage/appHome'
+import loginPage from '../views/login/loginPage'
+import signUpPage from '../views/login/signUpPage'
 Vue.use(VueRouter);
 
 const routes = [
@@ -9,6 +11,16 @@ const routes = [
     path: '/appHome',
     component: appHome
   },
+  {
+    name: 'loginPage',
+    path: '/loginPage',
+    component: loginPage
+  },
+  {
+    name: 'signUpPage',
+    path: '/signUpPage',
+    component: signUpPage
+  }
 ];
 
 const router = new VueRouter({
