@@ -18,7 +18,6 @@
             var map = new kakao.maps.Map(container, options);
         }
     }
-  }
 </script>
 
 <style scoped>

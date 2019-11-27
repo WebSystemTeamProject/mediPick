@@ -32,7 +32,7 @@
 </template>
 
 <script>
-    import appMap from './views/mapPage/appMap'
+    import appMap from '../mapPage/appMap'
     export default {
         name: "appHeaderHome",
         components: {
