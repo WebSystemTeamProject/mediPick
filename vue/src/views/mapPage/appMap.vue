@@ -10,7 +10,7 @@
     export default {
     name: "appMap",
     mounted() {
-        var container = this.$ref.map;
+        var container = this.$refs.map;
         var options = {
             center: new kakao.maps.LatLng(33.450701, 126.570667),
             level: 3
