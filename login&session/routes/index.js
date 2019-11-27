@@ -4,7 +4,6 @@ var router = express.Router();
 var path = require('path');
 
 var main = require('./main/main');
-var email = require('./email/email');
 var join = require('./join/index');
 var login = require('./login/index');
 var logout = require('./logout/index');
@@ -14,7 +13,6 @@ var logout = require('./logout/index');
 })*/
 router.use('/',login);
 router.use('/main',main);
-router.use('/email',email);
 router.use('/join',join);
 router.use('/login',login);
 router.use('/logout',logout);
