@@ -1,6 +1,6 @@
 <template>
     <div class="find">
-        <div ref="map" class="mapSize"></div>
+        <div id="map" ref="map" class="mapSize"></div>
     </div>
 </template>
 
@@ -9,8 +9,7 @@
 <script>
     export default {
     name: "appMap",
-    methods: {
-        loadMap(){
+    mounted(){ 
             var container = this.$refs.map;
             var options = {
                 center: new kakao.maps.LatLng(33.450701, 126.570667),
