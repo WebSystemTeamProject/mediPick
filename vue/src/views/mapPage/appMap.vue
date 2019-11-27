@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="find">
         <div ref="map" class="mapSize"></div>
     </div>
 </template>

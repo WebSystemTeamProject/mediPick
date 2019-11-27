@@ -13,12 +13,14 @@
   import appHeaderHome from './views/mainPage/appHeaderHome'
   import appHeader from './views/mainPage/appHeader'
   import appFooter from './views/mainPage/appFooter'
+  import appMap from './views/mapPage/appMap'
   export default {
     name: "appMain",
     components: {
       'appHeaderHome': appHeaderHome,
       'appHeader': appHeader,
-      'appFooter': appFooter
+      'appFooter': appFooter,
+      'appMap': appMap
     },
     mounted() {
       this.$router.push({name: 'appHome'})
