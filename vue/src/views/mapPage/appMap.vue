@@ -9,7 +9,7 @@
 <script>
     export default {
     name: "appMap",
-    method: {
+    methods: {
         loadMap(){
             var container = this.$refs.map;
             var options = {
