@@ -32,8 +32,12 @@
 </template>
 
 <script>
+    import appMap from '../mapPage/appMap'
     export default {
         name: "appHeaderHome",
+        components: {
+            'appMap': appMap
+        },
         methods: {
             goHome() {
                 if(this.$store.getters.getIsHome) {

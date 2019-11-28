@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import appHome from '../views/mainPage/appHome'
 import loginPage from '../views/login/loginPage'
 import signUpPage from '../views/login/signUpPage'
+import findPharmacy from '../views/mapPage/appMap'
 Vue.use(VueRouter);
 
 const routes = [
@@ -20,6 +21,11 @@ const routes = [
     name: 'signUpPage',
     path: '/signUpPage',
     component: signUpPage
+  },
+  {
+    name: 'findPharmacy',
+    path: '/findPharmacy',
+    component: findPharmacy
   }
 ];
 
