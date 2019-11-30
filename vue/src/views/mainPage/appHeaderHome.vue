@@ -17,8 +17,8 @@
             <span class="logoLink" @click="goHome"><img src="../../assets/logo.png"></span>
             <nav>
                 <ul class="listWrapper">
-                    <li class="navList" @click="goNav('itemPage')">의약품 검색</li>
-                    <li class="navList">제약사 검색</li>
+                    <li class="navList">의약품 검색</li>
+                    <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
@@ -32,8 +32,12 @@
 </template>
 
 <script>
+    import appMap from '../mapPage/appMap'
     export default {
         name: "appHeaderHome",
+        components: {
+            'appMap': appMap
+        },
         methods: {
             goHome() {
                 if(this.$store.getters.getIsHome) {
