@@ -2,7 +2,7 @@
     <div>
         <header class="mobile">
             <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logoColor_mobile.png"></span>
-            <button class="loginBtnMobile">
+            <button class="loginBtnMobile" @click="goNav('loginPage')">
                 <i class="material-icons">
                     person_outline
                 </i>
@@ -17,12 +17,12 @@
             <span class="logoLink" @click="goHome"><img src="../../assets/logoColor.png"></span>
             <nav>
                 <ul class="listWrapper">
-                    <li class="navList" @click="goNav('itemPage')">의약품 검색</li>
-                    <li class="navList">제약사 검색</li>
+                    <li class="navList">의약품 검색</li>
+                    <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
-            <button class="loginBtn">
+            <button class="loginBtn" @click="goNav('loginPage')">
                 <i class="material-icons">
                     person_outline
                 </i>
@@ -45,7 +45,6 @@
             goNav(nav) {
                 this.$router.push({name: nav});
                 this.$store.commit('setIsHome', false);
-                // this.$store.state.isHome = false;
             }
         }
     }
