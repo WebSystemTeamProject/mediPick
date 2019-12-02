@@ -2,7 +2,7 @@
     <div class="find">
         <div class="searchMap">
             <p>약국 검색</p>
-            <input v-model="address" placeholder="주소를 입력해 주세요." class="searchInputSpace">
+            <input v-model="address" placeholder="현재 주소를 입력해 주세요. ex)월드컵로206 아주대학교" class="searchInputSpace">
             <button v-on:click="btnClicked" class="SearchButton">검색</button>
         </div>
 
@@ -35,7 +35,6 @@ var loadScriptOnce = require('load-script-once');
         },
         methods:{
             async loadMap(){
-                loadScriptOnce('//dapi.kakao.com/v2/maps/sdk.js?appkey=1b1adbf36d0ae9f7eeb8af681d1cd83c&libraries=services,clusterer,drawing').then(()=>{
                     const ctx = this;
                     var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1});
                 var contentNode = document.createElement('div');
@@ -44,7 +43,7 @@ var loadScriptOnce = require('load-script-once');
                 var mapContainer = this.$refs.map;
                 var mapOptions = {
                     center: new kakao.maps.LatLng(this.pos[0], this.pos[1]),
-                    level: 4
+                    level: 3
                 };
                 
                 var map = new kakao.maps.Map(mapContainer, mapOptions);
@@ -185,12 +184,23 @@ var loadScriptOnce = require('load-script-once');
     
                     ps.categorySearch(currCategory, placesSearchCB, {useMapBounds:true}); 
                 }
-                })
 
             },
             async btnClicked(){
-                //alert("click");
-                await this.loadMap();
+                //console.log(this.address)
+                var geocoder = new kakao.maps.services.Geocoder();
+                var check = false;
+                const ctx = this;
+                await geocoder.addressSearch(this.address, function(result, status){
+                    if(status===kakao.maps.services.Status.OK){
+                        ctx.pos[0] = result[0].y;
+                        ctx.pos[1] = result[0].x;
+                        ctx.loadMap();
+                    }else{
+                        alert("잘못된 주소 형식입니다. 다시 입력해주세요.");
+                    }
+                });
+                //this.loadMap();
             },
         }
     }
