@@ -3,6 +3,7 @@ var app = express();
 var router = express.Router();
 var path = require('path');
 
+var review = require('./review/review');
 var main = require('./main/main');
 var join = require('./join/index');
 var login = require('./login/index');
@@ -16,6 +17,7 @@ router.use('/main',main);
 router.use('/join',join);
 router.use('/login',login);
 router.use('/logout',logout);
+router.use('/review',review);
 
 module.exports = router;
 
