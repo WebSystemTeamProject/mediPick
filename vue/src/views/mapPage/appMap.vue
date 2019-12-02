@@ -26,8 +26,7 @@
     data(){
         return{
             pos: [37.282895,127.044938],
-            address: "",
-            saveMarkers: null
+            address: ""
         }
     },
         mounted: async function(){
