@@ -24,7 +24,11 @@ router.get('/',function(req,res){
     var errMsg = req.flash('error');
     if(errMsg) msg = errMsg;
     console.log('get join url');
-    res.json({message : msg});
+    if(msg) {
+        res.json({trig : false, message: msg});
+    }
+    else
+        res.json({trig:true});
     //res.render('join.ejs',{'message' : msg});
 })
 

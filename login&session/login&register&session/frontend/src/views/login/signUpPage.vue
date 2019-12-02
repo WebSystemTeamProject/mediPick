@@ -35,7 +35,10 @@
                     email : this.email,
                     password : this.password
                 }).then((response)=>{
-                    alert(response.data.message);
+                    if(response.data.trig)
+                        window.location.href="/";
+                    else
+                        alert(response.data.message);
                 })
             },
             goNav(nav) {

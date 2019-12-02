@@ -2,11 +2,18 @@
     <div>
         <header class="mobile">
             <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logo_mobile.png"></span>
+            <div v-if="user">
+                {{user}}
+                button here
+                <button class="loginBtnMobile" @click="logout">logout</button>
+            </div>
+            <div v-else>
             <button class="loginBtnMobile" @click="goNav('loginPage')">
                 <i class="material-icons">
                     person_outline
                 </i>
             </button>
+            </div>
             <button class="menuBtn">
                 <i class="material-icons">
                     menu
@@ -22,11 +29,18 @@
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
+            <div v-if="user">
+                {{user}}
+                button here
+                <button class="loginBtnMobile" @click="logout">logout</button>
+            </div>
+            <div v-else>
             <button class="loginBtn" @click="goNav('loginPage')">
                 <i class="material-icons">
                     person_outline
                 </i>
             </button>
+            </div>
         </header>
     </div>
 </template>
@@ -38,7 +52,24 @@
         components: {
             'appMap': appMap
         },
+        created(){
+            this.$http.get('http://localhost:3000/main').then((response) => {
+                if(response.data.trig)
+                    this.user = response.data.email;
+            })
+        },
+        data : function(){
+            return{
+                user : ""
+            }
+        },
         methods: {
+            async logout(){
+                await this.$http.get('http://localhost:3000/logout', {
+                }).then((response)=>{
+                    window.location.href="/";
+                })
+            },
             goHome() {
                 if(this.$store.getters.getIsHome) {
                     return false;
