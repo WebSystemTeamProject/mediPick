@@ -2,7 +2,7 @@
     <div>
         <section class="pageIntro">
             <div class="title">
-                <h1>일반 의약품 정보 제공 및 리뷰 플랙폼</h1>
+                <h1>일반 의약품 정보 제공 및 리뷰 플랫폼</h1>
                 <img src="../../assets/logo2.png">
             </div>
             <article>
