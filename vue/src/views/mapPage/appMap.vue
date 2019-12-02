@@ -9,7 +9,7 @@
         <div class="map_wrap">
             <div id="map" ref="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
             <ul id="category">
-                <li id="PM9" ref="pm" data-order="0"> 
+                <li id="PM9" ref="pm" data-order="2"> 
                     <span class="category_bg pharmacy"></span>
                     약국
                 </li>   
@@ -123,7 +123,7 @@ var loadScriptOnce = require('load-script-once');
                         imageSize = new kakao.maps.Size(27, 28),  // 마커 이미지의 크기
                         imgOptions =  {
                             spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
-                            spriteOrigin : new kakao.maps.Point(46, (order*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+                            spriteOrigin : new kakao.maps.Point(46, 72), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
                             offset: new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
                         },
                         markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
