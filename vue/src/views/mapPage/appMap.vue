@@ -21,7 +21,6 @@
 
 
 <script>
-var loadScriptOnce = require('load-script-once');
     export default {
     name: "appMap",
     data(){
