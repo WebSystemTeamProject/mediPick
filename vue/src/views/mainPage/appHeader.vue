@@ -17,8 +17,8 @@
             <span class="logoLink" @click="goHome"><img src="../../assets/logoColor.png"></span>
             <nav>
                 <ul class="listWrapper">
-                    <li class="navList" @click="goNav('itemPage')">의약품 검색</li>
-                    <li class="navList">제약사 검색</li>
+                    <li class="navList" @click="goNav('searchMedicine')">의약품 검색</li>
+                    <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
