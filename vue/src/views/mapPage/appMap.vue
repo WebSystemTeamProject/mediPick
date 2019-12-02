@@ -21,13 +21,13 @@
 
 
 <script>
-var loadScriptOnce = require('load-script-once');
     export default {
     name: "appMap",
     data(){
         return{
             pos: [37.282895,127.044938],
-            address: ""
+            address: "",
+            saveMarkers: null
         }
     },
         mounted: async function(){
@@ -184,7 +184,7 @@ var loadScriptOnce = require('load-script-once');
 
                         ps.categorySearch(currCategory, placesSearchCB, {useMapBounds:true}); 
                     }
-
+                    this.saveMarkers = markers;
                 },
                 async btnClicked(){
                     //console.log(this.address)
@@ -194,6 +194,7 @@ var loadScriptOnce = require('load-script-once');
                         if(status===kakao.maps.services.Status.OK){
                             ctx.pos[0] = result[0].y;
                             ctx.pos[1] = result[0].x;
+                            ctx.$refs.pm.className='';
                             ctx.loadMap();
                         }else{
                             alert("잘못된 주소 형식입니다. 다시 입력해주세요.");
