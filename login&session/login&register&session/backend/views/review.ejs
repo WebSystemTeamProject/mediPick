@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>review.html</title>
+</head>
+<body>
+<h1> review page</h1>
+<form action="/review/form" method = 'post'>
+    <tr>
+        <th>제목 : </th>
+        <td><input id = "t1" type="text" placeholder="제목을 입력하세요" name = 'subject'></td>
+    </tr>
+    <br>
+    <br>
+    <tr>
+        내용 : <br>
+        <td><textarea id = "t2" rows = '20' cols = '30' placeholder="내용을 입력하세요" name = 'content'></textarea></td>
+    </tr>
+</form>
+<button class ="ajaxsend">리뷰등록</button>
+
+<script>
+    document.querySelector('.ajaxsend').addEventListener('click',function(){
+        var subject = document.getElementsByName('subject')[0].value;
+        var content = document.getElementsByName('content')[0].value;
+        sendAjax('http://localhost:3000/review/form', {'subject' : subject,'content' : content});
+    })
+    function sendAjax(url,data){
+        data = JSON.stringify(data);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST',url);
+        xhr.setRequestHeader('Content-Type',"application/json");
+        xhr.send(data);
+        xhr.addEventListener('load',function(){
+            console.log("receive!")
+            var result = JSON.parse(xhr.responseText);
+            if(result.ok)
+                alert("리뷰등록이 완료되었습니다.")
+            else
+                alert("제목과 내용을 확인해주십시오.");
+        });
+    }
+</script>
+</body>
+</html>
