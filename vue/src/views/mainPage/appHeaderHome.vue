@@ -7,11 +7,14 @@
                     person_outline
                 </i>
             </button>
-            <button class="menuBtn">
+            <button class="menuBtn" @click="toggle">
                 <i class="material-icons">
                     menu
                 </i>
             </button>
+            <Drawer @close="toggle" align="right" :closeable="true">
+                <app-menu v-if="isOpen"></app-menu>
+            </Drawer>
         </header>
         <header class="desktop">
             <span class="logoLink" @click="goHome"><img src="../../assets/logo.png"></span>
@@ -33,10 +36,24 @@
 
 <script>
     import appMap from '../mapPage/appMap'
+    import Drawer from 'vue-simple-drawer'
+    import appMenu from './appMenu'
     export default {
         name: "appHeaderHome",
         components: {
-            'appMap': appMap
+            'appMap': appMap,
+            'Drawer': Drawer,
+            'appMenu': appMenu
+        },
+        data() {
+            return  {
+
+            }
+        },
+        computed: {
+            isOpen() {
+                return this.$store.getters.getIsOpen
+            }
         },
         methods: {
             goHome() {
@@ -49,6 +66,9 @@
             goNav(nav) {
                 this.$router.push({name: nav});
                 this.$store.commit('setIsHome', false);
+            },
+            toggle() {
+                this.$store.commit('toggleIsOpen');
             }
         }
     }

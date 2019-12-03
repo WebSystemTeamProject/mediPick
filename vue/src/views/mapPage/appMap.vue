@@ -1,7 +1,7 @@
 <template>
     <section class="find">
+        <h1>약국 검색</h1>
         <div class="searchMap">
-            <h1>약국 검색</h1>
             <input v-model="address" placeholder="현재 주소를 입력해 주세요. ex)월드컵로206 아주대학교" class="searchInputSpace">
             <button v-on:click="btnClicked" class="SearchButton">검색</button>
         </div>
@@ -207,50 +207,87 @@
 
 <style>
     .find {
-        width: 1200px;
-        margin: 0 auto;
+        padding: 0 16px;
+        margin: 40px 0 160px 0;
+        transition: .3s;
     }
     h1 {
-        font-size: 48px;
+        font-size: 24px;
         font-weight: 700;
-        margin-bottom: 20px;
+        margin: 0 0 20px 10px;
     }
-.searchMap{
-    padding: 30px 20px;
-    margin: 40px 0;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 30px;
-    background-color: #EEFDFF;
-    box-sizing: border-box;
-}
-.searchInputSpace{
-    width: 500px;
-    height: 40px;
-    padding-left: 10px;
-    border: 1px solid #55CEE2;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    box-sizing: border-box;
-    outline: none;
-}
+    .searchMap{
+        padding: 10px;
+        background-color: #EEFDFF;
+        box-sizing: border-box;
+    }
+    .searchMap::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .searchInputSpace{
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        margin-bottom: 10px;
+        border: 1px solid #55CEE2;
+        font-size: 14px;
+        box-sizing: border-box;
+        outline: none;
+    }
+    .SearchButton{
+        float: right;
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+        color: white;
+        background-color: #55CEE2;
+    }
+    .SearchButton:active{
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+    }
 
-.SearchButton{
-    width: 100px;
-    height: 40px;
-    /*border: 3px solid darkblue;*/
-    color: white;
-    margin-left: 30px;
-    background-color: #55CEE2;
-}
-.SearchButton:active{
-    background-color: white;
-    color: black;
-    border: 1px solid black;
-}
+
+
+/*.searchMap{*/
+    /*padding: 30px 20px;*/
+    /*margin: 40px 0;*/
+    /*font-family: 'Noto Sans KR', sans-serif;*/
+    /*font-size: 30px;*/
+    /*background-color: #EEFDFF;*/
+    /*box-sizing: border-box;*/
+/*}*/
+/*.searchInputSpace{*/
+    /*width: 500px;*/
+    /*height: 40px;*/
+    /*padding-left: 10px;*/
+    /*border: 1px solid #55CEE2;*/
+    /*font-family: 'Noto Sans KR', sans-serif;*/
+    /*font-size: 14px;*/
+    /*box-sizing: border-box;*/
+    /*outline: none;*/
+/*}*/
+
+/*.SearchButton{*/
+    /*width: 100px;*/
+    /*height: 40px;*/
+    /*!*border: 3px solid darkblue;*!*/
+    /*color: white;*/
+    /*margin-left: 30px;*/
+    /*background-color: #55CEE2;*/
+/*}*/
+/*.SearchButton:active{*/
+    /*background-color: white;*/
+    /*color: black;*/
+    /*border: 1px solid black;*/
+/*}*/
 
 
 .map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap {position:relative;width:100%;height:700px; margin: 0 auto; margin-top: 30px; margin-bottom: 30px;}
+.map_wrap {position:relative;width:100%;height:500px; margin: 0 auto; margin-top: 30px; margin-bottom: 30px;}
 #category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
 #category li {float:left;list-style: none;width:50px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
 #category li.on {background: #eee;}
@@ -271,4 +308,51 @@
 .placeinfo .title {font-weight: bold; font-size:14px;border-radius: 6px 6px 0 0;margin: -1px -1px 0 -1px;padding:10px; color: #fff;background: #d95050;background: #d95050 url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
 .placeinfo .tel {color:#0f7833;}
 .placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
+
+
+    @media(min-width: 600px) {
+        .find {
+            padding: 0 24px;
+            margin: 40px 0 180px 0;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 40px 20px;
+        }
+        .searchMap{
+            padding: 20px;
+        }
+        .searchInputSpace{
+            width: 80%;
+            height: 44px;
+            padding: 0 20px;
+            font-size: 16px;
+        }
+        .SearchButton{
+            width: 18%;
+            height: 44px;
+            font-size: 16px;
+        }
+        .map_wrap {position:relative;width:100%;height:600px; margin: 0 auto; margin-top: 30px; margin-bottom: 30px;}
+    }
+    @media(min-width: 1025px) {
+        .find {
+            width: 1200px;
+            margin: 40px auto 260px auto;
+        }
+        h1 {
+            font-size: 48px;
+            margin-left: 35px;
+        }
+        .searchInputSpace{
+            height: 50px;
+            font-size: 18px;
+        }
+        .SearchButton{
+            font-size: 18px;
+            height: 50px;
+        }
+        .map_wrap {position:relative;width:100%;height:700px; margin: 0 auto; margin-top: 30px; margin-bottom: 30px;}
+    }
 </style>

@@ -21,25 +21,16 @@
       <div class="infoBox">
         -----약 정보----
       </div>
-      <div class="reviewBox">
-        <h2>리뷰</h2>
-        <div class="reviewTextWrap">
-          <textarea cols="22" rows="4"></textarea>
-          <button class="writeBtn">작성하기</button>
-        </div>
-        <review-list></review-list>
-        <review-list></review-list>
-        <review-list></review-list>
-      </div>
+      <review-box></review-box>
     </section>
 </template>
 
 <script>
-    import reviewList from './reviewList'
+    import reviewBox from './reviewBox'
     export default {
         name: "medicineInfo",
         components: {
-          'reviewList': reviewList
+          'reviewBox': reviewBox
         },
         data() {
           return {
@@ -107,45 +98,6 @@
   }
 
 
-  .reviewBox {
-    padding-top: 30px;
-    border-top: 1px solid #BDBDBD;
-  }
-  h2 {
-    margin-bottom: 20px;
-    font-size: 21px;
-    font-weight: 700;
-  }
-  .reviewTextWrap {
-    padding: 10px;
-    margin-bottom: 60px;
-    box-sizing: border-box;
-    background-color: #EEFDFF;
-  }
-  .reviewTextWrap::after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-  textarea {
-    padding: 10px;
-    border: 1px solid #55CEE2;
-    margin-bottom: 10px;
-    width: 100%;
-    height: 100px;
-    font-size: 14px;
-    font-weight: 400;
-    box-sizing: border-box;
-    outline: none;
-    resize: none;
-  }
-  .writeBtn {
-    float: right;
-    font-size: 14px;
-    background-color: #55CEE2;
-    color: white;
-  }
-
   @media(min-width: 600px) {
     section {
       padding: 0 24px;
@@ -179,23 +131,6 @@
     }
 
 
-    h2 {
-      margin-bottom: 30px;
-      font-size: 30px;
-    }
-    .reviewTextWrap {
-      padding: 20px;
-      margin-bottom: 110px;
-    }
-    textarea {
-      padding: 20px;
-      margin-bottom: 20px;
-      height: 150px;
-      font-size: 16px;
-    }
-    .writeBtn {
-      font-size: 18px;
-    }
   }
 
   @media(min-width: 1025px) {
@@ -227,11 +162,6 @@
       height: 50px;
       font-size: 18px;
     }
-    textarea {
-      font-size: 18px;
-    }
-    .writeBtn {
-      font-size: 18px;
-    }
+
   }
 </style>
