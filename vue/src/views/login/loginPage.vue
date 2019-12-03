@@ -1,17 +1,27 @@
+<!--<template>
+    <div>
+    <div>
+        <input v-model="email" type = "text" placeholder="이메일을 입력해주세요"><br><br>
+        <input v-model="password" type = "text" placeholder="비밀번호를 입력해주세요"><br><br>
+        <input v-on:click = "Login" type = "submit" value = "Login">
+    </div>
+    </div>
+</template>-->
+
 <template>
     <section>
         <h1 class="title">로그인</h1>
         <div class="inputText">
             <label for="mail">이메일</label><br>
-            <input type="text" id="mail">
+            <input v-model = 'email' type="text" id="mail">
         </div>
         <div class="inputText">
             <label for="password">비밀번호</label><br>
-            <input type="password" id="password">
+            <input v-model = 'password' type="password" id="password">
         </div>
         <div class="btnWrapper">
             <span>
-                <button class="loginBtn">로그인</button>
+                <button v-on:click = "Login" class="loginBtn">로그인</button>
             </span>
             <span>
                 <button class="signUpBtn" @click="goNav('signUpPage')">회원가입 창으로</button>
@@ -20,18 +30,46 @@
     </section>
 </template>
 
+
 <script>
+
     export default {
-        name: "loginPage",
+        created(){
+        },
+        data : function(){
+            return {
+                email : "",
+                password : ""
+            }
+        },
         methods: {
+            async Login(){
+                    console.log("email :"+this.email);
+                    console.log("password : "+this.password);
+                    await this.$http.post('http://localhost:3000/login', {
+                        email : this.email,
+                        password : this.password
+                    }).then((response)=>{
+                        console.log("result!! : "+response);
+                        /*var resultDiv = document.querySelector(".result");*/
+                        if(!response.data.trig){
+                            console.log(response);
+                            alert(response.data.message);
+                        }
+                        if(response.data.trig) {
+                            alert("yes ok");
+                            window.location.href="/";
+                        }
+                    })
+            },
             goNav(nav) {
                 this.$router.push({name: nav});
                 this.$store.commit('setIsHome', false);
             }
-        }
+        },
+        name : "loginPage"
     }
 </script>
-
 <style scoped>
     section {
         padding: 0 16px;
