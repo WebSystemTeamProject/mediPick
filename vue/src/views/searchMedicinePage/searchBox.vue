@@ -2,36 +2,53 @@
     <div class="sortBox">
         <p class="sort">부위 선택</p>
         <span class="radioWrap">
-          <input type="radio" id="head" name="medicine" checked>
+          <input type="radio" id="head" name="medicine" v-model="selectPart" value="머리">
           <label for="head">머리</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="eyes" name="medicine">
+          <input type="radio" id="eyes" name="medicine" v-model="selectPart" value="눈">
           <label for="eyes">눈</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="nose" name="medicine">
+          <input type="radio" id="nose" name="medicine" v-model="selectPart" value="코">
           <label for="nose">코</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="lips" name="medicine">
+          <input type="radio" id="lips" name="medicine" v-model="selectPart" value="입">
           <label for="lips">입</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="ears" name="medicine">
+          <input type="radio" id="ears" name="medicine" v-model="selectPart" value="귀">
           <label for="ears">귀</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="throat" name="medicine">
+          <input type="radio" id="throat" name="medicine" v-model="selectPart" value="목">
           <label for="throat">목</label>
         </span>
-        <button class="filterBtn">완료</button>
+        <button @click="click" class="filterBtn">완료</button>
     </div>
 </template>
 
 <script>
     export default {
         name: "searchBox",
+        data () {
+            return {
+                selectPart: ''
+            }
+        },
+        methods: {
+            click () {
+                this.$router.push(`/searchMedicine/${this.selectPart}`)
+                this.$http.get('http://localhost:3000/searchMedicine/' + this.selectPart)
+                    .then((response) => {
+                        console.log("부위 별 증상 데이터 로드 성공")
+                        console.log(response.data)
+                        this.symptoms = response.data
+                    })
+                return 1
+            },
+        }
     }
 </script>
 
