@@ -1,7 +1,7 @@
 <template>
-    <div class="find">
+    <section class="find">
         <div class="searchMap">
-            <p>약국 검색</p>
+            <h1>약국 검색</h1>
             <input v-model="address" placeholder="현재 주소를 입력해 주세요. ex)월드컵로206 아주대학교" class="searchInputSpace">
             <button v-on:click="btnClicked" class="SearchButton">검색</button>
         </div>
@@ -15,7 +15,7 @@
                 </li>   
             </ul>
         </div>      
-    </div>
+    </section>
 </template>
 
 
@@ -206,30 +206,41 @@
 </script>
 
 <style>
+    .find {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    h1 {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
 .searchMap{
-    padding: 30px 15px;
-    margin-bottom: 40px;
+    padding: 30px 20px;
+    margin: 40px 0;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 30px;
     background-color: #EEFDFF;
-    width: 1200px;
-    margin: 0 auto;
+    box-sizing: border-box;
 }
 .searchInputSpace{
     width: 500px;
     height: 40px;
-    border: 1px solid black;
+    padding-left: 10px;
+    border: 1px solid #55CEE2;
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
 }
 
 .SearchButton{
     width: 100px;
     height: 40px;
-    border: 3px solid darkblue;
+    /*border: 3px solid darkblue;*/
     color: white;
     margin-left: 30px;
-    background-color: darkblue;
+    background-color: #55CEE2;
 }
 .SearchButton:active{
     background-color: white;
@@ -239,7 +250,7 @@
 
 
 .map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap {position:relative;width:1230px;height:700px; margin: 0 auto; margin-top: 30px; margin-bottom: 30px;}
+.map_wrap {position:relative;width:100%;height:700px; margin: 0 auto; margin-top: 30px; margin-bottom: 30px;}
 #category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
 #category li {float:left;list-style: none;width:50px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
 #category li.on {background: #eee;}

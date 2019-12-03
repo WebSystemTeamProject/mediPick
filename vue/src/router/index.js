@@ -6,7 +6,8 @@ import signUpPage from '../views/login/signUpPage'
 import findPharmacy from '../views/mapPage/appMap'
 import searchPharmacy from '../views/searchPharmacyPage/searchPharmacy'
 import rankingPage from '../views/searchPharmacyPage/rankingPage'
-import searchMedicine from "../views/searchMedicinePage/searchMedicine";
+import searchMedicine from "../views/searchMedicinePage/searchMedicine"
+import medicineInfo from '../views/searchPharmacyPage/medicineInfo'
 Vue.use(VueRouter);
 
 const routes = [
@@ -44,6 +45,11 @@ const routes = [
     name: 'rankingPage',
     path: '/rankingPage',
     component: rankingPage
+  },
+  {
+    name: 'medicineInfo',
+    path: '/medicineInfo',
+    component: medicineInfo
   }
 
 ];
