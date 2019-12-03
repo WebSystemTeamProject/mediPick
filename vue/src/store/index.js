@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isOpen: false,
     isHome: true,
     symptomArea: ['눈','코','입','팔'],
     symptomName: ['열','상처','골절'],
@@ -35,11 +36,20 @@ export default new Vuex.Store({
     },
     getPharmacy(state) {
       return state.pharmacy
+    },
+    getIsOpen(state) {
+      return state.isOpen
     }
   },
   mutations: {
     setIsHome(state, bool) {
       state.isHome = bool;
+    },
+    toggleIsOpen(state) {
+      state.isOpen = !state.isOpen;
+    },
+    setIsOpen(state, bool) {
+      state.isOpen = bool;
     }
   },
   actions: {
