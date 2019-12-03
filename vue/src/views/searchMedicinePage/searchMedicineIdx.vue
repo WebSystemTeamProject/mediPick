@@ -10,7 +10,7 @@
     // import pharmacyList from './pharmacyList'
     import searchBox from './searchBox'
     export default {
-        name: "searchMedicine",
+        name: "searchMedicineIdx",
         data() {
             return {
 
