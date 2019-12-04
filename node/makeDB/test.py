@@ -49,9 +49,9 @@ def makeDB(url, index):
     #print(bsObject.find_all('h3',{'class':'cont_title3'}).get_text())
     #print(dict)
     db.insert_one(dict)
-index = 0
-for plus in link:
-    html = urlopen("https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=" + plus)
+index = 4133
+for plus in range(4133,len(link)):
+    html = urlopen("https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=" + link[plus])
     makeDB(html,index)
     index+=1
 
