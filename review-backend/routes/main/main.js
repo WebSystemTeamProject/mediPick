@@ -13,13 +13,15 @@ router.get('/',function(req,res){ //localhosd:3000/main url에서도 main.html�
     if(!email) res.render('login.ejs');
     res.json({trig : true,'user' : req.user});
 });
+
+
 //user의 recommend 불러오기
 router.post('/update',function(req,res){
     console.log("update,req.body :" ,req.body.user);
     var user;
     req.login(req.body.user,function(err){
         console.log('update user');
-    })
+    }) // session 갱신
     //console.log("req.user : ",req.user);
     res.json(req.user);
 })

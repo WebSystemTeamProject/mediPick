@@ -7,6 +7,7 @@ const User = require("../user/index");
 router.post('/update',async function(req,res){
     var body = req.body;
     var result_user;
+    console.log("update user : ",req.body.user);
     await User.update({email : body.user.email},{$set : body.user});
     result_user = await User.findOne({email : body.user.email});
     console.log("result",result_user);

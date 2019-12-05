@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="item in medilist">
-            <div class="mediList" @click="goNav('medicineInfo')">
+            <div class="mediList" @click="goNav('medicineInfo', item)">
                 <div class="rank">1</div>
                 <div class="imgBox">
                     <img src="../../assets/medi.png">
@@ -50,8 +50,8 @@
             }
         },
         methods: {
-            goNav(nav) {
-                this.$router.push({name: nav});
+            goNav(nav, item) {
+                this.$router.push({name: nav, params: {item: item}});
             }
         }
     }

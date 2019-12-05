@@ -10,16 +10,15 @@ mongoose.connect('mongodb+srv://admin:helloworld@medicinedb-txqna.mongodb.net/me
 const conn = mongoose.connection;
 autoInc.initialize(conn);
 
-const reviewSchema = new mongoose.Schema({
+const newreviewSchema = new mongoose.Schema({
     content : String,
     email : String,
-    mediname : String,
     time : String,
-    recommend : Number
+    medi_id : Number
 })
 //Database setting
 
-reviewSchema.plugin(autoInc.plugin,"reviewList");
-const reviewList = mongoose.model('reviewList',reviewSchema);
+newreviewSchema.plugin(autoInc.plugin,"newreviewlist");
+const reviewlist = mongoose.model('newreviewlist',newreviewSchema);
 
-module.exports = reviewList;
+module.exports = reviewlist;
