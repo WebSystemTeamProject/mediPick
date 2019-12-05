@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1 class="title">의약품 검색</h1>
+        <h1 class="title">증상별 검색</h1>
         <search-box></search-box>
     </section>
 </template>
