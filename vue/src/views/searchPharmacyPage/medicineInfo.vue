@@ -4,8 +4,8 @@
         <img src="../../assets/medi.png">
       </div>
       <div class="medicineName">
-        <span class="pharmacy">{{pharmacy}}</span>
-        <h1>{{medicine}}</h1>
+        <span class="pharmacy">{{item.company}}</span>
+        <h1>{{item.medicineName}}</h1>
       </div>
       <div class="btnBox">
         <button class="recommendBtn" @click="rec">
@@ -33,6 +33,7 @@
           'reviewBox': reviewBox
         },
         created(){
+          this.item = this.$route.params.item;
           this.$http.get('http://localhost:3000/main').then((response) => {
             if(response.data.trig)
               this.user = response.data.user;
@@ -40,8 +41,7 @@
         },
         data() {
           return {
-            pharmacy: "제약사 이름 들어갈 곳",
-            medicine: "약 이름 들어갈 곳",
+            item: {},
             recommend: 0,
             user : ""
           }
