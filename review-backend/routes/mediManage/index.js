@@ -12,6 +12,10 @@ router.post('/',async function(req,res){
     res.json(list);
 })
 
+router.post('/update',async function(req,res){
+    await mediList.update({_id : req.body.medi_id},{recommend : req.body.recommend});
+    res.end();
+})
 
 module.exports = router;
 
