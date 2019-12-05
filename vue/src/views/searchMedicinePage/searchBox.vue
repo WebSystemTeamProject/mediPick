@@ -3,8 +3,8 @@
         <div class="sortBox">
             <p class="sort">증상 카테고리 선택</p>
             <span class="radioWrap">
-          <input type="radio" id="category1" name="medicine" v-model="selectPart" value="몸살 감기">
-          <label for="category1">몸살 감기</label>
+          <input type="radio" id="category1" name="medicine" v-model="selectPart" value="몸살감기">
+          <label for="category1">몸살감기</label>
         </span>
             <span class="radioWrap">
           <input type="radio" id="category2" name="medicine" v-model="selectPart" value="기관지">
@@ -19,8 +19,8 @@
           <label for="category4">안질환</label>
         </span>
             <span class="radioWrap">
-          <input type="radio" id="category5" name="medicine" v-model="selectPart" value="피부 질환">
-          <label for="category5">피부 질환</label>
+          <input type="radio" id="category5" name="medicine" v-model="selectPart" value="피부질환">
+          <label for="category5">피부질환</label>
         </span>
             <span class="radioWrap">
           <input type="radio" id="category6" name="medicine" v-model="selectPart" value="타박상">
@@ -46,35 +46,7 @@
         },
         methods: {
             click () {
-                if (this.selectPart === '몸살 감기') {
-                    this.flag = 1;
-                    console.log(this.flag)
-                    this.$emit('update-flag', this.flag)
-                    console.log("emit succeed")
-                } else if (this.selectPart === '기관지') {
-                    this.flag = 2;
-                    this.$emit('update-flag', this.flag)
-                } else if (this.selectPart === '위장') {
-                    this.flag = 3;
-                    this.$emit('update-flag', this.flag)
-                } else if (this.selectPart === '안질환') {
-                    this.flag = 4;
-                    this.$emit('update-flag', this.flag)
-                } else if (this.selectPart === '피부 질환') {
-                    this.flag = 5;
-                    this.$emit('update-flag', this.flag)
-                } else if (this.selectPart === '타박상') {
-                    this.flag = 6;
-                    this.$emit('update-flag', this.flag)
-                } else if (this.selectPart === '기타') {
-                    this.flag = 7;
-                    this.$emit('update-flag', this.flag)
-                } else {
-                    this.flag = 0;
-                    this.$emit('update-flag', this.flag)
-                }
-
-                // this.$router.push(`/searchMedicine/${this.selectPart}`)
+                this.$router.push(`/searchMedicine/${this.selectPart}`)
                 // this.$http.get('http://localhost:3000/searchMedicine/' + this.selectPart)
                 //     .then((response) => {
                 //         console.log("부위 별 증상 데이터 로드 성공")
