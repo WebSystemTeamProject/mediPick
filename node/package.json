@@ -6,6 +6,9 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "cheerio-httpcli": "^0.7.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -14,6 +17,7 @@
     "mongoose": "^5.7.13",
     "mongoose-auto-increment": "^5.0.1",
     "morgan": "~1.9.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "sheetjs": "^2.0.0"
   }
 }

@@ -1,29 +1,51 @@
 <template>
     <section>
-        <h1 class="title">의약품 검색</h1>
+        <h1 class="title">증상별 검색</h1>
         <search-box></search-box>
-        <!--        <pharmacy-list v-for="pharmacy in pharmacys" v-bind:pharmacy="pharmacy"></pharmacy-list>-->
     </section>
 </template>
 
 <script>
-    // import pharmacyList from './pharmacyList'
     import searchBox from './searchBox'
     export default {
         name: "searchMedicine",
         data() {
             return {
-
+                flag1: true,
+                flag2: false,
+                flag3: false,
+                flag4: false,
+                flag5: false,
+                flag6: false,
+                flag7: false
             }
         },
-        // computed: {
-        //     pharmacys() {
-        //         return this.$store.getters.getPharmacy;
-        //     }
-        // },
+        computed: {
+            symptoms1() {
+                console.log("symptoms1 get")
+                return this.$store.getters.getSymptoms1;
+            },
+            symptoms2() {
+                return this.$store.getters.getSymptoms2;
+            },
+            symptoms3() {
+                return this.$store.getters.getSymptoms3;
+            },
+            symptoms4() {
+                return this.$store.getters.getSymptoms4;
+            },
+            symptoms5() {
+                return this.$store.getters.getSymptoms5;
+            },
+            symptoms6() {
+                return this.$store.getters.getSymptoms6;
+            },
+            symptoms7() {
+                return this.$store.getters.getSymptoms7;
+            }
+        },
         components: {
             'searchBox': searchBox,
-            // 'pharmacyList': pharmacyList
         }
     }
 </script>

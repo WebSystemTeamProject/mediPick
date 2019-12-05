@@ -1,63 +1,71 @@
 <template>
-    <div>
-        <header class="mobile">
-            <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logoColor_mobile.png"></span>
-            <div v-if="user">
-                <button class="loginBtnMobile" @click="logout">
+    <section>
+        <div>
+            <header class="mobile">
+                <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logoColor_mobile.png"></span>
+                <div v-if="user">
+                    <button class="loginBtnMobile" @click="logout">
+                        <i class="material-icons">
+                            exit_to_app
+                        </i>
+                    </button>
+                </div>
+                <div v-else>
+                    <button class="loginBtnMobile" @click="goNav('loginPage')">
+                        <i class="material-icons">
+                            person_outline
+                        </i>
+                    </button>
+                </div>
+                <button class="menuBtn" @click="toggle">
                     <i class="material-icons">
-                        exit_to_app
+                        menu
                     </i>
                 </button>
-            </div>
-            <div v-else>
-                <button class="loginBtnMobile" @click="goNav('loginPage')">
-                    <i class="material-icons">
-                        person_outline
-                    </i>
-                </button>
-            </div>
-            <button class="menuBtn" @click="toggle">
-                <i class="material-icons">
-                    menu
-                </i>
-            </button>
-            <Drawer @close="toggle" align="right" :closeable="true">
-                <app-menu v-if="isOpen"></app-menu>
-            </Drawer>
-        </header>
-        <header class="desktop">
-            <span class="logoLink" @click="goHome"><img src="../../assets/logoColor.png"></span>
-            <nav>
-                <ul class="listWrapper">
-                    <li class="navList" @click="goNav('searchMedicine')">증상별 검색</li>
-                    <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
-                    <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
-                </ul>
-            </nav>
-            <div v-if="user" class="loginBox">
-                {{user}}님
-                <button class="logoutBtn" @click="logout">
-                    <i class="material-icons">
-                        exit_to_app
-                    </i>
-                </button>
-            </div>
-            <div v-else class="loginBox">
-                <button class="loginBtn" @click="goNav('loginPage')">
-                    <i class="material-icons">
-                        person_outline
-                    </i>
-                </button>
-            </div>
-        </header>
-    </div>
+                <Drawer @close="toggle" align="right" :closeable="true">
+                    <app-menu v-if="isOpen"></app-menu>
+                </Drawer>
+            </header>
+            <header class="desktop">
+                <span class="logoLink" @click="goHome"><img src="../../assets/logoColor.png"></span>
+                <nav>
+                    <ul class="listWrapper">
+                        <li class="navList" @click="goNav('searchMedicine')">증상별 검색</li>
+                        <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
+                        <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
+                    </ul>
+                </nav>
+                <div v-if="user" class="loginBox">
+                    {{user}}님
+                    <button class="logoutBtn" @click="logout">
+                        <i class="material-icons">
+                            exit_to_app
+                        </i>
+                    </button>
+                </div>
+                <div v-else class="loginBox">
+                    <button class="loginBtn" @click="goNav('loginPage')">
+                        <i class="material-icons">
+                            person_outline
+                        </i>
+                    </button>
+                </div>
+            </header>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <h1 class="title">해당하는 의약품</h1>
+
+
+    </section>
 </template>
 
 <script>
     import Drawer from 'vue-simple-drawer'
     import appMenu from './appMenu'
     export default {
-        name: "appHeader",
+        name: "mdsNameSearch",
         data() {
             return  {
                 open: false,
@@ -106,6 +114,12 @@
 </script>
 
 <style scoped>
+    .title {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0 20px 20px 10px;
+        padding-left: 100px;
+    }
     .mobile {
         position: relative;
         padding: 20px 16px 0 16px;
@@ -129,6 +143,10 @@
     }
 
     @media(min-width: 600px) {
+        .title {
+            font-size: 36px;
+            margin: 0 40px 40px 20px;
+        }
         .mobile {
             display: none;
         }
@@ -175,6 +193,10 @@
     }
 
     @media(min-width: 1025px) {
+        .title {
+            font-size: 48px;
+            margin: 0 40px 40px 35px;
+        }
         .desktop {
             width: 1200px;
             padding: 20px 0 0 0;

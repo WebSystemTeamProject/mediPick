@@ -2,76 +2,81 @@
     <div class="sortBox">
         <p class="sort">가나다순</p>
         <span class="radioWrap">
-          <input type="radio" id="all" name="pharmacy" checked>
+          <input type="radio" id="all" name="pharmacy" value="all" checked>
           <label for="all">전체</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="ga" name="pharmacy">
+          <input type="radio" id="ga" name="pharmacy" value="ga">
           <label for="ga">ㄱ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="na" name="pharmacy">
+          <input type="radio" id="na" name="pharmacy" value="na">
           <label for="na">ㄴ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="da" name="pharmacy">
+          <input type="radio" id="da" name="pharmacy" value="da">
           <label for="da">ㄷ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="ra" name="pharmacy">
+          <input type="radio" id="ra" name="pharmacy" value="ra">
           <label for="ra">ㄹ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="ma" name="pharmacy">
+          <input type="radio" id="ma" name="pharmacy" value="ma">
           <label for="ma">ㅁ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="ba" name="pharmacy">
+          <input type="radio" id="ba" name="pharmacy" value="ba">
           <label for="ba">ㅂ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="sa" name="pharmacy">
+          <input type="radio" id="sa" name="pharmacy" value="sa">
           <label for="sa">ㅅ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="a" name="pharmacy">
+          <input type="radio" id="a" name="pharmacy" value="a">
           <label for="a">ㅇ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="ja" name="pharmacy">
+          <input type="radio" id="ja" name="pharmacy" value="ja">
           <label for="ja">ㅈ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="cha" name="pharmacy">
+          <input type="radio" id="cha" name="pharmacy" value="cha">
           <label for="cha">ㅊ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="ka" name="pharmacy">
+          <input type="radio" id="ka" name="pharmacy" value="ka">
           <label for="ka">ㅋ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="ta" name="pharmacy">
+          <input type="radio" id="ta" name="pharmacy" value="ta">
           <label for="ta">ㅌ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="pa" name="pharmacy">
+          <input type="radio" id="pa" name="pharmacy" value="pa">
           <label for="pa">ㅍ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="ha" name="pharmacy">
+          <input type="radio" id="ha" name="pharmacy" value="ha">
           <label for="ha">ㅎ</label>
         </span>
         <span class="radioWrap">
-          <input type="radio" id="etc" name="pharmacy">
+          <input type="radio" id="etc" name="pharmacy" value="etc">
           <label for="etc">기타</label>
         </span>
-        <button class="filterBtn">필터 적용</button>
+        <button class="filterBtn" @click="filtering">필터 적용</button>
     </div>
 </template>
 
 <script>
     export default {
         name: "searchBox",
+        methods: {
+            filtering() {
+
+            }
+        }
     }
 </script>
 

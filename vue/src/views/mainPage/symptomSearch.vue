@@ -2,28 +2,10 @@
     <form>
         <div class="selectAll">
             <div class="selectWrapper">
-                <select class="symptomArea">
-                    <option disabled selected>증상 부위</option>
-                    <option v-for="area in areas">{{area}}</option>
-                </select>
+                <p class="researchNotify">빠르게 의약품 이름으로 검색</p>
             </div>
             <div class="selectWrapper">
-                <select class="symptomArea">
-                    <option disabled selected>증상</option>
-                    <option v-for="symptom in symptoms">{{symptom}}</option>
-                </select>
-            </div>
-            <div class="selectWrapper">
-                <select class="symptomArea">
-                    <option disabled selected>연령대</option>
-                    <option v-for="age in ages">{{age}}</option>
-                </select>
-            </div>
-            <div class="selectWrapper">
-                <select class="symptomArea">
-                    <option disabled selected>성별</option>
-                    <option v-for="gender in genders">{{gender}}</option>
-                </select>
+                <input class="putMdsName" type="text" v-model="mdsName">
             </div>
         </div>
         <div class="btnWrapper">
@@ -35,6 +17,11 @@
 <script>
     export default {
         name: "symptomSearch",
+        data () {
+            return {
+                mdsName: ''
+            }
+        },
         computed: {
             areas() {
                 return this.$store.state.symptomArea;
@@ -51,7 +38,8 @@
         },
         methods: {
             searchClick() {
-                console.log("클릭");
+                console.log(this.mdsName);
+                this.$router.push(`/${this.mdsName}`)
             }
         }
     }
@@ -71,18 +59,26 @@
         font-size: 14px;
         font-weight: 400;
     }
-
-    .symptomArea {
-        width: 100%;
-        height: 40px;
+    .researchNotify {
+        background-color: white;
+        height: 38px;
+        font-size: 20px;
         text-align-last: center;
+        padding-top: 10px;
+        color: #2c3e50;
     }
-
+    .putMdsName {
+        width: 470px;
+        height: 48px;
+        margin-left: 8px;
+        text-align-last: center;
+        color: #2c3e50;
+        font-size: 20px;
+    }
     .btnWrapper {
         padding: 0 4px;
         box-sizing: border-box;
     }
-
     .searchBtn {
         margin-top: 4px;
         width: 100%;
@@ -98,14 +94,9 @@
         }
 
         .selectWrapper {
-            width: 25%;
+            /*width: 25%;*/
             padding: 0 1px;
             margin: 0;
-            font-size: 16px;
-        }
-
-        .symptomArea {
-            height: 48px;
             font-size: 16px;
         }
 
@@ -125,10 +116,6 @@
     @media (min-width: 1025px) {
         .btnWrapper {
             padding-left: 10px;
-        }
-
-        .symptomArea {
-            font-size: 18px;
         }
     }
 </style>

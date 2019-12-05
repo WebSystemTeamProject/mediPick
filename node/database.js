@@ -12,9 +12,19 @@ autoInc.initialize(db);
 
 const medicineSchema = new mongoose.Schema({
     medicineName: String,
-    code: String,
     company: String,
-    price: String
+    shape: String,
+    activeInGredient: String,
+    additive: String,
+    efficacy: String,
+    dosage: String,
+    precautions: String,
+    store: String,
+    period: String,
+    price:{
+      type: String,
+      default: "정보 없음"
+    }
 });
 
 medicineSchema.plugin(autoInc.plugin, 'medicine');

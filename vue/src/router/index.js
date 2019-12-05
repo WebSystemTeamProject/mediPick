@@ -8,6 +8,10 @@ import searchPharmacy from '../views/searchPharmacyPage/searchPharmacy'
 import rankingPage from '../views/searchPharmacyPage/rankingPage'
 import searchMedicine from "../views/searchMedicinePage/searchMedicine"
 import medicineInfo from '../views/searchPharmacyPage/medicineInfo'
+import searchSymptoms from "../views/searchMedicinePage/searchSymptoms";
+import MdsForSymp from "../views/searchMedicinePage/MdsForSymp";
+import mdsNameSearch from "../views/mainPage/mdsNameSearch";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -15,6 +19,11 @@ const routes = [
     name: 'appHome',
     path: '/appHome',
     component: appHome
+  },
+  {
+    name: 'mdsNameSearch',
+    path: '/:mdsName',
+    component: mdsNameSearch
   },
   {
     name: 'loginPage',
@@ -35,6 +44,16 @@ const routes = [
     name: 'searchMedicine',
     path: '/searchMedicine',
     component: searchMedicine
+  },
+  {
+    name: 'searchSymptoms',
+    path: '/searchMedicine/:part',
+    component: searchSymptoms
+  },
+  {
+    name: 'MdsForSymp',
+    path: '/searchMedicine/:part/:symp',
+    component: MdsForSymp
   },
   {
     name: 'searchPharmacy',

@@ -3,9 +3,24 @@
         <header class="mobile">
             <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logo_mobile.png"></span>
             <div v-if="user">
+<<<<<<< HEAD
                 {{user.email}}
                 button here
                 <button class="loginBtnMobile" @click="logout">logout</button>
+=======
+                <button class="loginBtnMobile" @click="logout">
+                    <i class="material-icons">
+                        exit_to_app
+                    </i>
+                </button>
+            </div>
+            <div v-else>
+                <button class="loginBtnMobile" @click="goNav('loginPage')">
+                    <i class="material-icons">
+                        person_outline
+                    </i>
+                </button>
+>>>>>>> 0a56c189e0a77d5bb29398c7df5e7b1256843a28
             </div>
             <button class="menuBtn" @click="toggle">
                 <i class="material-icons">
@@ -20,17 +35,27 @@
             <span class="logoLink" @click="goHome"><img src="../../assets/logo.png"></span>
             <nav>
                 <ul class="listWrapper">
-                    <li class="navList" @click="goNav('searchMedicine')">의약품 검색</li>
+                    <li class="navList" @click="goNav('searchMedicine')">증상별 검색</li>
                     <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
+<<<<<<< HEAD
             <div v-if="user">
                 {{user.email}}
                 button here
                 <button class="loginBtnMobile" @click="logout">logout</button>
+=======
+            <div v-if="user" class="loginBox">
+                {{user}}님
+                <button class="logoutBtn" @click="logout">
+                    <i class="material-icons">
+                        exit_to_app
+                    </i>
+                </button>
+>>>>>>> 0a56c189e0a77d5bb29398c7df5e7b1256843a28
             </div>
-            <div v-else>
+            <div v-else class="loginBox">
                 <button class="loginBtn" @click="goNav('loginPage')">
                     <i class="material-icons">
                         person_outline
@@ -91,7 +116,6 @@
             }
         }
     }
-
 </script>
 
 <style scoped>
@@ -109,6 +133,7 @@
         position: absolute;
         top: 20px;
         color: #ffffff;
+        cursor: pointer;
     }
     .loginBtnMobile {
         right: 40px;
@@ -116,7 +141,6 @@
     .menuBtn {
         right: 0;
     }
-
     @media(min-width: 600px) {
         .mobile {
             display: none;
@@ -147,16 +171,21 @@
             color: #ffffff;
             cursor: pointer;
         }
-        .loginBtn {
+        .loginBox {
             float: right;
             margin-right: 20px;
+            height: 44px;
+            color: #ffffff;
+        }
+        .loginBox button {
+            margin-left: 20px;
             width: 44px;
             height: 44px;
             color: #ffffff;
             cursor: pointer;
+            vertical-align: middle;
         }
     }
-
     @media(min-width: 1025px) {
         .desktop {
             width: 1200px;
@@ -167,5 +196,4 @@
             cursor: pointer;
         }
     }
-
 </style>
