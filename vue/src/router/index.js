@@ -10,6 +10,7 @@ import searchMedicine from "../views/searchMedicinePage/searchMedicine"
 import medicineInfo from '../views/searchPharmacyPage/medicineInfo'
 import searchSymptoms from "../views/searchMedicinePage/searchSymptoms";
 import MdsForSymp from "../views/searchMedicinePage/MdsForSymp";
+import mdsNameSearch from "../views/mainPage/mdsNameSearch";
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,11 @@ const routes = [
     name: 'appHome',
     path: '/appHome',
     component: appHome
+  },
+  {
+    name: 'mdsNameSearch',
+    path: '/:mdsName',
+    component: mdsNameSearch
   },
   {
     name: 'loginPage',
