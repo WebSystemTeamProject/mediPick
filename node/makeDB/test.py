@@ -6,7 +6,7 @@ out = open('dataset.txt','r')
 link = out.read().split("\n")
 client = pymongo.MongoClient("mongodb+srv://admin:helloworld@medicinedb-txqna.mongodb.net/mediPick?retryWrites=true&w=majority")
 
-db = client.mediPick.medicine
+db = client.mediPick.medicines
 def makeDB(url, index):
     dict={}
     dict['_id']=index
@@ -44,15 +44,18 @@ def makeDB(url, index):
             dict['store']=arr1[idx].get_text()
         elif idx==1:
             dict['period']=arr1[idx].get_text()
+    dict['price']="정보 없음"
+    dict['recommend']=0
     #첫번째가 저장방법 , 두번째가 
     #print(arr1)
     #print(bsObject.find_all('h3',{'class':'cont_title3'}).get_text())
     #print(dict)
     db.insert_one(dict)
-index = 4133
-for plus in range(4133,len(link)):
+index = 0
+for plus in range(0,len(link)):
     html = urlopen("https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=" + link[plus])
     makeDB(html,index)
+    print("success ", index)
     index+=1
 
 
