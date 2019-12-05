@@ -1,31 +1,37 @@
 <template>
-    <div class="sortBox">
-        <p class="sort">부위 선택</p>
-        <span class="radioWrap">
-          <input type="radio" id="head" name="medicine" v-model="selectPart" value="머리">
-          <label for="head">머리</label>
+    <div>
+        <div class="sortBox">
+            <p class="sort">증상 카테고리 선택</p>
+            <span class="radioWrap">
+          <input type="radio" id="category1" name="medicine" v-model="selectPart" value="몸살 감기">
+          <label for="category1">몸살 감기</label>
         </span>
-        <span class="radioWrap">
-          <input type="radio" id="eyes" name="medicine" v-model="selectPart" value="눈">
-          <label for="eyes">눈</label>
+            <span class="radioWrap">
+          <input type="radio" id="category2" name="medicine" v-model="selectPart" value="기관지">
+          <label for="category2">기관지</label>
         </span>
-        <span class="radioWrap">
-          <input type="radio" id="nose" name="medicine" v-model="selectPart" value="코">
-          <label for="nose">코</label>
+            <span class="radioWrap">
+          <input type="radio" id="category3" name="medicine" v-model="selectPart" value="위장">
+          <label for="category3">위장</label>
         </span>
-        <span class="radioWrap">
-          <input type="radio" id="lips" name="medicine" v-model="selectPart" value="입">
-          <label for="lips">입</label>
+            <span class="radioWrap">
+          <input type="radio" id="category4" name="medicine" v-model="selectPart" value="안질환">
+          <label for="category4">안질환</label>
         </span>
-        <span class="radioWrap">
-          <input type="radio" id="ears" name="medicine" v-model="selectPart" value="귀">
-          <label for="ears">귀</label>
+            <span class="radioWrap">
+          <input type="radio" id="category5" name="medicine" v-model="selectPart" value="피부 질환">
+          <label for="category5">피부 질환</label>
         </span>
-        <span class="radioWrap">
-          <input type="radio" id="throat" name="medicine" v-model="selectPart" value="목">
-          <label for="throat">목</label>
+            <span class="radioWrap">
+          <input type="radio" id="category6" name="medicine" v-model="selectPart" value="타박상">
+          <label for="category6">타박상</label>
         </span>
-        <button @click="click" class="filterBtn">완료</button>
+            <span class="radioWrap">
+          <input type="radio" id="category7" name="medicine" v-model="selectPart" value="기타">
+          <label for="category7">기타</label>
+        </span>
+            <button @click="click" style="cursor:pointer" class="filterBtn">완료</button>
+        </div>
     </div>
 </template>
 
@@ -34,19 +40,48 @@
         name: "searchBox",
         data () {
             return {
-                selectPart: ''
+                selectPart: '',
+                flag: 0
             }
         },
         methods: {
             click () {
-                this.$router.push(`/searchMedicine/${this.selectPart}`)
-                this.$http.get('http://localhost:3000/searchMedicine/' + this.selectPart)
-                    .then((response) => {
-                        console.log("부위 별 증상 데이터 로드 성공")
-                        console.log(response.data)
-                        this.symptoms = response.data
-                    })
-                return 1
+                if (this.selectPart === '몸살 감기') {
+                    this.flag = 1;
+                    console.log(this.flag)
+                    this.$emit('update-flag', this.flag)
+                    console.log("emit succeed")
+                } else if (this.selectPart === '기관지') {
+                    this.flag = 2;
+                    this.$emit('update-flag', this.flag)
+                } else if (this.selectPart === '위장') {
+                    this.flag = 3;
+                    this.$emit('update-flag', this.flag)
+                } else if (this.selectPart === '안질환') {
+                    this.flag = 4;
+                    this.$emit('update-flag', this.flag)
+                } else if (this.selectPart === '피부 질환') {
+                    this.flag = 5;
+                    this.$emit('update-flag', this.flag)
+                } else if (this.selectPart === '타박상') {
+                    this.flag = 6;
+                    this.$emit('update-flag', this.flag)
+                } else if (this.selectPart === '기타') {
+                    this.flag = 7;
+                    this.$emit('update-flag', this.flag)
+                } else {
+                    this.flag = 0;
+                    this.$emit('update-flag', this.flag)
+                }
+
+                // this.$router.push(`/searchMedicine/${this.selectPart}`)
+                // this.$http.get('http://localhost:3000/searchMedicine/' + this.selectPart)
+                //     .then((response) => {
+                //         console.log("부위 별 증상 데이터 로드 성공")
+                //         console.log(response.data)
+                //         this.symptoms = response.data
+                //     })
+                // return 1
             },
         }
     }
