@@ -1,4 +1,4 @@
-# assign2
+# vue
 
 ## Project setup
 ```
