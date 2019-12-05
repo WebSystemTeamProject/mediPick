@@ -7,7 +7,6 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('mongoose connected')
 });
-
 autoInc.initialize(db);
 
 const medicineSchema = new mongoose.Schema({
@@ -30,9 +29,12 @@ const medicineSchema = new mongoose.Schema({
       default: "정보 없음"
     }
 });
-
+const companySchema = new mongoose.Schema({
+  company: String
+});
 medicineSchema.plugin(autoInc.plugin, 'medicine');
-const medicineModel = mongoose.model('medicine',medicineSchema);
 
+const medicineModel = mongoose.model('medicine',medicineSchema);
+const companyModel = mongoose.model('company',companySchema);
 //medicineModel.create({}).
- module.exports = { model: medicineModel, plugin: medicineSchema}
+ module.exports = { mediModel: medicineModel, compModel: companyModel}
