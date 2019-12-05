@@ -162,13 +162,13 @@
             float: right;
             margin-right: 20px;
             height: 44px;
-            color: #ffffff;
+            color: #212121;
         }
         .loginBox button {
             margin-left: 20px;
             width: 44px;
             height: 44px;
-            color: #ffffff;
+            color: #212121;
             cursor: pointer;
             vertical-align: middle;
         }
