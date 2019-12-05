@@ -3,7 +3,7 @@
         <header class="mobile">
             <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logo_mobile.png"></span>
             <div v-if="user">
-                <button class="loginBtnMobile" @click="logout">
+                <button class="loginBtnMobile" @click="logout"> // 로그아웃
                     <i class="material-icons">
                         exit_to_app
                     </i>
