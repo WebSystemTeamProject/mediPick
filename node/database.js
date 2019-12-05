@@ -21,6 +21,10 @@ const medicineSchema = new mongoose.Schema({
     precautions: String,
     store: String,
     period: String,
+    recommend:{
+      type: Number,
+      default: 0
+    },
     price:{
       type: String,
       default: "정보 없음"
@@ -30,5 +34,5 @@ const medicineSchema = new mongoose.Schema({
 medicineSchema.plugin(autoInc.plugin, 'medicine');
 const medicineModel = mongoose.model('medicine',medicineSchema);
 
-
-module.exports = { model: medicineModel, plugin: medicineSchema };
+//medicineModel.create({}).
+ module.exports = { model: medicineModel, plugin: medicineSchema}

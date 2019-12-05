@@ -1,16 +1,29 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+from PIL import Image
+from io import BytesIO
 import sys
+import re
+import base64
 import pymongo
 out = open('dataset.txt','r')
 link = out.read().split("\n")
 client = pymongo.MongoClient("mongodb+srv://admin:helloworld@medicinedb-txqna.mongodb.net/mediPick?retryWrites=true&w=majority")
 
 db = client.mediPick.medicines
+db2 = client.mediPick.companys
 def makeDB(url, index):
+
     dict={}
     dict['_id']=index
     bsObject = BeautifulSoup(url, "html.parser")
+    try:
+        if(bsObject.find('div',{'class': 'dr_img'}).find('img')!=None):
+            tempImg = re.split(';base64,|data:image/',bsObject.find('div',{'class': 'dr_img'}).find('img').get('src'))
+            im = Image.open(BytesIO(base64.b64decode(tempImg[2])))
+            im.save('../public/img/' + str(index)+ '.jpg' ,tempImg[1])
+    except Exception as ex:
+        print(ex)
     #print(bsObject.find('div',{'class':'title'}).h1.strong.get_text())
     dict['medicineName']=bsObject.find('div',{'class':'title'}).h1.strong.get_text()
     #print(bsObject.find_all('div',{'class':'r_sec'}))
@@ -22,6 +35,10 @@ def makeDB(url, index):
                 dict['shape'] = arr[idx+1]
             if (arr[idx]=="업체명"):
                 dict['company']=arr[idx+2]
+                search = {'company' : arr[idx+2]}
+
+    if db2.find_one(search)==None:
+        db2.insert_one(search)
         #print(idx ," ",  arr[idx])
     #print(len(bsObject.find_all('h3',{'class':'cont_title3'})))
     for cover in bsObject.find_all('h3',{'class':'cont_title3'}):
@@ -52,7 +69,7 @@ def makeDB(url, index):
     #print(dict)
     db.insert_one(dict)
 index = 0
-for plus in range(0,len(link)):
+for plus in range(0,500):
     html = urlopen("https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=" + link[plus])
     makeDB(html,index)
     print("success ", index)
