@@ -75,6 +75,10 @@
                   this.user = response.data;
               });
             });
+            await this.$http.post('http://localhost:3000/mediManage/update',{
+                medi_id : this.item._id,
+                recommend : this.item.recommend
+            });
             console.log("front : this.user : ",this.user);
           }
         }

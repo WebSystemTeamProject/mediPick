@@ -18,7 +18,7 @@
                         thumb_up
                         </i>
                     </span>
-                    <span class="num">30</span>
+                    <span class="num">{{item.recommend}}</span>
                 </div>
                 <div class="review">
                     <span>
