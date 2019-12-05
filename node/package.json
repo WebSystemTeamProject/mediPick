@@ -18,6 +18,7 @@
     "mongoose-auto-increment": "^5.0.1",
     "morgan": "~1.9.1",
     "request": "^2.88.0",
-    "sheetjs": "^2.0.0"
+    "sheetjs": "^2.0.0",
+    "underscore": "^1.9.1"
   }
 }
