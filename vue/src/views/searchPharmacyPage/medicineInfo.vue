@@ -8,7 +8,7 @@
         <h1>{{medicine}}</h1>
       </div>
       <div class="btnBox">
-        <button class="recommendBtn">
+        <button class="recommendBtn" @click="rec">
           <i class="material-icons">
             thumb_up
           </i>
@@ -32,15 +32,49 @@
         components: {
           'reviewBox': reviewBox
         },
+        created(){
+          this.$http.get('http://localhost:3000/main').then((response) => {
+            if(response.data.trig)
+              this.user = response.data.user;
+          });
+        },
         data() {
           return {
             pharmacy: "제약사 이름 들어갈 곳",
             medicine: "약 이름 들어갈 곳",
-            recommend: 0
+            recommend: 0,
+            user : ""
           }
         },
         methods: {
-
+          async rec(){
+            console.log("user : ",this.user);
+            console.log("user is ok?",this.user);
+            var idx=0;
+            for(var item of this.user.recommend)
+              console.log("item : ",item);
+            if(this.user.recommend[5] !== true) {
+              this.recommend += 1;
+              this.user.recommend[5] = true;
+              alert("추천되었습니다.");
+            }
+            else{
+              this.recommend -= 1;
+              this.user.recommend[5] = false;
+              alert("추천이 취소되었습니다.");
+            }
+            await this.$http.post('http://localhost:3000/userManage/update',{
+              user : this.user
+            }).then((response) => {
+                this.user = response.data;
+                this.$http.post('http://localhost:3000/main/update',{
+                  user : this.user
+                }).then((response) => {
+                  this.user = response.data;
+              });
+            });
+            console.log("front : this.user : ",this.user);
+          }
         }
     }
 </script>

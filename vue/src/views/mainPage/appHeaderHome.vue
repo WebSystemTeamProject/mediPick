@@ -3,6 +3,11 @@
         <header class="mobile">
             <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logo_mobile.png"></span>
             <div v-if="user">
+<<<<<<< HEAD
+                {{user.email}}
+                button here
+                <button class="loginBtnMobile" @click="logout">logout</button>
+=======
                 <button class="loginBtnMobile" @click="logout">
                     <i class="material-icons">
                         exit_to_app
@@ -15,6 +20,7 @@
                         person_outline
                     </i>
                 </button>
+>>>>>>> 0a56c189e0a77d5bb29398c7df5e7b1256843a28
             </div>
             <button class="menuBtn" @click="toggle">
                 <i class="material-icons">
@@ -34,6 +40,12 @@
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
+<<<<<<< HEAD
+            <div v-if="user">
+                {{user.email}}
+                button here
+                <button class="loginBtnMobile" @click="logout">logout</button>
+=======
             <div v-if="user" class="loginBox">
                 {{user}}님
                 <button class="logoutBtn" @click="logout">
@@ -41,6 +53,7 @@
                         exit_to_app
                     </i>
                 </button>
+>>>>>>> 0a56c189e0a77d5bb29398c7df5e7b1256843a28
             </div>
             <div v-else class="loginBox">
                 <button class="loginBtn" @click="goNav('loginPage')">
@@ -67,7 +80,7 @@
         created(){
             this.$http.get('http://localhost:3000/main').then((response) => {
                 if(response.data.trig)
-                    this.user = response.data.email;
+                    this.user = response.data.user;
             })
         },
         data() {

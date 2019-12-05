@@ -22,13 +22,13 @@ router.get('/',function(req,res){
 })
 
 passport.serializeUser(function(user,done){
-    console.log('passport session save : ',user.email);
-    done(null,user.email);
+    console.log('passport session save : ',user);
+    done(null,user);
 });
 
-passport.deserializeUser(function(email,done){
-    console.log('passport session get email : ',email);
-    done(null,email);
+passport.deserializeUser(function(user,done){
+    console.log('passport session get object : ',user);
+    done(null,user);
 })
 
 passport.use('local-join',new LocalStrategy({ //local-join 이라는 이름의 Strategy 사용
@@ -42,7 +42,7 @@ passport.use('local-join',new LocalStrategy({ //local-join 이라는 이름의 S
         //console.log(user)
         if(user){
             console.log('existed user');
-            return done(null, false,{message : 'your email is already used'})
+            return done(null, false,{message : '이미 존재하는 이메일입니다.'})
         }
         else{
             new User({

@@ -18,13 +18,13 @@ router.get('/',function(req,res){
 })
 
 passport.serializeUser(function(user,done){
-    console.log('passport session save : ',user.email);
-    done(null,user.email);
+    console.log('passport session save : ',user);
+    done(null,user);
 });
 
-passport.deserializeUser(function(email,done){
-    console.log('passport session get email : ',email);
-    done(null,email);
+passport.deserializeUser(function(user,done){
+    console.log('passport session get user object : ',user);
+    done(null,user);
 })
 
 
@@ -64,6 +64,7 @@ router.post('/',function(req,res,next){
         }
         req.logIn(user,function(err){
             if(err) return next(err);
+            console.log("login :",user);
             return res.json({trig : true, user : user});
         });
     })(req,res,next);

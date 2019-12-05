@@ -19,7 +19,7 @@
         created(){
             this.$http.get('http://localhost:3000/main').then((response) => {
                 if(response.data.trig)
-                    this.email = response.data.email;
+                    this.user = response.data.user;
             });
             this.$http.post('http://localhost:3000/review/list').then((response) => {
                 this.list = response.data;
@@ -27,10 +27,12 @@
         },
         data : function(){
             return{
+                user : "",
                 content : "",
                 email : "",
                 mediname : "",
                 time : "",
+                recommend : "",
                 list : []
             }
         },
@@ -38,9 +40,10 @@
             submit(){
                 this.$http.post('http://localhost:3000/review/submit', {
                     content : this.content,
-                    email : this.email,
+                    email : this.user.email,
                     mediname : "test1",
-                    time : ""
+                    time : "",
+                    recommend : ""
                 }).then((response) => {
                     this.content = "";
                     alert("리뷰가 등록되었습니다.");
