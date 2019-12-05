@@ -14,7 +14,8 @@ const reviewSchema = new mongoose.Schema({
     content : String,
     email : String,
     mediname : String,
-    time : String
+    time : String,
+    recommend : Number
 })
 //Database setting
 

@@ -3,7 +3,7 @@
         <header class="mobile">
             <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logo_mobile.png"></span>
             <div v-if="user">
-                {{user}}
+                {{user.email}}
                 button here
                 <button class="loginBtnMobile" @click="logout">logout</button>
             </div>
@@ -26,7 +26,7 @@
                 </ul>
             </nav>
             <div v-if="user">
-                {{user}}
+                {{user.email}}
                 button here
                 <button class="loginBtnMobile" @click="logout">logout</button>
             </div>
@@ -55,7 +55,7 @@
         created(){
             this.$http.get('http://localhost:3000/main').then((response) => {
                 if(response.data.trig)
-                    this.user = response.data.email;
+                    this.user = response.data.user;
             })
         },
         data() {
