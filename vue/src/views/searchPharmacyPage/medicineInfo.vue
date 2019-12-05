@@ -12,14 +12,20 @@
           <i class="material-icons">
             thumb_up
           </i>
-          {{recommend}}
+          {{item.recommend}}
         </button>
         <button class="searchPharmacyBtn">
           근처 약국 찾기
         </button>
       </div>
       <div class="infoBox">
-        -----약 정보----
+        형태 : {{item.shape}}<br><br>
+        {{item.activeInGredient}}<br><br>
+        주의 : {{item.precautions}}<br><br>
+        복용 : {{item.dosage}}<br><br>
+        {{item.additive}}<br><br>
+        기간 : {{item.period}}<br><br>
+        효능효과 : {{item.efficacy}}<br>
       </div>
       <review-box></review-box>
     </section>
@@ -43,24 +49,20 @@
           return {
             item: {},
             recommend: 0,
-            user : ""
+            user : {}
           }
         },
         methods: {
           async rec(){
-            console.log("user : ",this.user);
-            console.log("user is ok?",this.user);
-            var idx=0;
-            for(var item of this.user.recommend)
-              console.log("item : ",item);
-            if(this.user.recommend[5] !== true) {
-              this.recommend += 1;
-              this.user.recommend[5] = true;
+            console.log("this.user : ",this.user);
+            if(this.user.recommend[this.item._id] !== true) {
+              this.item.recommend += 1;
+              this.user.recommend[this.item._id] = true;
               alert("추천되었습니다.");
             }
             else{
-              this.recommend -= 1;
-              this.user.recommend[5] = false;
+              this.item.recommend -= 1;
+              this.user.recommend[this.item._id] = false;
               alert("추천이 취소되었습니다.");
             }
             await this.$http.post('http://localhost:3000/userManage/update',{

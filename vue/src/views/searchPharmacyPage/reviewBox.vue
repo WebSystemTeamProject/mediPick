@@ -17,12 +17,18 @@
             'reviewList': reviewList
         },
         created(){
+            this.item = this.$route.params.item;
+            console.log("in the reviewBox : ",this.item);
+            console.log("_id !! : ",this.item._id);
             this.$http.get('http://localhost:3000/main').then((response) => {
                 if(response.data.trig)
                     this.user = response.data.user;
             });
-            this.$http.post('http://localhost:3000/review/list').then((response) => {
+            this.$http.post('http://localhost:3000/review/list',{
+                id : this.item._id
+            }).then((response) => {
                 this.list = response.data;
+                console.log("this.list is : ",this.list);
             });
         },
         data : function(){
@@ -30,10 +36,10 @@
                 user : "",
                 content : "",
                 email : "",
-                mediname : "",
+                id : "",
                 time : "",
-                recommend : "",
-                list : []
+                list : [],
+                item : {}
             }
         },
         methods : {
@@ -41,13 +47,14 @@
                 this.$http.post('http://localhost:3000/review/submit', {
                     content : this.content,
                     email : this.user.email,
-                    mediname : "test1",
-                    time : "",
-                    recommend : ""
+                    id : this.item._id,
+                    time : ""
                 }).then((response) => {
                     this.content = "";
                     alert("리뷰가 등록되었습니다.");
-                    this.$http.post('http://localhost:3000/review/list').then((response) => {
+                    this.$http.post('http://localhost:3000/review/list',{
+                        id : this.item._id
+                    }).then((response) => {
                         this.list = response.data;
                     });
                 })
