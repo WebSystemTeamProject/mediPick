@@ -52,19 +52,19 @@ passport.use('local-login',new LocalStrategy({ //local-join 이라는 이름의 
 
 router.post('/',function(req,res,next){
     console.log("login here");
-    passport.authenticate('local-login',function(err,user_,info){
+    passport.authenticate('local-login',function(err,user,info){
         if(err) {
             console.log("err : " + err);
             return res.status(500).json(err);
         }
-        if(!user_) {
-            console.log("user : "+user_);
+        if(!user) {
+            console.log("user : "+user);
             console.log("message : "+info.message);
             return res.json({trig : false, message : info.message});
         }
-        req.logIn(user_,function(err){
+        req.logIn(user,function(err){
             if(err) return next(err);
-            return res.json({trig : true, user : user_});
+            return res.json({trig : true, user : user});
         });
     })(req,res,next);
 })

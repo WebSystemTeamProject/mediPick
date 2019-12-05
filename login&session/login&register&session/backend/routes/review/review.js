@@ -1,40 +1,22 @@
 var express = require('express');
-var app = express();
 var router = express.Router();
-var path = require('path');
-var mysql = require('mysql');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-
-//Database setting
-var connection = mysql.createConnection({
-    host : 'localhost',
-    port : 3306,
-    user : 'root',
-    password : 'password',
-    database : 'jsman'
-})
-
-connection.connect();
-
+var reviewList = require("../reviewDB/index");
 //router
-router.get('/',function(req,res){
-    //res.sendFile(path.join(__dirname,'../../public/join.html'));
-   /* var msg;
-    var errMsg = req.flash('error');
-    if(errMsg) msg = errMsg;*/
-    console.log('execute review.js');
-    res.render('review.ejs');
+router.post('/list',async function(req,res){
+    console.log("list here!");
+    var list = [];
+    list = await reviewList.find({});
+    res.json(list);
 })
 
-router.post('/form',function(req,res){
-    console.log("form here");
-    res.json({ok : true});
-})
-
-router.get('/list',function(req,res){
-    console.log("list here");
-    res.render('list.ejs');
+router.post('/submit',function(req,res){
+    var body = req.body;
+    new reviewList({
+        content : body.content,
+        email : body.email,
+        mediname : body.mediname
+    }).save(err=>console.log("review err",err));
+    res.end();
 })
 
 module.exports = router;
