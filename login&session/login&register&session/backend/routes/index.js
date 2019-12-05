@@ -8,7 +8,6 @@ var main = require('./main/main');
 var join = require('./join/index');
 var login = require('./login/index');
 var logout = require('./logout/index');
-
 /*router.get('/',function(req,res){
   res.sendFile(path.join(__dirname,"../public/main.html"))
 })*/
