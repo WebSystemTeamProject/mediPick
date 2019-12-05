@@ -1,7 +1,7 @@
 <template>
     <div>
         <header class="mobile">
-            <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logoColor_mobile.png"></span>
+            <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logo_mobile.png"></span>
             <div v-if="user.email">
                 <button class="loginBtnMobile" @click="logout">
                     <i class="material-icons">
@@ -26,7 +26,7 @@
             </Drawer>
         </header>
         <header class="desktop">
-            <span class="logoLink" @click="goHome"><img src="../../assets/logoColor.png"></span>
+            <span class="logoLink" @click="goHome"><img src="../../assets/logo.png"></span>
             <nav>
                 <ul class="listWrapper">
                     <li class="navList" @click="goNav('searchMedicine')">의약품 검색</li>
@@ -54,21 +54,26 @@
 </template>
 
 <script>
+    import appMap from '../mapPage/appMap'
     import Drawer from 'vue-simple-drawer'
     import appMenu from './appMenu'
     export default {
-        name: "appHeader",
-        data() {
-            return  {
-                open: false,
-                user : ""
-            }
+        name: "appHeaderHome",
+        components: {
+            'appMap': appMap,
+            'Drawer': Drawer,
+            'appMenu': appMenu
         },
         created(){
             this.$http.get('http://localhost:3000/main').then((response) => {
                 if(response.data.trig)
                     this.user = response.data.user;
             })
+        },
+        data() {
+            return  {
+                user : ""
+            }
         },
         computed: {
             isOpen() {
@@ -96,10 +101,6 @@
             toggle() {
                 this.$store.commit('toggleIsOpen');
             }
-        },
-        components: {
-            'Drawer': Drawer,
-            'appMenu': appMenu
         }
     }
 </script>
@@ -107,7 +108,7 @@
 <style scoped>
     .mobile {
         position: relative;
-        padding: 20px 16px 0 16px;
+        padding-top: 20px;
     }
     .desktop {
         display: none;
@@ -118,13 +119,14 @@
     .loginBtnMobile, .menuBtn {
         position: absolute;
         top: 20px;
-        color: #212121;
+        color: #ffffff;
+        cursor: pointer;
     }
     .loginBtnMobile {
-        right: 56px;
+        right: 40px;
     }
     .menuBtn {
-        right: 16px;
+        right: 0;
     }
     @media(min-width: 600px) {
         .mobile {
@@ -132,7 +134,7 @@
         }
         .desktop {
             display: block;
-            padding: 20px 24px 0 24px;
+            padding-top: 20px;
         }
         .desktop::after {
             display: block;
@@ -153,7 +155,7 @@
             margin: 0 15px;
             font-size: 16px;
             font-weight: 400;
-            color: #212121;
+            color: #ffffff;
             cursor: pointer;
         }
         .loginBox {
@@ -174,7 +176,6 @@
     @media(min-width: 1025px) {
         .desktop {
             width: 1200px;
-            padding: 20px 0 0 0;
             margin: 0 auto;
         }
         .logoLink {
