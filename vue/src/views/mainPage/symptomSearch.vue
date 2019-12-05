@@ -13,18 +13,6 @@
                     <option v-for="symptom in symptoms">{{symptom}}</option>
                 </select>
             </div>
-            <div class="selectWrapper">
-                <select class="symptomArea">
-                    <option disabled selected>연령대</option>
-                    <option v-for="age in ages">{{age}}</option>
-                </select>
-            </div>
-            <div class="selectWrapper">
-                <select class="symptomArea">
-                    <option disabled selected>성별</option>
-                    <option v-for="gender in genders">{{gender}}</option>
-                </select>
-            </div>
         </div>
         <div class="btnWrapper">
             <button class="searchBtn" @click="searchClick">검색</button>
@@ -98,7 +86,7 @@
         }
 
         .selectWrapper {
-            width: 25%;
+            /*width: 25%;*/
             padding: 0 1px;
             margin: 0;
             font-size: 16px;

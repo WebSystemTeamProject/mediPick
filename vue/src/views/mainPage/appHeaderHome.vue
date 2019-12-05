@@ -3,9 +3,18 @@
         <header class="mobile">
             <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logo_mobile.png"></span>
             <div v-if="user">
-                {{user}}
-                button here
-                <button class="loginBtnMobile" @click="logout">logout</button>
+                <button class="loginBtnMobile" @click="logout">
+                    <i class="material-icons">
+                        exit_to_app
+                    </i>
+                </button>
+            </div>
+            <div v-else>
+                <button class="loginBtnMobile" @click="goNav('loginPage')">
+                    <i class="material-icons">
+                        person_outline
+                    </i>
+                </button>
             </div>
             <button class="menuBtn" @click="toggle">
                 <i class="material-icons">
@@ -25,12 +34,15 @@
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
-            <div v-if="user">
-                {{user}}
-                button here
-                <button class="loginBtnMobile" @click="logout">logout</button>
+            <div v-if="user" class="loginBox">
+                {{user}}님
+                <button class="logoutBtn" @click="logout">
+                    <i class="material-icons">
+                        exit_to_app
+                    </i>
+                </button>
             </div>
-            <div v-else>
+            <div v-else class="loginBox">
                 <button class="loginBtn" @click="goNav('loginPage')">
                     <i class="material-icons">
                         person_outline
@@ -91,7 +103,6 @@
             }
         }
     }
-
 </script>
 
 <style scoped>
@@ -109,6 +120,7 @@
         position: absolute;
         top: 20px;
         color: #ffffff;
+        cursor: pointer;
     }
     .loginBtnMobile {
         right: 40px;
@@ -116,7 +128,6 @@
     .menuBtn {
         right: 0;
     }
-
     @media(min-width: 600px) {
         .mobile {
             display: none;
@@ -147,16 +158,21 @@
             color: #ffffff;
             cursor: pointer;
         }
-        .loginBtn {
+        .loginBox {
             float: right;
             margin-right: 20px;
+            height: 44px;
+            color: #ffffff;
+        }
+        .loginBox button {
+            margin-left: 20px;
             width: 44px;
             height: 44px;
             color: #ffffff;
             cursor: pointer;
+            vertical-align: middle;
         }
     }
-
     @media(min-width: 1025px) {
         .desktop {
             width: 1200px;
@@ -167,5 +183,4 @@
             cursor: pointer;
         }
     }
-
 </style>
