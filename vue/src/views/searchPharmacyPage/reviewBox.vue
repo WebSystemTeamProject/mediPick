@@ -22,9 +22,7 @@
                     this.email = response.data.email;
             });
             this.$http.post('http://localhost:3000/review/list').then((response) => {
-                alert("????");
                 this.list = response.data;
-                console.log("this.list",this.list);
             });
         },
         data : function(){
@@ -32,6 +30,7 @@
                 content : "",
                 email : "",
                 mediname : "",
+                time : "",
                 list : []
             }
         },
@@ -40,11 +39,14 @@
                 this.$http.post('http://localhost:3000/review/submit', {
                     content : this.content,
                     email : this.email,
-                    mediname : "test1"
+                    mediname : "test1",
+                    time : ""
                 }).then((response) => {
                     this.content = "";
                     alert("리뷰가 등록되었습니다.");
-                    
+                    this.$http.post('http://localhost:3000/review/list').then((response) => {
+                        this.list = response.data;
+                    });
                 })
             }
         }

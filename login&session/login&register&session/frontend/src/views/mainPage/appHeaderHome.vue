@@ -7,24 +7,20 @@
                 button here
                 <button class="loginBtnMobile" @click="logout">logout</button>
             </div>
-            <div v-else>
-            <button class="loginBtnMobile" @click="goNav('loginPage')">
-                <i class="material-icons">
-                    person_outline
-                </i>
-            </button>
-            </div>
-            <button class="menuBtn">
+            <button class="menuBtn" @click="toggle">
                 <i class="material-icons">
                     menu
                 </i>
             </button>
+            <Drawer @close="toggle" align="right" :closeable="true">
+                <app-menu v-if="isOpen"></app-menu>
+            </Drawer>
         </header>
         <header class="desktop">
             <span class="logoLink" @click="goHome"><img src="../../assets/logo.png"></span>
             <nav>
                 <ul class="listWrapper">
-                    <li class="navList">의약품 검색</li>
+                    <li class="navList" @click="goNav('searchMedicine')">의약품 검색</li>
                     <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
@@ -35,11 +31,11 @@
                 <button class="loginBtnMobile" @click="logout">logout</button>
             </div>
             <div v-else>
-            <button class="loginBtn" @click="goNav('loginPage')">
-                <i class="material-icons">
-                    person_outline
-                </i>
-            </button>
+                <button class="loginBtn" @click="goNav('loginPage')">
+                    <i class="material-icons">
+                        person_outline
+                    </i>
+                </button>
             </div>
         </header>
     </div>
@@ -47,10 +43,14 @@
 
 <script>
     import appMap from '../mapPage/appMap'
+    import Drawer from 'vue-simple-drawer'
+    import appMenu from './appMenu'
     export default {
         name: "appHeaderHome",
         components: {
-            'appMap': appMap
+            'appMap': appMap,
+            'Drawer': Drawer,
+            'appMenu': appMenu
         },
         created(){
             this.$http.get('http://localhost:3000/main').then((response) => {
@@ -58,9 +58,14 @@
                     this.user = response.data.email;
             })
         },
-        data : function(){
-            return{
+        data() {
+            return  {
                 user : ""
+            }
+        },
+        computed: {
+            isOpen() {
+                return this.$store.getters.getIsOpen
             }
         },
         methods: {
@@ -80,6 +85,9 @@
             goNav(nav) {
                 this.$router.push({name: nav});
                 this.$store.commit('setIsHome', false);
+            },
+            toggle() {
+                this.$store.commit('toggleIsOpen');
             }
         }
     }

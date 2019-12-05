@@ -1,5 +1,5 @@
 <template>
-    <div class="mediList">
+    <div class="mediList" @click="goNav('medicineInfo')">
         <div class="rank">1</div>
         <div class="imgBox">
             <img src="../../assets/medi.png">
@@ -31,7 +31,12 @@
 
 <script>
     export default {
-        name: "pharmacyMedicine"
+        name: "pharmacyMedicine",
+        methods: {
+            goNav(nav) {
+                this.$router.push({name: nav});
+            }
+        }
     }
 </script>
 
@@ -39,6 +44,7 @@
     .mediList {
         border-bottom: 1px solid #BDBDBD;
         height: 60px;
+        cursor: pointer;
         transition: .3s;
     }
     .mediList::after {

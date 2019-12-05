@@ -7,17 +7,20 @@
                     person_outline
                 </i>
             </button>
-            <button class="menuBtn">
+            <button class="menuBtn" @click="toggle">
                 <i class="material-icons">
                     menu
                 </i>
             </button>
+            <Drawer @close="toggle" align="right" :closeable="true">
+                <app-menu v-if="isOpen"></app-menu>
+            </Drawer>
         </header>
         <header class="desktop">
             <span class="logoLink" @click="goHome"><img src="../../assets/logoColor.png"></span>
             <nav>
                 <ul class="listWrapper">
-                    <li class="navList">의약품 검색</li>
+                    <li class="navList" @click="goNav('searchMedicine')">의약품 검색</li>
                     <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
@@ -32,8 +35,20 @@
 </template>
 
 <script>
+    import Drawer from 'vue-simple-drawer'
+    import appMenu from './appMenu'
     export default {
         name: "appHeader",
+        data() {
+            return  {
+                open: false
+            }
+        },
+        computed: {
+            isOpen() {
+                return this.$store.getters.getIsOpen
+            }
+        },
         methods: {
             goHome() {
                 if(this.$store.getters.getIsHome) {
@@ -45,7 +60,14 @@
             goNav(nav) {
                 this.$router.push({name: nav});
                 this.$store.commit('setIsHome', false);
+            },
+            toggle() {
+                this.$store.commit('toggleIsOpen');
             }
+        },
+        components: {
+            'Drawer': Drawer,
+            'appMenu': appMenu
         }
     }
 
