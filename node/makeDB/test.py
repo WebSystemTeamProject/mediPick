@@ -21,7 +21,7 @@ def makeDB(url, index):
         if(bsObject.find('div',{'class': 'dr_img'}).find('img')!=None):
             tempImg = re.split(';base64,|data:image/',bsObject.find('div',{'class': 'dr_img'}).find('img').get('src'))
             im = Image.open(BytesIO(base64.b64decode(tempImg[2])))
-            im.save('../public/img/' + str(index)+ '.' + tempImg[1],tempImg[1])
+            im.save('../public/img/' + str(index)+ '.jpg' ,tempImg[1])
     except Exception as ex:
         print(ex)
     #print(bsObject.find('div',{'class':'title'}).h1.strong.get_text())
@@ -68,8 +68,8 @@ def makeDB(url, index):
     #print(bsObject.find_all('h3',{'class':'cont_title3'}).get_text())
     #print(dict)
     db.insert_one(dict)
-index = 339
-for plus in range(339,500):
+index = 0
+for plus in range(0,500):
     html = urlopen("https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=" + link[plus])
     makeDB(html,index)
     print("success ", index)
