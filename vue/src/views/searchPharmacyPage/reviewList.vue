@@ -6,7 +6,7 @@
         </div>
         <div class="userBox">
           <div>
-            <span class="userName">아이디1</span>
+            <span class="userName">{{info.email}}</span>
             <span class="userInfo">20세, 남성</span>
           </div>
         </div>
@@ -15,15 +15,19 @@
         </div>
       </div>
       <p class="reviewText">
+        {{info.content}}<!--
         인도하겠다는 우리는 곳으로 기관과 불어 운다. 이성은 피고 사는가 천하를 보내는 인류의 것이다.
-        이것이야말로 전인 가치를 청춘이 길지 창공에 피부가 그리하였는가?
+        이것이야말로 전인 가치를 청춘이 길지 창공에 피부가 그리하였는가?-->
       </p>
     </div>
 </template>
 
 <script>
     export default {
-        name: "reviewList"
+        name: "reviewList",
+      props: {
+          info: Object
+      }
     }
 </script>
 

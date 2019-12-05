@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 const autoInc = require('mongoose-auto-increment');
 mongoose.set('useCreateIndex',true);
+mongoose.set('useFindAndModify', false);
 
 mongoose.connect('mongodb+srv://admin:helloworld@medicinedb-txqna.mongodb.net/mediPick?retryWrites=true&w=majority',{
     useUnifiedTopology:true, useNewUrlParser:true
@@ -9,13 +10,14 @@ mongoose.connect('mongodb+srv://admin:helloworld@medicinedb-txqna.mongodb.net/me
 const conn = mongoose.connection;
 autoInc.initialize(conn);
 
-const userSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
+    content : String,
     email : String,
-    password : String
+    mediname : String
 })
 //Database setting
 
-userSchema.plugin(autoInc.plugin,"user");
-const User = mongoose.model('user',userSchema);
+reviewSchema.plugin(autoInc.plugin,"reviewList");
+const reviewList = mongoose.model('reviewList',reviewSchema);
 
-module.exports = User;
+module.exports = reviewList;
