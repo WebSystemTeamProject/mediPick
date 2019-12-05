@@ -1,30 +1,34 @@
 <template>
-    <div class="mediList" @click="goNav('medicineInfo')">
-        <div class="rank">1</div>
-        <div class="imgBox">
-            <img src="../../assets/medi.png">
-        </div>
-        <div class="mediInfo">
-            <div>
-                <span>제약사 이름</span>
-                <h2>약 이름</h2>
+    <div>
+        <div v-for="item in medilist">
+            <div class="mediList" @click="goNav('medicineInfo')">
+                <div class="rank">1</div>
+                <div class="imgBox">
+                    <img src="../../assets/medi.png">
+                </div>
+                <div class="mediInfo">
+                    <div>
+                        <span>{{item.company}}</span>
+                        <h2>{{item.medicineName}}</h2>
+                    </div>
+                </div>
+                <div class="recommend">
+                    <span>
+                        <i class="material-icons">
+                        thumb_up
+                        </i>
+                    </span>
+                    <span class="num">30</span>
+                </div>
+                <div class="review">
+                    <span>
+                        <i class="material-icons">
+                        chat
+                        </i>
+                    </span>
+                    <span class="num">14</span>
+                </div>
             </div>
-        </div>
-        <div class="recommend">
-            <span>
-                <i class="material-icons">
-                thumb_up
-                </i>
-            </span>
-            <span class="num">30</span>
-        </div>
-        <div class="review">
-            <span>
-                <i class="material-icons">
-                chat
-                </i>
-            </span>
-            <span class="num">14</span>
         </div>
     </div>
 </template>
@@ -32,6 +36,19 @@
 <script>
     export default {
         name: "pharmacyMedicine",
+        created(){
+            this.$http.post('http://localhost:3000/mediManage',{
+            }).then((response) => {
+                console.log("mediMange front");
+                this.medilist = response.data;
+                console.log(this.medilist);
+            })
+        },
+        data(){
+            return{
+              medilist : []
+            }
+        },
         methods: {
             goNav(nav) {
                 this.$router.push({name: nav});
