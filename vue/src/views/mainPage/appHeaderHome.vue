@@ -7,13 +7,6 @@
                 button here
                 <button class="loginBtnMobile" @click="logout">logout</button>
             </div>
-            <div v-else>
-                <button class="loginBtnMobile" @click="goNav('loginPage')">
-                    <i class="material-icons">
-                        person_outline
-                    </i>
-                </button>
-            </div>
             <button class="menuBtn" @click="toggle">
                 <i class="material-icons">
                     menu
@@ -32,11 +25,18 @@
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
-            <button class="loginBtn" @click="goNav('loginPage')">
-                <i class="material-icons">
-                    person_outline
-                </i>
-            </button>
+            <div v-if="user">
+                {{user}}
+                button here
+                <button class="loginBtnMobile" @click="logout">logout</button>
+            </div>
+            <div v-else>
+                <button class="loginBtn" @click="goNav('loginPage')">
+                    <i class="material-icons">
+                        person_outline
+                    </i>
+                </button>
+            </div>
         </header>
     </div>
 </template>
@@ -91,7 +91,6 @@
             }
         }
     }
-
 </script>
 
 <style scoped>
@@ -116,7 +115,6 @@
     .menuBtn {
         right: 0;
     }
-
     @media(min-width: 600px) {
         .mobile {
             display: none;
@@ -156,7 +154,6 @@
             cursor: pointer;
         }
     }
-
     @media(min-width: 1025px) {
         .desktop {
             width: 1200px;
@@ -167,5 +164,4 @@
             cursor: pointer;
         }
     }
-
 </style>

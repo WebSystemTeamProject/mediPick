@@ -5,18 +5,7 @@ var path = require('path');
 var mysql = require('mysql');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-
-//Database setting
-var connection = mysql.createConnection({
-    host : 'localhost',
-    port : 3306,
-    user : 'root',
-    password : 'password',
-    database : 'jsman'
-})
-
-connection.connect();
-
+const User = require("../user/index");
 //router
 router.get('/',function(req,res){
     //res.sendFile(path.join(__dirname,'../../public/join.html'));
@@ -48,21 +37,21 @@ passport.use('local-join',new LocalStrategy({ //local-join 이라는 이름의 S
         pssReqToCallback: true
     }, function(email,password,done) {
     // DB에 있는 email search
-    var query = connection.query('select * from user where email=?',[email],function(err,rows){
+    User.findOne({email : email},function(err,user){
         if(err)return done(err);
-        console.log(rows)
-        if(rows.length){
+        //console.log(user)
+        if(user){
             console.log('existed user');
             return done(null, false,{message : 'your email is already used'})
         }
         else{
-            var sql = {email : email,pw:password};
-            var query = connection.query('insert into user set ?',sql,function(err,rows){
-                if(err) throw err;
-                return done(null, {'email' : email}); // 이 값이 /main으로 감
-            })
+            new User({
+                email : email,
+                password : password
+            }).save();
+            return done(null,{'email' : email});
         }
-    })
+    });
     console.log('local-join callback called');
 }));
 
