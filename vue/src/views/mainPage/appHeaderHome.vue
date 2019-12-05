@@ -1,13 +1,8 @@
 <template>
     <div>
         <header class="mobile">
-            <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logo_mobile.png"></span>
-            <div v-if="user">
-<<<<<<< HEAD
-                {{user.email}}
-                button here
-                <button class="loginBtnMobile" @click="logout">logout</button>
-=======
+            <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logoColor_mobile.png"></span>
+            <div v-if="user.email">
                 <button class="loginBtnMobile" @click="logout">
                     <i class="material-icons">
                         exit_to_app
@@ -20,7 +15,6 @@
                         person_outline
                     </i>
                 </button>
->>>>>>> 0a56c189e0a77d5bb29398c7df5e7b1256843a28
             </div>
             <button class="menuBtn" @click="toggle">
                 <i class="material-icons">
@@ -32,28 +26,21 @@
             </Drawer>
         </header>
         <header class="desktop">
-            <span class="logoLink" @click="goHome"><img src="../../assets/logo.png"></span>
+            <span class="logoLink" @click="goHome"><img src="../../assets/logoColor.png"></span>
             <nav>
                 <ul class="listWrapper">
-                    <li class="navList" @click="goNav('searchMedicine')">증상별 검색</li>
+                    <li class="navList" @click="goNav('searchMedicine')">의약품 검색</li>
                     <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
-<<<<<<< HEAD
-            <div v-if="user">
-                {{user.email}}
-                button here
-                <button class="loginBtnMobile" @click="logout">logout</button>
-=======
-            <div v-if="user" class="loginBox">
-                {{user}}님
+            <div v-if="user.email" class="loginBox">
+                {{user.email}}님
                 <button class="logoutBtn" @click="logout">
                     <i class="material-icons">
                         exit_to_app
                     </i>
                 </button>
->>>>>>> 0a56c189e0a77d5bb29398c7df5e7b1256843a28
             </div>
             <div v-else class="loginBox">
                 <button class="loginBtn" @click="goNav('loginPage')">
@@ -67,26 +54,21 @@
 </template>
 
 <script>
-    import appMap from '../mapPage/appMap'
     import Drawer from 'vue-simple-drawer'
     import appMenu from './appMenu'
     export default {
-        name: "appHeaderHome",
-        components: {
-            'appMap': appMap,
-            'Drawer': Drawer,
-            'appMenu': appMenu
+        name: "appHeader",
+        data() {
+            return  {
+                open: false,
+                user : ""
+            }
         },
         created(){
             this.$http.get('http://localhost:3000/main').then((response) => {
                 if(response.data.trig)
                     this.user = response.data.user;
             })
-        },
-        data() {
-            return  {
-                user : ""
-            }
         },
         computed: {
             isOpen() {
@@ -114,6 +96,10 @@
             toggle() {
                 this.$store.commit('toggleIsOpen');
             }
+        },
+        components: {
+            'Drawer': Drawer,
+            'appMenu': appMenu
         }
     }
 </script>
@@ -121,7 +107,7 @@
 <style scoped>
     .mobile {
         position: relative;
-        padding-top: 20px;
+        padding: 20px 16px 0 16px;
     }
     .desktop {
         display: none;
@@ -132,14 +118,13 @@
     .loginBtnMobile, .menuBtn {
         position: absolute;
         top: 20px;
-        color: #ffffff;
-        cursor: pointer;
+        color: #212121;
     }
     .loginBtnMobile {
-        right: 40px;
+        right: 56px;
     }
     .menuBtn {
-        right: 0;
+        right: 16px;
     }
     @media(min-width: 600px) {
         .mobile {
@@ -147,7 +132,7 @@
         }
         .desktop {
             display: block;
-            padding-top: 20px;
+            padding: 20px 24px 0 24px;
         }
         .desktop::after {
             display: block;
@@ -168,7 +153,7 @@
             margin: 0 15px;
             font-size: 16px;
             font-weight: 400;
-            color: #ffffff;
+            color: #212121;
             cursor: pointer;
         }
         .loginBox {
@@ -189,6 +174,7 @@
     @media(min-width: 1025px) {
         .desktop {
             width: 1200px;
+            padding: 20px 0 0 0;
             margin: 0 auto;
         }
         .logoLink {
