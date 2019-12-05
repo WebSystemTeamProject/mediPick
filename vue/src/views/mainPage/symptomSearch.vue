@@ -1,4 +1,5 @@
 <template>
+    //메인에서 빠르게 의약품 검색하는 템플릿
     <form>
         <div class="selectAll">
             <div class="selectWrapper">

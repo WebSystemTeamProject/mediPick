@@ -52,7 +52,7 @@ const routes = [
   },
   {
     name: 'MdsForSymp',
-    path: '/searchMedicine/:part/:symp',
+    path: '/searchMedicine/symptom/:symp',
     component: MdsForSymp
   },
   {

@@ -1,4 +1,5 @@
 <template>
+    //메인에서 검색한 의약품을 보여주는 페이지
     <section>
         <div>
             <header class="mobile">
