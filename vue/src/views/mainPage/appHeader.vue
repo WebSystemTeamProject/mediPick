@@ -2,11 +2,20 @@
     <div>
         <header class="mobile">
             <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logoColor_mobile.png"></span>
-            <button class="loginBtnMobile" @click="goNav('loginPage')">
-                <i class="material-icons">
-                    person_outline
-                </i>
-            </button>
+            <div v-if="user">
+                <button class="loginBtnMobile" @click="logout">
+                    <i class="material-icons">
+                        exit_to_app
+                    </i>
+                </button>
+            </div>
+            <div v-else>
+                <button class="loginBtnMobile" @click="goNav('loginPage')">
+                    <i class="material-icons">
+                        person_outline
+                    </i>
+                </button>
+            </div>
             <button class="menuBtn" @click="toggle">
                 <i class="material-icons">
                     menu
@@ -25,11 +34,21 @@
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
-            <button class="loginBtn" @click="goNav('loginPage')">
-                <i class="material-icons">
-                    person_outline
-                </i>
-            </button>
+            <div v-if="user" class="loginBox">
+                {{user}}님
+                <button class="logoutBtn" @click="logout">
+                    <i class="material-icons">
+                        exit_to_app
+                    </i>
+                </button>
+            </div>
+            <div v-else class="loginBox">
+                <button class="loginBtn" @click="goNav('loginPage')">
+                    <i class="material-icons">
+                        person_outline
+                    </i>
+                </button>
+            </div>
         </header>
     </div>
 </template>
@@ -41,8 +60,15 @@
         name: "appHeader",
         data() {
             return  {
-                open: false
+                open: false,
+                user : ""
             }
+        },
+        created(){
+            this.$http.get('http://localhost:3000/main').then((response) => {
+                if(response.data.trig)
+                    this.user = response.data.email;
+            })
         },
         computed: {
             isOpen() {
@@ -50,6 +76,12 @@
             }
         },
         methods: {
+            async logout(){
+                await this.$http.get('http://localhost:3000/logout', {
+                }).then((response)=>{
+                    window.location.href="/";
+                })
+            },
             goHome() {
                 if(this.$store.getters.getIsHome) {
                     return false;
@@ -126,13 +158,19 @@
             color: #212121;
             cursor: pointer;
         }
-        .loginBtn {
+        .loginBox {
             float: right;
             margin-right: 20px;
+            height: 44px;
+            color: #ffffff;
+        }
+        .loginBox button {
+            margin-left: 20px;
             width: 44px;
             height: 44px;
-            color: #212121;
+            color: #ffffff;
             cursor: pointer;
+            vertical-align: middle;
         }
     }
 
