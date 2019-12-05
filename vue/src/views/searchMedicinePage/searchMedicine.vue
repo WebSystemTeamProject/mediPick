@@ -2,28 +2,103 @@
     <section>
         <h1 class="title">의약품 검색</h1>
         <search-box></search-box>
-        <!--        <pharmacy-list v-for="pharmacy in pharmacys" v-bind:pharmacy="pharmacy"></pharmacy-list>-->
+        <symptoms-list v-on:update-flag="updateFlag" v-if="flag1" v-for="symptom in symptoms1" v-bind:symptom="symptom"></symptoms-list>
+        <symptoms-list v-on:update-flag="updateFlag" v-if="flag2" v-for="symptom in symptoms2" v-bind:symptom="symptom"></symptoms-list>
+        <symptoms-list v-on:update-flag="updateFlag" v-if="flag3" v-for="symptom in symptoms3" v-bind:symptom="symptom"></symptoms-list>
+        <symptoms-list v-on:update-flag="updateFlag" v-if="flag4" v-for="symptom in symptoms4" v-bind:symptom="symptom"></symptoms-list>
+        <symptoms-list v-on:update-flag="updateFlag" v-if="flag5" v-for="symptom in symptoms5" v-bind:symptom="symptom"></symptoms-list>
+        <symptoms-list v-on:update-flag="updateFlag" v-if="flag6" v-for="symptom in symptoms6" v-bind:symptom="symptom"></symptoms-list>
+        <symptoms-list v-on:update-flag="updateFlag" v-if="flag7" v-for="symptom in symptoms7" v-bind:symptom="symptom"></symptoms-list>
     </section>
 </template>
 
 <script>
-    // import pharmacyList from './pharmacyList'
+    import symptomsList from './symptomsList'
     import searchBox from './searchBox'
     export default {
         name: "searchMedicine",
         data() {
             return {
-
+                flag1: true,
+                flag2: false,
+                flag3: false,
+                flag4: false,
+                flag5: false,
+                flag6: false,
+                flag7: false
             }
         },
-        // computed: {
-        //     pharmacys() {
-        //         return this.$store.getters.getPharmacy;
-        //     }
-        // },
+        computed: {
+            symptoms1() {
+                console.log("symptoms1 get")
+                return this.$store.getters.getSymptoms1;
+            },
+            symptoms2() {
+                return this.$store.getters.getSymptoms2;
+            },
+            symptoms3() {
+                return this.$store.getters.getSymptoms3;
+            },
+            symptoms4() {
+                return this.$store.getters.getSymptoms4;
+            },
+            symptoms5() {
+                return this.$store.getters.getSymptoms5;
+            },
+            symptoms6() {
+                return this.$store.getters.getSymptoms6;
+            },
+            symptoms7() {
+                return this.$store.getters.getSymptoms7;
+            }
+        },
         components: {
             'searchBox': searchBox,
-            // 'pharmacyList': pharmacyList
+            'symptomsList': symptomsList
+        },
+        methods: {
+            updateFlag: function(flag) {
+                console.log(flag)
+                if (flag === 0) {
+                    console.log("flag가 0")
+                    this.flag1 = false
+                    this.flag2 = false
+                    this.flag3 = false
+                    this.flag4 = false
+                    this.flag5 = false
+                    this.flag6 = false
+                    this.flag7 = false
+                    return false
+                } else if (flag === 1) {
+                    console.log("flag가 1")
+                    this.flag1 = true
+                    this.flag2 = false
+                    this.flag3 = false
+                    this.flag4 = false
+                    this.flag5 = false
+                    this.flag6 = false
+                    this.flag7 = false
+                    return true
+                } else if (flag === 2) {
+                    this.flag1 = false
+                    this.flag2 = true
+                    this.flag3 = false
+                    this.flag4 = false
+                    this.flag5 = false
+                    this.flag6 = false
+                    this.flag7 = false
+                } else if (flag === 3) {
+                    this.flag1 = false
+                    this.flag2 = false
+                    this.flag3 = true
+                    this.flag4 = false
+                    this.flag5 = false
+                    this.flag6 = false
+                    this.flag7 = false
+                } else if (flag === 4) {
+
+                }
+            }
         }
     }
 </script>
