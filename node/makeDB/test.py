@@ -52,7 +52,7 @@ def makeDB(url, index):
     #print(dict)
     db.insert_one(dict)
 index = 0
-for plus in range(0,len(link)):
+for plus in range(0,300):
     html = urlopen("https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=" + link[plus])
     makeDB(html,index)
     print("success ", index)
