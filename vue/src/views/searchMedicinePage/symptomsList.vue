@@ -1,13 +1,10 @@
 <template>
     <div class="listWrap">
-<!--        <div class="imgBox">-->
-<!--            <img v-bind:src=pharmacy.imgSrc>-->
-<!--        </div>-->
         <div class="titleBox">
             {{symptom}}
         </div>
         <div class="btnBox">
-            <button @click="goNav('rankingPage')">의약품 보기</button>
+            <button @click="goNav('MdsForSymp')">의약품 보기</button>
         </div>
     </div>
 </template>
