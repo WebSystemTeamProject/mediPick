@@ -11,7 +11,8 @@
           </div>
         </div>
         <div class="date">
-          2019.11.06
+          2019.11.06<br>
+          <button @click="del">삭제하기</button>
         </div>
       </div>
       <p class="reviewText">
@@ -27,6 +28,11 @@
         name: "reviewList",
       props: {
           info: Object
+      },
+      methods:{
+          del(){
+            this.$emit('event',this.info._id)
+          }
       }
     }
 </script>

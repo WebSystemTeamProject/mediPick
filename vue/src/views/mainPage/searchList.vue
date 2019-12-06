@@ -23,7 +23,7 @@
                         chat
                         </i>
                     </span>
-            <span class="num">14</span>
+            <span class="num">{{comment}}</span>
         </div>
     </div>
 </template>
@@ -32,7 +32,20 @@
     export default {
         name: "searchList",
         props: {
-            item: Object
+            item: Object,
+            comment : ""
+        },
+        created(){
+            this.$http.post('http://localhost:3000/review/comment',{
+                id : this.item._id
+            }).then((response) => {
+                this.comment = response.data.cnt;
+            });
+        },
+        data(){
+          return{
+              comment : ""
+          }
         },
         methods: {
             goNav(nav, item) {

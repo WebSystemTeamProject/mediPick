@@ -26,7 +26,7 @@
                         chat
                         </i>
                     </span>
-                    <span class="num">14</span>
+                    <span class="num">{{item.comment}}</span>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
         data(){
             return{
               medilist : [],
-              title: this.$route.params.clickedPharmacy.company
+              title : this.$route.params.clickedPharmacy.company,
             }
         },
         methods: {
