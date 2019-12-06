@@ -5,7 +5,7 @@
             <textarea v-model="content" cols="22" rows="4"></textarea>
             <button @click="submit" class="writeBtn">작성하기</button>
         </div>
-        <review-list v-for="item in list" v-bind:info="item"></review-list>
+        <review-list v-for="item in list" v-bind:info="item" @event="remove"></review-list>
     </div>
 </template>
 
@@ -56,8 +56,29 @@
                         id : this.item._id
                     }).then((response) => {
                         this.list = response.data;
+                        this.$http.post('http://localhost:3000/mediManage/update_comment',{
+                            medi_id : this.item._id,
+                            comment : this.list.length
+                        })
                     });
                 })
+            },
+            remove(_id){
+                    this.$http.post('http://localhost:3000/review/remove',{
+                        id : _id
+                    }).then((response)=>{
+                        this.content = "";
+                        alert("리뷰가 삭제되었습니다.");
+                        this.$http.post('http://localhost:3000/review/list',{
+                            id : this.item._id
+                        }).then((response) => {
+                            this.list = response.data;
+                            this.$http.post('http://localhost:3000/mediManage/update_comment',{
+                                medi_id : this.item._id,
+                                comment : this.list.length
+                            })
+                        });
+                    })
             }
         }
     }
