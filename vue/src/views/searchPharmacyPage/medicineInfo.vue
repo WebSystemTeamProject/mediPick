@@ -54,6 +54,10 @@
         },
         methods: {
           async rec(){
+            if(!this.user.email){
+              alert("로그인을 한 뒤에 추천하실 수 있습니다.");
+              return;
+            }
             console.log("this.user : ",this.user);
             if(this.user.recommend[this.item._id] !== true) {
               this.item.recommend += 1;
