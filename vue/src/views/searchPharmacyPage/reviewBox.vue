@@ -44,6 +44,10 @@
         },
         methods : {
             submit(){
+                if(!this.user.email){
+                    alert('로그인을 한 뒤 작성하실 수 있습니다.');
+                    return;
+                }
                 this.$http.post('http://localhost:3000/review/submit', {
                     content : this.content,
                     email : this.user.email,
@@ -63,9 +67,13 @@
                     });
                 })
             },
-            remove(_id){
+            remove(info){
+                    if(this.user.email !== info.email){
+                        alert("다른 사람의 댓글은 삭제 할 수 없습니다.");
+                        return;
+                    }
                     this.$http.post('http://localhost:3000/review/remove',{
-                        id : _id
+                        id : info._id
                     }).then((response)=>{
                         this.content = "";
                         alert("리뷰가 삭제되었습니다.");

@@ -31,7 +31,7 @@
       },
       methods:{
           del(){
-            this.$emit('event',this.info._id)
+            this.$emit('event',this.info)
           }
       }
     }
