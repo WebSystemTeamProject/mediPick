@@ -2,7 +2,7 @@
     <div>
         <header class="mobile">
             <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logoColor_mobile.png"></span>
-            <div v-if="user">
+            <div v-if="user.email">
                 <button class="loginBtnMobile" @click="logout">
                     <i class="material-icons">
                         exit_to_app
@@ -34,8 +34,8 @@
                     <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
                 </ul>
             </nav>
-            <div v-if="user" class="loginBox">
-                {{user}}님
+            <div v-if="user.email" class="loginBox">
+                {{user.email}}님
                 <button class="logoutBtn" @click="logout">
                     <i class="material-icons">
                         exit_to_app
@@ -67,7 +67,7 @@
         created(){
             this.$http.get('http://localhost:3000/main').then((response) => {
                 if(response.data.trig)
-                    this.user = response.data.email;
+                    this.user = response.data.user;
             })
         },
         computed: {
