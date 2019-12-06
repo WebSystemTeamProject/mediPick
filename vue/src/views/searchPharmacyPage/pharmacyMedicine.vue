@@ -37,7 +37,8 @@
     export default {
         name: "pharmacyMedicine",
         created(){
-            this.$http.post('http://localhost:3000/mediManage',{
+            this.$http.post('http://localhost:3000/api/pharmacy/company',{
+                company : this.title
             }).then((response) => {
                 console.log("mediMange front");
                 this.medilist = response.data;
@@ -46,7 +47,8 @@
         },
         data(){
             return{
-              medilist : []
+              medilist : [],
+              title: this.$route.params.clickedPharmacy.company
             }
         },
         methods: {

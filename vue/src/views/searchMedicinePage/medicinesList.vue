@@ -1,5 +1,5 @@
 <template>
-    //증상에 따른 의약품 목록 출력하는 템플릿
+  <!--  //증상에 따른 의약품 목록 출력하는 템플릿-->
     <div class="listWrap">
         <!--        <div class="imgBox">-->
         <!--            <img src=`../../../../node/public/img/` + this.id>-->
@@ -10,7 +10,7 @@
         <!--        <div class="btnBox">-->
         <!--            <button @click="goNav(nav)">의약품 보기</button>-->
         <!--        </div>-->
-        //의약품 클릭하면 상세정보 페이지로 가게 할지 결정 필요
+        <!--//의약품 클릭하면 상세정보 페이지로 가게 할지 결정 필요-->
     </div>
 </template>
 
