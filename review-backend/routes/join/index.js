@@ -37,7 +37,7 @@ passport.use('local-join',new LocalStrategy({ //local-join 이라는 이름의 S
         pssReqToCallback: true
     }, function(email,password,done) {
     // DB에 있는 email search
-    User.findOne({email : email},function(err,user){
+    User.findOne({email : email},async function(err,user){
         if(err)return done(err);
         //console.log(user)
         if(user){
@@ -45,11 +45,13 @@ passport.use('local-join',new LocalStrategy({ //local-join 이라는 이름의 S
             return done(null, false,{message : '이미 존재하는 이메일입니다.'})
         }
         else{
-            new User({
+            await new User({
                 email : email,
                 password : password
             }).save();
-            return done(null,{'email' : email});
+            User.findOne({email : email},function(err,user2){
+                return done(null,user2);
+            })
         }
     });
     console.log('local-join callback called');
