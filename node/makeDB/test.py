@@ -11,7 +11,7 @@ link = out.read().split("\n")
 client = pymongo.MongoClient("mongodb+srv://admin:helloworld@medicinedb-txqna.mongodb.net/mediPick?retryWrites=true&w=majority")
 
 db = client.mediPick.medicines
-db2 = client.mediPick.companys
+db2 = client.mediPick.companies
 def makeDB(url, index):
 
     dict={}
@@ -63,6 +63,7 @@ def makeDB(url, index):
             dict['period']=arr1[idx].get_text()
     dict['price']="정보 없음"
     dict['recommend']=0
+    dict['comment']=0
     #첫번째가 저장방법 , 두번째가 
     #print(arr1)
     #print(bsObject.find_all('h3',{'class':'cont_title3'}).get_text())

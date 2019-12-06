@@ -24,6 +24,10 @@ const medicineSchema = new mongoose.Schema({
       type: Number,
       default: 0
     },
+    comment:{
+      type: Number,
+      default: 0
+    },
     price:{
       type: String,
       default: "정보 없음"
