@@ -18,15 +18,18 @@
                 pharmacys: []
             }
         },
+        created() {
+            this.$http.get('http://localhost:3000/api/pharmacy').then((response) => {
+                this.pharmacys = response.data;
+                console.log("respnse : ",response.data);
+            })
+        },
         computed: {
             searchPharmacy() {
                 return this.pharmacys.filter(m => {
-                    return m.name.includes(this.inputText);
+                    return m.company.includes(this.inputText);
                 })
             }
-        },
-        created() {
-            this.pharmacys = this.$store.getters.getPharmacy;
         },
         components: {
             'pharmacyList': pharmacyList

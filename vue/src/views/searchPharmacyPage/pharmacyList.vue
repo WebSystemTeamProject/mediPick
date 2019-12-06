@@ -1,10 +1,10 @@
 <template>
     <div class="listWrap">
         <div class="imgBox">
-            <img v-bind:src=pharmacy.imgSrc>
+            <img src='/images/dongkook.png'>
         </div>
         <div class="titleBox">
-            {{pharmacy.name}}
+            {{pharmacy.company}}
         </div>
         <div class="btnBox">
             <button @click="goNav('rankingPage')">의약품 보기</button>

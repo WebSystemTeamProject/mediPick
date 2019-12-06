@@ -14,7 +14,7 @@
         name: "rankingPage",
         data() {
             return {
-                title: this.$route.params.clickedPharmacy.name
+                title: this.$route.params.clickedPharmacy.company
             }
         },
         components: {
