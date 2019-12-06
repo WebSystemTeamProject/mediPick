@@ -1,211 +1,113 @@
 <template>
-    //메인에서 검색한 의약품을 보여주는 페이지
     <section>
-        <div>
-            <header class="mobile">
-                <span class="logoLinkMobile" @click="goHome"><img src="../../assets/logoColor_mobile.png"></span>
-                <div v-if="user">
-                    <button class="loginBtnMobile" @click="logout">
-                        <i class="material-icons">
-                            exit_to_app
-                        </i>
-                    </button>
-                </div>
-                <div v-else>
-                    <button class="loginBtnMobile" @click="goNav('loginPage')">
-                        <i class="material-icons">
-                            person_outline
-                        </i>
-                    </button>
-                </div>
-                <button class="menuBtn" @click="toggle">
-                    <i class="material-icons">
-                        menu
-                    </i>
-                </button>
-                <Drawer @close="toggle" align="right" :closeable="true">
-                    <app-menu v-if="isOpen"></app-menu>
-                </Drawer>
-            </header>
-            <header class="desktop">
-                <span class="logoLink" @click="goHome"><img src="../../assets/logoColor.png"></span>
-                <nav>
-                    <ul class="listWrapper">
-                        <li class="navList" @click="goNav('searchMedicine')">증상별 검색</li>
-                        <li class="navList" @click="goNav('searchPharmacy')">제약사 검색</li>
-                        <li class="navList" @click="goNav('findPharmacy')">약국 찾기</li>
-                    </ul>
-                </nav>
-                <div v-if="user" class="loginBox">
-                    {{user}}님
-                    <button class="logoutBtn" @click="logout">
-                        <i class="material-icons">
-                            exit_to_app
-                        </i>
-                    </button>
-                </div>
-                <div v-else class="loginBox">
-                    <button class="loginBtn" @click="goNav('loginPage')">
-                        <i class="material-icons">
-                            person_outline
-                        </i>
-                    </button>
-                </div>
-            </header>
-        </div>
-        <br/>
-        <br/>
-        <br/>
         <h1 class="title">해당하는 의약품</h1>
-
+        <div class="searchBox">
+            <input type="text" class="searchInput" placeholder="의약품 이름을 입력해주세요" v-model="inputText">
+            <button class="searchBtn">검색</button>
+        </div>
+        <search-list></search-list>
 
     </section>
 </template>
 
 <script>
-    import Drawer from 'vue-simple-drawer'
-    import appMenu from './appMenu'
+    import searchList from './searchList'
     export default {
         name: "mdsNameSearch",
         data() {
             return  {
-                open: false,
-                user : ""
+
             }
         },
         created(){
-            this.$http.get('http://localhost:3000/main').then((response) => {
-                if(response.data.trig)
-                    this.user = response.data.email;
-            })
+
         },
         computed: {
-            isOpen() {
-                return this.$store.getters.getIsOpen
-            }
+
         },
         methods: {
-            async logout(){
-                await this.$http.get('http://localhost:3000/logout', {
-                }).then((response)=>{
-                    window.location.href="/";
-                })
-            },
-            goHome() {
-                if(this.$store.getters.getIsHome) {
-                    return false;
-                } else {
-                    this.$router.push({name: 'appHome'});
-                }
-            },
-            goNav(nav) {
-                this.$router.push({name: nav});
-                this.$store.commit('setIsHome', false);
-            },
-            toggle() {
-                this.$store.commit('toggleIsOpen');
-            }
+
         },
         components: {
-            'Drawer': Drawer,
-            'appMenu': appMenu
+            "searchList": searchList
         }
     }
 
 </script>
 
 <style scoped>
+    section {
+        padding: 0 16px;
+        margin: 40px 0 160px 0;
+        transition: .3s;
+    }
     .title {
         font-size: 24px;
         font-weight: 700;
-        margin: 0 20px 20px 10px;
-        padding-left: 100px;
+        margin: 0 0 20px 10px;
     }
-    .mobile {
-        position: relative;
-        padding: 20px 16px 0 16px;
+    .searchBox {
+        padding: 10px;
+        background-color: #EEFDFF;
+        box-sizing: border-box;
     }
-    .desktop {
-        display: none;
+    .searchBox::after {
+        content: "";
+        display: block;
+        clear: both;
     }
-    .logoLinkMobile {
-        cursor: pointer;
+    .searchInput {
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        border: 1px solid #55CEE2;
+        font-size: 14px;
+        box-sizing: border-box;
+        outline: none;
     }
-    .loginBtnMobile, .menuBtn {
-        position: absolute;
-        top: 20px;
-        color: #212121;
-    }
-    .loginBtnMobile {
-        right: 56px;
-    }
-    .menuBtn {
-        right: 16px;
+    .searchBtn {
+        float: right;
+        margin-top: 10px;
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+        color: white;
+        background-color: #55CEE2;
     }
 
     @media(min-width: 600px) {
+        section {
+            padding: 0 24px;
+            margin: 40px 0 180px 0;
+        }
         .title {
             font-size: 36px;
-            margin: 0 40px 40px 20px;
+            margin: 0 0 40px 20px;
         }
-        .mobile {
-            display: none;
+        .searchBox {
+            padding: 20px;
         }
-        .desktop {
-            display: block;
-            padding: 20px 24px 0 24px;
-        }
-        .desktop::after {
-            display: block;
-            content: "";
-            clear: both;
-        }
-        .logoLink {
-            float: left;
-            display: inline-block;
-            margin-right: 50px;
-        }
-        nav {
-            float: left;
-            margin-top: 10px;
-        }
-        .navList {
-            float: left;
-            margin: 0 15px;
+        .searchInput {
+            height: 44px;
+            padding: 0 20px;
             font-size: 16px;
-            font-weight: 400;
-            color: #212121;
-            cursor: pointer;
         }
-        .loginBox {
-            float: right;
-            margin-right: 20px;
-            height: 44px;
-            color: #ffffff;
-        }
-        .loginBox button {
-            margin-left: 20px;
-            width: 44px;
-            height: 44px;
-            color: #ffffff;
-            cursor: pointer;
-            vertical-align: middle;
-        }
+
     }
 
     @media(min-width: 1025px) {
+        section {
+            width: 1200px;
+            margin: 40px auto 260px auto;
+            padding: 0;
+        }
         .title {
             font-size: 48px;
-            margin: 0 40px 40px 35px;
+            margin: 0 0 40px 35px;
         }
-        .desktop {
-            width: 1200px;
-            padding: 20px 0 0 0;
-            margin: 0 auto;
-        }
-        .logoLink {
-            margin: 0 100px 0 20px;
-            cursor: pointer;
+        .searchInput {
+            height: 50px;
+            font-size: 18px;
         }
     }
 
