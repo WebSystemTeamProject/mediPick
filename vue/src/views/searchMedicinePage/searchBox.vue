@@ -47,14 +47,7 @@
         methods: {
             click () {
                 this.$router.push(`/searchMedicine/${this.selectPart}`)
-                // this.$http.get('http://localhost:3000/searchMedicine/' + this.selectPart)
-                //     .then((response) => {
-                //         console.log("부위 별 증상 데이터 로드 성공")
-                //         console.log(response.data)
-                //         this.symptoms = response.data
-                //     })
-                // return 1
-            },
+            }
         }
     }
 </script>

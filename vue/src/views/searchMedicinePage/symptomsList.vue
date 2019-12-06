@@ -4,7 +4,7 @@
             {{symptom}}
         </div>
         <div class="btnBox">
-            <button @click="goNav('MdsForSymp')">의약품 보기</button>
+            <button @click="click">의약품 보기</button>
         </div>
     </div>
 </template>
@@ -16,8 +16,8 @@
             symptom: String
         },
         methods: {
-            goNav(nav) {
-                this.$router.push({name: nav, params: {clickedSymptom: this.symptom}});
+            click() {
+                this.$router.push(`/searchMedicine/symptom/${this.symptom}`)
             }
         }
     }

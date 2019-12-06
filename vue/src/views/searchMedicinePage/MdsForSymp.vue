@@ -1,12 +1,21 @@
 <template>
     <section>
         <h1 class="title">선택한 증상에 따른 의약품 추천</h1>
-        <medicines-list v-for="medicine in medicines_array"></medicines-list>
+        <div class="listWrap" v-if="medicines_array.length" v-for="medicine in medicines_array">
+            <div class="imgBox">
+                <img :src="'../../img/' + medicine._id + '.jpg'" onerror="this.src='../../defaultImg.png'">
+            </div>
+            <div class="titleBox">
+                {{medicine.medicineName}}
+            </div>
+            <div class="btnBox">
+                <button>의약품 상세보기</button>
+            </div>
+        </div>
     </section>
 </template>
 
 <script>
-    import medicinesList from './medicinesList'
     export default {
         name: "MdsForSymp",
         data () {
@@ -16,13 +25,11 @@
         },
         created() {
             var symptom = this.$route.params.symp
-            this.$http.post('http://localhost/api/symptom', {"symptom": symptom})
+            console.log(symptom)
+            this.$http.post('http://localhost:3000/api/symptom', {"symptom": symptom})
                 .then((response) => {
                     this.medicines_array = response.data
                 })
-        },
-        components: {
-            'medicinesList': medicinesList
         }
 
 
@@ -40,6 +47,46 @@
         font-weight: 700;
         margin: 0 0 20px 10px;
     }
+    .listWrap {
+        border-bottom: 1px solid #BDBDBD;
+        height: 60px;
+        transition: .3s;
+    }
+    .listWrap::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .imgBox {
+        float: left;
+        width: 20%;
+        line-height: 60px;
+    }
+    img {
+        height: 50px
+    }
+    .titleBox {
+        float: left;
+        width: 50%;
+        line-height: 60px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 400;
+        color: #212121;
+    }
+    .btnBox {
+        float: left;
+        width: 25%;
+        line-height: 60px;
+    }
+    .btnBox button {
+        border: 1px solid #212121;
+        width: 100%;
+        height: 40px;
+        font-size: 12px;
+        font-weight: 400;
+        cursor: pointer;
+    }
 
 
     @media(min-width: 600px) {
@@ -50,6 +97,25 @@
         .title {
             font-size: 36px;
             margin: 0 0 40px 20px;
+        }
+        .listWrap {
+            height: 100px;
+        }
+        .imgBox {
+            line-height: 100px;
+        }
+        .titleBox {
+            width: 60%;
+            font-size: 16px;
+            line-height: 100px;
+        }
+        .btnBox {
+            width: 15%;
+            line-height: 100px;
+        }
+        .btnBox button {
+            height: 44px;
+            font-size: 16px;
         }
 
     }
@@ -63,6 +129,27 @@
         .title {
             font-size: 48px;
             margin: 0 0 40px 35px;
+        }
+        .listWrap {
+            height: 130px;
+        }
+        .imgBox {
+            line-height: 130px;
+            text-align: center;
+        }
+        .imgBox img {
+            width: 70%;
+        }
+        .titleBox {
+            line-height: 130px;
+            font-size: 21px;
+        }
+        .btnBox {
+            line-height: 130px;
+        }
+        .btnBox button {
+            height: 50px;
+            font-size: 18px;
         }
 
     }
