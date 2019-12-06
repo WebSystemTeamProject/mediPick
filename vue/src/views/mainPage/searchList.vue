@@ -31,15 +31,8 @@
 <script>
     export default {
         name: "searchList",
-        data() {
-            return {
-                item: {
-                    company: "제약사 이름",
-                    medicineName: "약 이름",
-                    recommend: "추천수"
-                }
-
-            }
+        props: {
+            item: Object
         },
         methods: {
             goNav(nav, item) {
