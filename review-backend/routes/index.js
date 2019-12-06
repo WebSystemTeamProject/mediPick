@@ -10,9 +10,11 @@ var login = require('./login/index');
 var logout = require('./logout/index');
 var manage = require('./userManage/index');
 var mediMange = require('./mediManage/index');
+var api = require('./api/index');
 /*router.get('/',function(req,res){
   res.sendFile(path.join(__dirname,"../public/main.html"))
 })*/
+router.use('/api',api);
 router.use('/',login);
 router.use('/main',main);
 router.use('/join',join);
