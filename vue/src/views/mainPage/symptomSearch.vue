@@ -39,7 +39,7 @@
         methods: {
             searchClick() {
                 console.log(this.mdsName);
-                this.$router.push({path: `/${this.mdsName}`});
+                this.$router.push({path: `/mdsNameSearch/${this.mdsName}`});
                 this.$store.commit('setIsHome', false);
             }
         }

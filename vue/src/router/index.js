@@ -22,7 +22,7 @@ const routes = [
   },
   {
     name: 'mdsNameSearch',
-    path: '/:mdsName',
+    path: '/mdsNameSearch/:mdsName',
     component: mdsNameSearch
   },
   {
