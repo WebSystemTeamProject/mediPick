@@ -3,9 +3,9 @@
         <h1 class="title">해당하는 의약품</h1>
         <div class="searchBox">
             <input type="text" class="searchInput" placeholder="의약품 이름을 입력해주세요" v-model="inputText">
-            <button class="searchBtn">검색</button>
+            <button class="searchBtn" @click="btnClick">검색</button>
         </div>
-        <search-list></search-list>
+        <search-list v-for="item in mediList" v-bind:item="item"></search-list>
 
     </section>
 </template>
@@ -16,17 +16,27 @@
         name: "mdsNameSearch",
         data() {
             return  {
-
+                mediList:[],
+                inputText:""
             }
         },
-        created(){
-
+        async created(){
+            const result = await this.$http.post("http://localhost:3000/api/search",{search: this.$route.params.searchMedicine}).then((res)=>{
+                return res.data;
+            })
+            this.input=this.$route.params.searchMedicine;
+            this.mediList=result;
         },
         computed: {
-
+            
         },
         methods: {
-
+            async btnClick() {
+                const result = await this.$http.post("http://localhost:3000/api/search",{search: this.inputText}).then((res)=>{
+                return res.data;
+                })
+                this.mediList=result;
+            }
         },
         components: {
             "searchList": searchList

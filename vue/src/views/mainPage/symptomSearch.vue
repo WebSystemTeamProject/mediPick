@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="btnWrapper">
-            <button class="searchBtn" @click="searchClick">검색</button>
+            <button class="searchBtn" @click="goNav('mdsNameSearch')">검색</button>
         </div>
     </form>
 </template>
@@ -22,24 +22,9 @@
                 mdsName: ''
             }
         },
-        computed: {
-            areas() {
-                return this.$store.state.symptomArea;
-            },
-            symptoms() {
-                return this.$store.state.symptomName;
-            },
-            ages() {
-                return this.$store.state.ages;
-            },
-            genders() {
-                return this.$store.state.genders;
-            }
-        },
         methods: {
-            searchClick() {
-                console.log(this.mdsName);
-                this.$router.push({path: `/${this.mdsName}`});
+            goNav(nav) {
+                this.$router.push({name: nav, params: {searchMedicine: this.mdsName}});
                 this.$store.commit('setIsHome', false);
             }
         }

@@ -8,7 +8,10 @@ router.get('/', function(req, res, next) {
 router.post('/search', async function(req,res){ // body로 넘겨준 값을 가지고 맞는 디비 리스트를 json 형식으로 보내줌
   //console.log(req.body);
   const regex = new RegExp(req.body.search);
-  const result = await db.mediModel.find({efficacy: regex});
+  const result = await db.mediModel.find({medicineName: regex});
+  if(result.length===0)
+    result = await db.mediModel.find({medicineName: req.body.search});
+  console.log(result);
   await res.json(result);
 })
 
@@ -18,7 +21,7 @@ router.get('/pharmacy',async function(req,res,next){
   await res.json(result);
 });
 
-router.post('/api/symptom',async function(req,res,next){
+router.post('/symptom',async function(req,res,next){
   //console.log(req.body.symptom)
   const regex = new RegExp(req.body.symptom);
   const result = await db.mediModel.find({efficacy: regex});
@@ -29,9 +32,9 @@ router.post('/api/symptom',async function(req,res,next){
 router.post('/pharmacy/name',async function(req,res,next){
   //console.log(req.body.symptom)
   const regex = new RegExp(req.body.name);
-  var result = await db.mediModel.find({company: regex});
+  var result = await db.compModel.find({company: regex});
   if(result.length===0)
-     result = await db.mediModel.find({company: req.body.name});
+     result = await db.compModel.find({company: req.body.name});
   //console.log(result);
   await res.json(result);
 });
