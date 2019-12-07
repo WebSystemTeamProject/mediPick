@@ -65,7 +65,7 @@
             }
         },
         created(){
-            this.$http.get('http://localhost:3000/main').then((response) => {
+            this.$http.get('http://localhost/main').then((response) => {
                 if(response.data.trig)
                     this.user = response.data.user;
             })
@@ -77,7 +77,7 @@
         },
         methods: {
             async logout(){
-                await this.$http.get('http://localhost:3000/logout', {
+                await this.$http.get('http://localhost/logout', {
                 }).then((response)=>{
                     window.location.href="/";
                 })

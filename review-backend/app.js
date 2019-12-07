@@ -18,7 +18,7 @@ var flash = require('connect-flash'); // error관리를 쉽게함
 
 //------------------------------------------//
 
-app.listen(3000,function(){
+app.listen(80,function(){
   console.log("start!")
 });
 app.use(history());
