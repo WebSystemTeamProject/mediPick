@@ -3,7 +3,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');*/
-
 var express = require('express');
 var path = require('path');
 var bodyParser =  require('body-parser');
@@ -38,7 +37,6 @@ app.use(session({
 app.use(passport.initialize()); // passport 초기화
 app.use(passport.session());
 app.use(flash()); // 메시지전달
-app.set('view engine','ejs');
 
 app.use(router); // path에 필요한것들을 /routes/index에서 알아서 가져옴
 

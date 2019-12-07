@@ -15,7 +15,6 @@ var api = require('./api/index');
   res.sendFile(path.join(__dirname,"../public/main.html"))
 })*/
 router.use('/api',api);
-router.use('/',login);
 router.use('/main',main);
 router.use('/join',join);
 router.use('/login',login);
