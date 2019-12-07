@@ -41,7 +41,7 @@
         },
         methods: {
             async join(){
-                await this.$http.post('http://localhost:3000/join', {
+                await this.$http.post('http://localhost/join', {
                     email : this.email,
                     password : this.password,
                     gender : this.gender,
