@@ -40,10 +40,10 @@
         },
         async created(){
           //this.item = this.$route.params.item;
-          await this.$http.post('http://localhost/api/info',{search: this.$route.params.medicineName}).then((response)=>{
+          await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
             this.item = response.data;
           })
-          await this.$http.get('http://localhost/main').then((response) => {
+          await this.$http.get('http://localhost:3000/main').then((response) => {
             if(response.data.trig)
               this.user = response.data.user;
           });
@@ -72,17 +72,17 @@
               this.user.recommend[this.item._id] = false;
               alert("추천이 취소되었습니다.");
             }
-            await this.$http.post('http://localhost/userManage/update',{
+            await this.$http.post('http://localhost:3000/userManage/update',{
               user : this.user
             }).then((response) => {
                 this.user = response.data;
-                this.$http.post('http://localhost/main/update',{
+                this.$http.post('http://localhost:3000/main/update',{
                   user : this.user
                 }).then((response) => {
                   this.user = response.data;
               });
             });
-            await this.$http.post('http://localhost/mediManage/update',{
+            await this.$http.post('http://localhost:3000/mediManage/update',{
                 medi_id : this.item._id,
                 recommend : this.item.recommend
             });
@@ -116,6 +116,7 @@
     color: #55CEE2;
   }
   h1 {
+    margin: 0;
     font-size: 21px;
     font-weight: 700;
   }
