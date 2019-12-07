@@ -12,7 +12,9 @@ autoInc.initialize(conn);
 const userSchema = new mongoose.Schema({
     email : String,
     password : String,
-    recommend : []
+    recommend : [],
+    gender : String,
+    age : String
 })
 //Database setting
 
