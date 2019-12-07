@@ -9,7 +9,7 @@
                 {{medicine.medicineName}}
             </div>
             <div class="btnBox">
-                <button @click="goNav('medicineInfo', medicine)">의약품 상세보기</button>
+                <button @click="goNav('medicineInfo', medicine.medicineName)">의약품 상세보기</button>
             </div>
         </div>
     </section>
@@ -33,7 +33,7 @@
         },
         methods: {
             goNav(nav, item) {
-                this.$router.push({name: nav, params: {item: item}});
+                this.$router.push({name: nav, params: {medicineName: item}});
             }
         }
 
