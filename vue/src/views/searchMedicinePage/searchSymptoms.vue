@@ -29,7 +29,7 @@
                     return 2
                 } else if (this.partCategory === "위장") {
                     return 3
-                } else if (this.partCategory === "안질환") {
+                } else if (this.partCategory === "간") {
                     return 4
                 } else if (this.partCategory === "피부질환") {
                     return 5
