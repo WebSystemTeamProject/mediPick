@@ -16,7 +16,7 @@
             </span>
             <span class="radioWrap">
               <input type="radio" id="category4" name="medicine" v-model="selectPart" value="안질환">
-              <label for="category4">안질환</label>
+              <label for="category4">간</label>
             </span>
             <span class="radioWrap">
               <input type="radio" id="category5" name="medicine" v-model="selectPart" value="피부질환">
