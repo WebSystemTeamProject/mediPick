@@ -24,6 +24,11 @@ app.listen(3000,function(){
 app.use(history());
 
 app.use(cors())
+app.all('/*',function (req,res,next) {
+  res.header("Access-Control-Allow-Origin","*");
+  res.header("Access-Control-Allow-Headers","*");
+  next();
+});
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
