@@ -12,10 +12,15 @@
         </div>
         <div class="date">
           2019.11.06<br>
-          <button @click="del">삭제하기</button>
+          <button @click="del">삭제하기</button><br>
+          <button @click="rew">수정</button>
         </div>
       </div>
-      <p class="reviewText">
+      <div v-if="trig">
+        <input type="text" v-model="content" style="border: 2px solid black">
+        <button @click="review_up" class="writeBtn">확인</button>
+      </div>
+      <p v-else class="reviewText">
         {{info.content}}<!--
         인도하겠다는 우리는 곳으로 기관과 불어 운다. 이성은 피고 사는가 천하를 보내는 인류의 것이다.
         이것이야말로 전인 가치를 청춘이 길지 창공에 피부가 그리하였는가?-->
@@ -27,12 +32,40 @@
     export default {
         name: "reviewList",
       props: {
-          info: Object
+          info: Object,
+        email : String
+      },
+      data(){
+        return{
+          trig : false,
+          content : ""
+        }
       },
       methods:{
-          del(){
-            this.$emit('event',this.info)
+        del() {
+          console.log("email : ", this.email)
+          console.log("info_email : ", this.info.email);
+          if (this.email !== this.info.email) {
+            alert("다른 사람의 댓글은 삭제 할 수 없습니다.");
+            return;
           }
+          this.$emit('event', this.info)
+        },
+        rew() {
+          console.log("email : ", this.email)
+          console.log("info_email : ", this.info.email);
+          if (this.email !== this.info.email) {
+            alert("다른 사람의 댓글은 수정할 수 없습니다.");
+            return;
+          }
+          this.trig = true;
+        },
+        async review_up() {
+          this.info.content = this.content;
+          await this.$emit('renew', this.info);
+          this.content = "";
+          this.trig = false;
+        }
       }
     }
 </script>
