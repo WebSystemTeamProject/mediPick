@@ -37,7 +37,7 @@
     export default {
         name: "pharmacyMedicine",
         created(){
-            this.$http.post('http://localhost/api/pharmacy/company',{
+            this.$http.post('http://localhost:80/api/pharmacy/company',{
                 company : this.title
             }).then((response) => {
                 console.log("mediMange front");

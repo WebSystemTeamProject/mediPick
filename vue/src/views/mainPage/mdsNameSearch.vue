@@ -32,7 +32,7 @@
                 this.$router.push({name: nav, params: {medicineName: this.inputText}});
             },
             async fetchData(){
-                const result = await this.$http.post("http://localhost/api/search",{search: this.$route.params.medicineName}).then((res)=>{
+                const result = await this.$http.post("http://localhost:80/api/search",{search: this.$route.params.medicineName}).then((res)=>{
                     return res.data;
                 })
                 this.mediList=result;

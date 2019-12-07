@@ -36,7 +36,7 @@
             comment : ""
         },
         created(){
-            this.$http.post('http://localhost/review/comment',{
+            this.$http.post('http://localhost:80/review/comment',{
                 id : this.item._id
             }).then((response) => {
                 this.comment = response.data.cnt;

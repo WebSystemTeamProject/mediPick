@@ -17,17 +17,6 @@ router.get('/',function(req,res){
     //res.render('login.ejs',{'message' : msg});
 })
 
-passport.serializeUser(function(user,done){
-    console.log('passport session save : ',user);
-    done(null,user);
-});
-
-passport.deserializeUser(function(user,done){
-    console.log('passport session get user object : ',user);
-    done(null,user);
-})
-
-
 passport.use('local-login',new LocalStrategy({ //local-join 이라는 이름의 Strategy 사용
     usernameField: 'email',
     passwordField: 'password',
@@ -36,6 +25,7 @@ passport.use('local-login',new LocalStrategy({ //local-join 이라는 이름의 
     // DB에 있는 email search
     console.log('email : '+email);
     User.findOne({email : email},function(err,user){
+        console.log("user is : ",user);
         if(err)
             return done(err);
         if(!user)

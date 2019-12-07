@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 const autoInc = require('mongoose-auto-increment');
 mongoose.set('useCreateIndex',true);
 
-mongoose.connect('mongodb+srv://admin:helloworld@medicinedb-txqna.mongodb.net/mediPick?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://new:helloworld@medicinedb-txqna.mongodb.net/mediPick?retryWrites=true&w=majority',{
     useUnifiedTopology:true, useNewUrlParser:true
 });
 
