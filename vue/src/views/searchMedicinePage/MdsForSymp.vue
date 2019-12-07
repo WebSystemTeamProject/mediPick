@@ -81,6 +81,9 @@
         font-size: 12px;
         font-weight: 400;
         color: #212121;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
     .btnBox {
         float: left;

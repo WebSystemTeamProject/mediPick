@@ -1,8 +1,5 @@
 <template>
     <div class="listWrap">
-        <div class="imgBox">
-            <img src='/images/dongkook.png'>
-        </div>
         <div class="titleBox">
             {{pharmacy.company}}
         </div>
@@ -37,18 +34,9 @@
         display: block;
         clear: both;
     }
-    .imgBox {
-        float: left;
-        width: 25%;
-        line-height: 60px;
-    }
-    .imgBox img {
-        width: 100%;
-        vertical-align: middle;
-    }
     .titleBox {
         float: left;
-        width: 50%;
+        width: 60%;
         line-height: 60px;
         text-align: center;
         font-size: 12px;
@@ -73,9 +61,6 @@
         .listWrap {
             height: 100px;
         }
-        .imgBox {
-            line-height: 100px;
-        }
         .titleBox {
             width: 60%;
             font-size: 16px;
@@ -94,13 +79,6 @@
     @media(min-width: 1025px) {
         .listWrap {
             height: 130px;
-        }
-        .imgBox {
-            line-height: 130px;
-            text-align: center;
-        }
-        .imgBox img {
-            width: 70%;
         }
         .titleBox {
             line-height: 130px;

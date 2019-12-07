@@ -2,7 +2,7 @@
   <div class="menu">
     <ul>
       <li @click="goHome">Home</li>
-      <li @click="goNav('searchMedicine')">의약품 검색</li>
+      <li @click="goNav('searchMedicine')">증상별 검색</li>
       <li @click="goNav('searchPharmacy')">제약사 검색</li>
       <li @click="goNav('findPharmacy')">약국 찾기</li>
     </ul>
