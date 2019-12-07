@@ -228,6 +228,9 @@
             font-size: 36px;
             margin-bottom: 60px;
         }
+        h2 {
+            font-size: 21px;
+        }
         .inputText {
             width: 360px;
         }
