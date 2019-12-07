@@ -4,7 +4,7 @@
             <div class="mediList" @click="goNav('medicineInfo', item)">
                 <!--<div class="rank">1</div>-->
                 <div class="imgBox">
-                    <img src="../../assets/medi.png">
+                    <img :src="'../../img/' + item._id + '.jpg'" onerror="this.src='../../defaultImg.png'">
                 </div>
                 <div class="mediInfo">
                     <div>
