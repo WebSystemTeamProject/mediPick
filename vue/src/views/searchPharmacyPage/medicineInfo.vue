@@ -8,13 +8,13 @@
         <h1>{{item.medicineName}}</h1>
       </div>
       <div class="btnBox">
-        <button class="recommendBtn" style="cursor:pointer" @click="rec">
+        <button class="recommendBtn" @click="rec">
           <i class="material-icons">
             thumb_up
           </i>
           {{item.recommend}}
         </button>
-        <button class="searchPharmacyBtn" style="cursor:pointer" @click="toMap">
+        <button class="searchPharmacyBtn"" @click="toMap">
           근처 약국 찾기
         </button>
       </div>
@@ -124,6 +124,7 @@
     width: 30%;
     height: 40px;
     font-size: 14px;
+    cursor: pointer;
   }
   .recommendBtn {
     border: 2px solid #55CEE2;
