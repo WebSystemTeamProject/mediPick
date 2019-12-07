@@ -30,7 +30,13 @@ router.post('/comment',async function(req,res){
 })
 
 router.post('/remove',async function(req,res){
-    await reviewList.remove({_id : req.body.id});
+    await reviewList.remove({medi_id : req.body.medi_id,_id : req.body.id});
+    res.end();
+})
+
+router.post('/update',async function(req,res){
+    console.log("body : ",req.body);
+    await reviewList.update({medi_id : req.body.medi_id , _id : req.body.id},{content : req.body.comment});
     res.end();
 })
 
