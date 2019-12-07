@@ -21,7 +21,9 @@ router.post('/submit',function(req,res){
         content : body.content,
         email : body.email,
         time : time,
-        medi_id : body.id
+        medi_id : body.id,
+        gender : body.gender,
+        age : body.age
     }).save(err=>console.log("review err",err));
     res.end();
 })
