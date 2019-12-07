@@ -4,6 +4,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');*/
 
+var history = require('connect-history-api-fallback');
 var express = require('express');
 var path = require('path');
 var bodyParser =  require('body-parser');
@@ -16,12 +17,17 @@ var session = require('express-session');
 var flash = require('connect-flash'); // error관리를 쉽게함
 
 //------------------------------------------//
+
 app.listen(3000,function(){
   console.log("start!")
 });
+app.use(history());
 
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', function (req, res, next) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+});
 
 //json 형식으로 오는 data들을 처리.
 app.use(bodyParser.json())
