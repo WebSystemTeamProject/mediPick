@@ -48,12 +48,12 @@
         data(){
             return{
               medilist : [],
-              title : this.$route.params.clickedPharmacy.company,
+              title : this.$route.params.clickedPharmacy,
             }
         },
         methods: {
             goNav(nav, item) {
-                this.$router.push({name: nav, params: {item: item}});
+                this.$router.push({name: nav, params: {medicineName: item.medicineName}});
             }
         }
     }
