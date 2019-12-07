@@ -88,6 +88,7 @@
     }
     .imgBox img {
         width: 70%;
+        height: 40px;
         vertical-align: middle;
     }
     .mediInfo {
@@ -136,6 +137,9 @@
             text-align: center;
             line-height: 100px;
         }
+        .imgBox img {
+            height: 80px;
+        }
         .mediInfo {
             height: 100px;
         }
@@ -168,6 +172,9 @@
         .imgBox {
             text-align: center;
             line-height: 180px;
+        }
+        .imgBox img {
+            height: 160px;
         }
         .mediInfo {
             height: 180px;
