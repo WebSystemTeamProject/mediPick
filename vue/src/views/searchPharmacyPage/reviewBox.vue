@@ -18,16 +18,16 @@
         },
         async created(){
             //this.item = this.$route.params.item;
-            await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
+            await this.$http.post('http://localhost/api/info',{search: this.$route.params.medicineName}).then((response)=>{
                 this.item = response.data;
             })
             console.log("in the reviewBox : ",this.item);
             console.log("_id !! : ",this.item._id);
-            await this.$http.get('http://localhost:3000/main').then((response) => {
+            await this.$http.get('http://localhost/main').then((response) => {
                 if(response.data.trig)
                     this.user = response.data.user;
             });
-            this.$http.post('http://localhost:3000/review/list',{
+            this.$http.post('http://localhost/review/list',{
                 id : this.item._id
             }).then((response) => {
                 this.list = response.data;
@@ -50,7 +50,7 @@
                     alert('로그인을 한 뒤 작성하실 수 있습니다.');
                     return;
                 }
-                this.$http.post('http://localhost:3000/review/submit', {
+                this.$http.post('http://localhost/review/submit', {
                     content : this.content,
                     email : this.user.email,
                     id : this.item._id,
@@ -60,11 +60,11 @@
                 }).then((response) => {
                     this.content = "";
                     alert("리뷰가 등록되었습니다.");
-                    this.$http.post('http://localhost:3000/review/list',{
+                    this.$http.post('http://localhost/review/list',{
                         id : this.item._id
                     }).then((response) => {
                         this.list = response.data;
-                        this.$http.post('http://localhost:3000/mediManage/update_comment',{
+                        this.$http.post('http://localhost/mediManage/update_comment',{
                             medi_id : this.item._id,
                             comment : this.list.length
                         })
@@ -72,17 +72,17 @@
                 })
             },
             remove(info){
-                this.$http.post('http://localhost:3000/review/remove',{
+                this.$http.post('http://localhost/review/remove',{
                     id : info._id,
                     medi_id : this.item._id
                 }).then((response)=>{
                     this.content = "";
                     alert("리뷰가 삭제되었습니다.");
-                    this.$http.post('http://localhost:3000/review/list',{
+                    this.$http.post('http://localhost/review/list',{
                         id : this.item._id
                     }).then((response) => {
                         this.list = response.data;
-                        this.$http.post('http://localhost:3000/mediManage/update_comment',{
+                        this.$http.post('http://localhost/mediManage/update_comment',{
                             medi_id : this.item._id,
                             comment : this.list.length
                         })
@@ -91,13 +91,13 @@
             },
             rew(info){
                 console.log("info : ",info);
-                this.$http.post('http://localhost:3000/review/update',{
+                this.$http.post('http://localhost/review/update',{
                     id : info._id,
                     medi_id : this.item._id,
                     comment : info.content
                 }).then((response)=> {
                     alert("리뷰가 수정되었습니다.");
-                    this.$http.post('http://localhost:3000/review/list',{
+                    this.$http.post('http://localhost/review/list',{
                         id : this.item._id
                     }).then((response) => {
                         this.list = response.data;

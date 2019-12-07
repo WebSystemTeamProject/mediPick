@@ -85,7 +85,7 @@
                     alert("빈칸을 모두 채워주세요");
                     return false;
                 }
-                await this.$http.post('http://localhost:3000/join', {
+                await this.$http.post('http://localhost/join', {
                     email : this.email,
                     password : this.password,
                     gender : this.gender,
