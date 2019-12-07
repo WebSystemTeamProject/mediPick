@@ -9,7 +9,7 @@
                 {{medicine.medicineName}}
             </div>
             <div class="btnBox">
-                <button>의약품 상세보기</button>
+                <button @click="goNav('medicineInfo', medicine)">의약품 상세보기</button>
             </div>
         </div>
     </section>
@@ -30,6 +30,11 @@
                 .then((response) => {
                     this.medicines_array = response.data
                 })
+        },
+        methods: {
+            goNav(nav, item) {
+                this.$router.push({name: nav, params: {item: item}});
+            }
         }
 
 
