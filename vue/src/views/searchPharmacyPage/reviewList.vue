@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="date">
-          2019.11.06<br>
+          {{info.time}}<br>
           <button @click="del">삭제하기</button><br>
           <button @click="rew">수정</button>
         </div>
