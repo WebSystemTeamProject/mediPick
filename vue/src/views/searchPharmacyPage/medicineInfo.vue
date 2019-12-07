@@ -8,13 +8,13 @@
         <h1>{{item.medicineName}}</h1>
       </div>
       <div class="btnBox">
-        <button class="recommendBtn" @click="rec">
+        <button class="recommendBtn" style="cursor:pointer" @click="rec">
           <i class="material-icons">
             thumb_up
           </i>
           {{item.recommend}}
         </button>
-        <button class="searchPharmacyBtn">
+        <button class="searchPharmacyBtn" style="cursor:pointer" @click="toMap">
           근처 약국 찾기
         </button>
       </div>
@@ -84,6 +84,9 @@
                 recommend : this.item.recommend
             });
             console.log("front : this.user : ",this.user);
+          },
+          toMap() {
+            this.$router.push(`/findPharmacy`)
           }
         }
     }
