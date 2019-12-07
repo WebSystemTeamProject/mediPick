@@ -25,35 +25,35 @@
         <div class="inputText">
             <h2>나이</h2>
             <span class="radioWrapAge">
-                <input type="radio" id="child" name="age" v-model="age" value="child">
+                <input type="radio" id="child" name="age" v-model="age" value="10대 미만">
                 <label for="child">10대 미만</label>
             </span>
             <span class="radioWrapAge">
-                <input type="radio" id="ten" name="age" v-model="age" value="ten">
+                <input type="radio" id="ten" name="age" v-model="age" value="10대">
                 <label for="ten">10대</label>
             </span>
             <span class="radioWrapAge">
-                <input type="radio" id="twenty" name="age" v-model="age" value="twenty">
+                <input type="radio" id="twenty" name="age" v-model="age" value="20대">
                 <label for="twenty">20대</label>
             </span>
             <span class="radioWrapAge">
-                <input type="radio" id="thirty" name="age" v-model="age" value="thirty">
+                <input type="radio" id="thirty" name="age" v-model="age" value="30대">
                 <label for="thirty">30대</label>
             </span>
             <span class="radioWrapAge">
-                <input type="radio" id="forty" name="age" v-model="age" value="forty">
+                <input type="radio" id="forty" name="age" v-model="age" value="40대">
                 <label for="forty">40대</label>
             </span>
             <span class="radioWrapAge">
-                <input type="radio" id="fifty" name="age" v-model="age" value="fifty">
+                <input type="radio" id="fifty" name="age" v-model="age" value="50대">
                 <label for="fifty">50대</label>
             </span>
             <span class="radioWrapAge">
-                <input type="radio" id="sixty" name="age" v-model="age" value="sixty">
+                <input type="radio" id="sixty" name="age" v-model="age" value="60대">
                 <label for="sixty">60대</label>
             </span>
             <span class="radioWrapAge">
-                <input type="radio" id="elderly" name="age" v-model="age" value="elderly">
+                <input type="radio" id="elderly" name="age" v-model="age" value="70대 이상">
                 <label for="elderly">70대 이상</label>
             </span>
         </div>

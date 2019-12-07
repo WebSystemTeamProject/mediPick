@@ -7,7 +7,7 @@
         <div class="userBox">
           <div>
             <span class="userName">{{info.email}}</span>
-            <span class="userInfo">{{info.age}}세, {{info.gender}}<!--20세, 남성--></span>
+            <span class="userInfo">{{info.age}}, {{info.gender}}<!--20세, 남성--></span>
           </div>
         </div>
         <div class="date">

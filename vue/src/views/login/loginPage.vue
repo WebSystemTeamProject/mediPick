@@ -46,7 +46,7 @@
             async Login(){
                     console.log("email :"+this.email);
                     console.log("password : "+this.password);
-                    await this.$http.post('http://localhost:3000/login', {
+                    await this.$http.post('http://localhost/login', {
                         email : this.email,
                         password : this.password
                     }).then((response)=>{
