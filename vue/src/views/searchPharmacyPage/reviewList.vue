@@ -7,7 +7,7 @@
         <div class="userBox">
           <div>
             <span class="userName">{{info.email}}</span>
-            <span class="userInfo">20세, 남성</span>
+            <span class="userInfo">{{info.age}}세, {{info.gender}}<!--20세, 남성--></span>
           </div>
         </div>
         <div class="date">
@@ -33,7 +33,7 @@
         name: "reviewList",
       props: {
           info: Object,
-        email : String
+        user : Object
       },
       data(){
         return{
@@ -43,18 +43,18 @@
       },
       methods:{
         del() {
-          console.log("email : ", this.email)
+          console.log("email : ", this.user.email)
           console.log("info_email : ", this.info.email);
-          if (this.email !== this.info.email) {
+          if (this.user.email !== this.info.email) {
             alert("다른 사람의 댓글은 삭제 할 수 없습니다.");
             return;
           }
           this.$emit('event', this.info)
         },
         rew() {
-          console.log("email : ", this.email)
+          console.log("email : ", this.user.email)
           console.log("info_email : ", this.info.email);
-          if (this.email !== this.info.email) {
+          if (this.user.email !== this.info.email) {
             alert("다른 사람의 댓글은 수정할 수 없습니다.");
             return;
           }

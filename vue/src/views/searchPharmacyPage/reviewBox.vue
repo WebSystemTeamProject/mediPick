@@ -5,7 +5,7 @@
             <textarea v-model="content" cols="22" rows="4"></textarea>
             <button @click="submit" class="writeBtn">작성하기</button>
         </div>
-        <review-list v-for="item_val in list" v-bind:info="item_val" v-bind:email="user.email" @event="remove" @renew="rew"></review-list>
+        <review-list v-for="item_val in list" v-bind:info="item_val" v-bind:user="user" @event="remove" @renew="rew"></review-list>
     </div>
 </template>
 
@@ -36,7 +36,7 @@
         },
         data : function(){
             return{
-                user : "",
+                user : {},
                 content : "",
                 id : "",
                 time : "",
@@ -54,7 +54,9 @@
                     content : this.content,
                     email : this.user.email,
                     id : this.item._id,
-                    time : ""
+                    time : "",
+                    gender : this.user.gender,
+                    age : this.user.age
                 }).then((response) => {
                     this.content = "";
                     alert("리뷰가 등록되었습니다.");
