@@ -18,12 +18,12 @@ var flash = require('connect-flash'); // error관리를 쉽게함
 
 //------------------------------------------//
 
-app.listen(80,function(){
+app.listen(3000,function(){
   console.log("start!")
 });
 app.use(history());
 
-app.use(cors());
+app.use(cors())
 app.all('/*',function (req,res,next) {
   res.header("Access-Control-Allow-Origin","*");
   res.header("Access-Control-Allow-Headers","*");

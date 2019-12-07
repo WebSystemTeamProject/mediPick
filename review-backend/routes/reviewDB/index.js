@@ -14,7 +14,9 @@ const newreviewSchema = new mongoose.Schema({
     content : String,
     email : String,
     time : String,
-    medi_id : Number
+    medi_id : Number,
+    gender : String,
+    age : String
 })
 //Database setting
 

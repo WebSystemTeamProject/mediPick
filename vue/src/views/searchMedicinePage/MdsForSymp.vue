@@ -26,7 +26,7 @@
         created() {
             var symptom = this.$route.params.symp
             console.log(symptom)
-            this.$http.post('http://localhost/api/symptom', {"symptom": symptom})
+            this.$http.post('http://localhost:3000/api/symptom', {"symptom": symptom})
                 .then((response) => {
                     this.medicines_array = response.data
                 })
