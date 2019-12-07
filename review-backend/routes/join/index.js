@@ -34,12 +34,12 @@ passport.deserializeUser(function(user,done){
 passport.use('local-join',new LocalStrategy({ //local-join 이라는 이름의 Strategy 사용
         usernameField: 'email',
         passwordField: 'password',
-        pssReqToCallback: true
-    }, function(email,password,done) {
+        passReqToCallback: true
+    }, function(req,email,password,done) {
     // DB에 있는 email search
+    console.log("req ?? : ",req)
     User.findOne({email : email},async function(err,user){
         if(err)return done(err);
-        //console.log(user)
         if(user){
             console.log('existed user');
             return done(null, false,{message : '이미 존재하는 이메일입니다.'})
@@ -47,7 +47,9 @@ passport.use('local-join',new LocalStrategy({ //local-join 이라는 이름의 S
         else{
             await new User({
                 email : email,
-                password : password
+                password : password,
+                gender : req.body.gender,
+                age : req.body.age
             }).save();
             User.findOne({email : email},function(err,user2){
                 return done(null,user2);
