@@ -5,7 +5,7 @@
                 <p class="researchNotify">빠르게 의약품 이름으로 검색</p>
             </div>
             <div class="selectWrapper">
-                <input class="putMdsName" type="text" v-model="mdsName">
+                <input class="putMdsName" type="text" v-model="mdsName" placeholder="의약품 이름을 입력해주세요">
             </div>
         </div>
         <div class="btnWrapper">
