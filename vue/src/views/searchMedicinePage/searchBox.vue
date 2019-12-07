@@ -3,34 +3,36 @@
         <div class="sortBox">
             <p class="sort">증상 카테고리 선택</p>
             <span class="radioWrap">
-          <input type="radio" id="category1" name="medicine" v-model="selectPart" value="몸살감기">
-          <label for="category1">몸살감기</label>
-        </span>
+              <input type="radio" id="category1" name="medicine" v-model="selectPart" value="몸살감기">
+              <label for="category1">몸살감기</label>
+            </span>
             <span class="radioWrap">
-          <input type="radio" id="category2" name="medicine" v-model="selectPart" value="기관지">
-          <label for="category2">기관지</label>
-        </span>
+              <input type="radio" id="category2" name="medicine" v-model="selectPart" value="기관지">
+              <label for="category2">기관지</label>
+            </span>
             <span class="radioWrap">
-          <input type="radio" id="category3" name="medicine" v-model="selectPart" value="위장">
-          <label for="category3">위장</label>
-        </span>
+              <input type="radio" id="category3" name="medicine" v-model="selectPart" value="위장">
+              <label for="category3">위장</label>
+            </span>
             <span class="radioWrap">
-          <input type="radio" id="category4" name="medicine" v-model="selectPart" value="안질환">
-          <label for="category4">안질환</label>
-        </span>
+              <input type="radio" id="category4" name="medicine" v-model="selectPart" value="안질환">
+              <label for="category4">안질환</label>
+            </span>
             <span class="radioWrap">
-          <input type="radio" id="category5" name="medicine" v-model="selectPart" value="피부질환">
-          <label for="category5">피부질환</label>
-        </span>
+              <input type="radio" id="category5" name="medicine" v-model="selectPart" value="피부질환">
+              <label for="category5">피부질환</label>
+            </span>
             <span class="radioWrap">
-          <input type="radio" id="category6" name="medicine" v-model="selectPart" value="타박상">
-          <label for="category6">타박상</label>
-        </span>
+              <input type="radio" id="category6" name="medicine" v-model="selectPart" value="타박상">
+              <label for="category6">타박상</label>
+            </span>
             <span class="radioWrap">
-          <input type="radio" id="category7" name="medicine" v-model="selectPart" value="기타">
-          <label for="category7">기타</label>
-        </span>
-            <button @click="click" style="cursor:pointer" class="filterBtn">완료</button>
+              <input type="radio" id="category7" name="medicine" v-model="selectPart" value="기타">
+              <label for="category7">기타</label>
+            </span>
+            <span class="btnWrap">
+                <button @click="click" style="cursor:pointer" class="filterBtn">완료</button>
+            </span>
         </div>
     </div>
 </template>
@@ -113,12 +115,18 @@
         box-sizing: border-box;
         cursor: pointer;
     }
-    .filterBtn {
+    .btnWrap {
         float: right;
-        width: 50%;
+        display: inline-block;
+        width: 25%;
+        padding-left: 4px;
+        box-sizing: border-box;
+    }
+    .filterBtn {
+        width: 100%;
         height: 40px;
         background-color: #55CEE2;
-        font-size: 16px;
+        font-size: 14px;
         color: white;
     }
 
@@ -131,7 +139,7 @@
         }
         .radioWrap {
             width: 12.5%;
-            margin-bottom: 10px;
+            margin-bottom: 0;
         }
         .radioWrap:nth-of-type(4n-3) {
             padding-left: 4px;
@@ -147,11 +155,12 @@
         }
         label {
             height: 50px;
-            font-size: 16px;
             line-height: 50px;
         }
+        .btnWrap {
+            width: 12.5%;
+        }
         .filterBtn {
-            width: 25%;
             height: 50px;
         }
     }
@@ -166,14 +175,11 @@
         }
         .radioWrap {
             width: 12.5%;
-            padding: 0 5px;
-            margin-bottom: 10px;
         }
         label {
             font-size: 18px;
         }
         .filterBtn {
-            width: 12.5%;
             font-size: 18px;
         }
     }
