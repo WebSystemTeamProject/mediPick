@@ -1,7 +1,7 @@
 <template>
     <section>
       <div class="imgBox">
-        <img src="../../assets/medi.png">
+        <img :src="'../../img/' + item._id + '.jpg'" onerror="this.src='../../defaultImg.png'">
       </div>
       <div class="medicineName">
         <span class="pharmacy">{{item.company}}</span>
