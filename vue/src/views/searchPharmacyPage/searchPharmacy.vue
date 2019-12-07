@@ -19,7 +19,7 @@
             }
         },
         created() {
-            this.$http.get('http://localhost/api/pharmacy').then((response) => {
+            this.$http.get('http://localhost:80/api/pharmacy').then((response) => {
                 this.pharmacys = response.data;
                 console.log("respnse : ",response.data);
             })

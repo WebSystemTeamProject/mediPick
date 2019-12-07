@@ -65,7 +65,7 @@
             'appMenu': appMenu
         },
         created(){
-            this.$http.get('http://localhost/main').then((response) => {
+            this.$http.get('http://localhost:80/main').then((response) => {
                 if(response.data.trig)
                     this.user = response.data.user;
             })
@@ -82,7 +82,7 @@
         },
         methods: {
             async logout(){
-                await this.$http.get('http://localhost/logout', {
+                await this.$http.get('http://localhost:80/logout', {
                 }).then((response)=>{
                     window.location.href="/";
                 })
