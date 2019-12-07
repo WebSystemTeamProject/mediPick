@@ -12,12 +12,15 @@ router.post('/list',async function(req,res){
 })
 
 router.post('/submit',function(req,res){
+    const date = new Date();
     var body = req.body;
+    var month = date.getMonth() + 1;
+    let time = date.getFullYear()+ "년/" + month + "월/"+date.getDate()+"일/"+date.getHours()+"시 "+date.getMinutes()+"분 "+date.getSeconds()+"초"
     //console.log("bdoy !!! " ,body.id);
     new reviewList({
         content : body.content,
         email : body.email,
-        time : body.time,
+        time : time,
         medi_id : body.id
     }).save(err=>console.log("review err",err));
     res.end();
@@ -36,7 +39,10 @@ router.post('/remove',async function(req,res){
 
 router.post('/update',async function(req,res){
     console.log("body : ",req.body);
-    await reviewList.update({medi_id : req.body.medi_id , _id : req.body.id},{content : req.body.comment});
+    const date = new Date();
+    var month = date.getMonth() + 1;
+    let time = date.getFullYear()+ "년/" + month + "월/"+date.getDate()+"일/"+date.getHours()+"시 "+date.getMinutes()+"분 "+date.getSeconds()+"초"
+    await reviewList.update({medi_id : req.body.medi_id, _id : req.body.id},{content : req.body.comment, time : time});
     res.end();
 })
 

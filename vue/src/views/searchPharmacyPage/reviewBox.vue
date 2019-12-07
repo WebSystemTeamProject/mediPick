@@ -95,8 +95,12 @@
                     comment : info.content
                 }).then((response)=> {
                     alert("리뷰가 수정되었습니다.");
-                })
-                return;
+                    this.$http.post('http://localhost:3000/review/list',{
+                        id : this.item._id
+                    }).then((response) => {
+                        this.list = response.data;
+                    })
+                });
             }
         }
     }
