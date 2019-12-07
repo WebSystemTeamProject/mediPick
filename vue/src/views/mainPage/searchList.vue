@@ -49,7 +49,7 @@
         },
         methods: {
             goNav(nav, item) {
-                this.$router.push({name: nav, params: {item: item}});
+                this.$router.push({name: nav, params: {medicineName: item.medicineName}});
             }
         }
     }
