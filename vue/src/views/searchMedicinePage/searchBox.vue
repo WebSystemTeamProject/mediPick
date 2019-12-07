@@ -15,7 +15,7 @@
               <label for="category3">위장</label>
             </span>
             <span class="radioWrap">
-              <input type="radio" id="category4" name="medicine" v-model="selectPart" value="안질환">
+              <input type="radio" id="category4" name="medicine" v-model="selectPart" value="간">
               <label for="category4">간</label>
             </span>
             <span class="radioWrap">
