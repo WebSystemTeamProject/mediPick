@@ -14,7 +14,7 @@
           </i>
           {{item.recommend}}
         </button>
-        <button class="searchPharmacyBtn"" @click="toMap">
+        <button class="searchPharmacyBtn" @click="toMap">
           근처 약국 찾기
         </button>
       </div>
@@ -39,10 +39,10 @@
           'reviewBox': reviewBox
         },
         async created(){
-          //this.item = this.$route.params.item;
-          await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
+          this.item = this.$route.params.item;
+          /*await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
             this.item = response.data;
-          })
+          })*/
           await this.$http.get('http://localhost:3000/main').then((response) => {
             if(response.data.trig)
               this.user = response.data.user;

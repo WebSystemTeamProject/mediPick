@@ -5,7 +5,7 @@
             <textarea v-model="content" cols="22" rows="4"></textarea>
             <button @click="submit" class="writeBtn">작성하기</button>
         </div>
-        <review-list v-for="item in list" v-bind:info="item" @event="remove"></review-list>
+        <review-list v-for="item_val in list" v-bind:info="item_val" v-bind:email="user.email" @event="remove" @renew="rew"></review-list>
     </div>
 </template>
 
@@ -17,9 +17,10 @@
             'reviewList': reviewList
         },
         async created(){
-            await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
+            this.item = this.$route.params.item;
+            /*await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
                 this.item = response.data;
-            })
+            })*/
             console.log("in the reviewBox : ",this.item);
             console.log("_id !! : ",this.item._id);
             await this.$http.get('http://localhost:3000/main').then((response) => {
@@ -37,7 +38,6 @@
             return{
                 user : "",
                 content : "",
-                email : "",
                 id : "",
                 time : "",
                 list : [],
@@ -70,25 +70,33 @@
                 })
             },
             remove(info){
-                    if(this.user.email !== info.email){
-                        alert("다른 사람의 댓글은 삭제 할 수 없습니다.");
-                        return;
-                    }
-                    this.$http.post('http://localhost:3000/review/remove',{
-                        id : info._id
-                    }).then((response)=>{
-                        this.content = "";
-                        alert("리뷰가 삭제되었습니다.");
-                        this.$http.post('http://localhost:3000/review/list',{
-                            id : this.item._id
-                        }).then((response) => {
-                            this.list = response.data;
-                            this.$http.post('http://localhost:3000/mediManage/update_comment',{
-                                medi_id : this.item._id,
-                                comment : this.list.length
-                            })
-                        });
-                    })
+                this.$http.post('http://localhost:3000/review/remove',{
+                    id : info._id,
+                    medi_id : this.item._id
+                }).then((response)=>{
+                    this.content = "";
+                    alert("리뷰가 삭제되었습니다.");
+                    this.$http.post('http://localhost:3000/review/list',{
+                        id : this.item._id
+                    }).then((response) => {
+                        this.list = response.data;
+                        this.$http.post('http://localhost:3000/mediManage/update_comment',{
+                            medi_id : this.item._id,
+                            comment : this.list.length
+                        })
+                    });
+                })
+            },
+            rew(info){
+                console.log("info : ",info);
+                this.$http.post('http://localhost:3000/review/update',{
+                    id : info._id,
+                    medi_id : this.item._id,
+                    comment : info.content
+                }).then((response)=> {
+                    alert("리뷰가 수정되었습니다.");
+                })
+                return;
             }
         }
     }
