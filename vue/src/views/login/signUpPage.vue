@@ -9,6 +9,14 @@
             <label for="password">비밀번호</label><br>
             <input v-model="password" type="password" id="password">
         </div>
+        <div class="inputText">
+            <label for="gender">성별</label><br>
+            <input v-model = 'gender' type="text" id="gender">
+        </div>
+        <div class="inputText">
+            <label for="age">나이</label><br>
+            <input v-model = 'age' type="text" id="age">
+        </div>
         <div class="btnWrapper">
             <span>
                 <button class="loginBtn" @click = "join">회원가입</button>
@@ -26,14 +34,18 @@
         data : function(){
             return {
                 email : "",
-                password : ""
+                password : "",
+                gender : this.gender,
+                age : this.age
             }
         },
         methods: {
             async join(){
                 await this.$http.post('http://localhost:3000/join', {
                     email : this.email,
-                    password : this.password
+                    password : this.password,
+                    gender : this.gender,
+                    age : this.age
                 }).then((response)=>{
                     if(response.data.trig)
                         window.location.href="/";
