@@ -116,6 +116,7 @@
     color: #55CEE2;
   }
   h1 {
+    margin: 0;
     font-size: 21px;
     font-weight: 700;
   }

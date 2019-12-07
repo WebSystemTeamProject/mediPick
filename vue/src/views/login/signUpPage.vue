@@ -2,20 +2,60 @@
     <section>
         <h1 class="title">회원가입</h1>
         <div class="inputText">
-            <label for="mail">이메일</label><br>
+            <h2>이메일</h2>
             <input v-model="email" type="text" id="mail">
         </div>
         <div class="inputText">
-            <label for="password">비밀번호</label><br>
+            <h2>비밀번호</h2>
             <input v-model="password" type="password" id="password">
         </div>
         <div class="inputText">
-            <label for="gender">성별</label><br>
-            <input v-model = 'gender' type="text" id="gender">
+            <!--<label for="gender">성별</label><br>-->
+            <!--<input v-model = 'gender' type="text" id="gender">-->
+            <h2>성별</h2>
+            <span class="radioWrapGender">
+                <input type="radio" id="male" name="gender" v-model="gender" value="male">
+                <label for="male">남성</label>
+            </span>
+            <span class="radioWrapGender">
+                <input type="radio" id="female" name="gender" v-model="gender" value="female">
+                <label for="female">여성</label>
+            </span>
         </div>
         <div class="inputText">
-            <label for="age">나이</label><br>
-            <input v-model = 'age' type="text" id="age">
+            <h2>나이</h2>
+            <span class="radioWrapAge">
+                <input type="radio" id="child" name="age" v-model="age" value="child">
+                <label for="child">10대 미만</label>
+            </span>
+            <span class="radioWrapAge">
+                <input type="radio" id="ten" name="age" v-model="age" value="ten">
+                <label for="ten">10대</label>
+            </span>
+            <span class="radioWrapAge">
+                <input type="radio" id="twenty" name="age" v-model="age" value="twenty">
+                <label for="twenty">20대</label>
+            </span>
+            <span class="radioWrapAge">
+                <input type="radio" id="thirty" name="age" v-model="age" value="thirty">
+                <label for="thirty">30대</label>
+            </span>
+            <span class="radioWrapAge">
+                <input type="radio" id="forty" name="age" v-model="age" value="forty">
+                <label for="forty">40대</label>
+            </span>
+            <span class="radioWrapAge">
+                <input type="radio" id="fifty" name="age" v-model="age" value="fifty">
+                <label for="fifty">50대</label>
+            </span>
+            <span class="radioWrapAge">
+                <input type="radio" id="sixty" name="age" v-model="age" value="sixty">
+                <label for="sixty">60대</label>
+            </span>
+            <span class="radioWrapAge">
+                <input type="radio" id="elderly" name="age" v-model="age" value="elderly">
+                <label for="elderly">70대 이상</label>
+            </span>
         </div>
         <div class="btnWrapper">
             <span>
@@ -35,12 +75,16 @@
             return {
                 email : "",
                 password : "",
-                gender : this.gender,
-                age : this.age
+                gender : "",
+                age : ""
             }
         },
         methods: {
             async join(){
+                if(this.email==="" || this.password==="" || this.gender==="" || this.age==="") {
+                    alert("빈칸을 모두 채워주세요");
+                    return false;
+                }
                 await this.$http.post('http://localhost:3000/join', {
                     email : this.email,
                     password : this.password,
@@ -73,20 +117,26 @@
         text-align: center;
         margin-bottom: 40px;
     }
+    h2 {
+        margin-left: 20px;
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        color: #757575;
+    }
     .inputText {
         width: 280px;
         margin: 0 auto 20px auto;
     }
+    .inputText::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
     .inputText:nth-last-of-type(2) {
         margin-bottom: 50px;
     }
-    label {
-        display: inline-block;
-        margin: 0 0 10px 20px;
-        font-size: 14px;
-        color: #757575;
-    }
-    input {
+    input[type="text"], input[type="password"] {
         padding: 0 20px;
         border-radius: 20px;
         font-size: 16px;
@@ -95,6 +145,49 @@
         background-color: #EEEEEE;
         box-sizing: border-box;
         outline: none;
+    }
+    input[type="radio"] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        padding: 0;
+        border: 0;
+        margin: 0;
+    }
+    .radioWrapGender {
+        float: left;
+        display: inline-block;
+        width: 50%;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
+    .radioWrapAge {
+        float: left;
+        display: inline-block;
+        width: 25%;
+        padding: 0 4px;
+        margin-bottom: 8px;
+        box-sizing: border-box;
+    }
+    input[type="radio"]:checked + label {
+        border: 2px solid #55CEE2;
+        color: #55CEE2;
+        font-weight: 700;
+    }
+    label {
+        display: inline-block;
+        border: 1px solid #BDBDBD;
+        border-radius: 20px;
+        width: 100%;
+        height: 40px;
+        background-color: white;
+        color: #212121;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        line-height: 40px;
+        box-sizing: border-box;
+        cursor: pointer;
     }
     .btnWrapper {
         width: 280px;
@@ -106,15 +199,15 @@
         font-size: 14px;
         border-radius: 20px;
     }
-    span {
+    .btnWrapper span {
         display: inline-block;
         width: 50%;
         box-sizing: border-box;
     }
-    span:first-of-type {
+    .btnWrapper span:first-of-type {
         padding-right: 4px;
     }
-    span:last-of-type {
+    .btnWrapper span:last-of-type {
         padding-left: 4px;
     }
     .loginBtn {
@@ -135,19 +228,25 @@
             font-size: 36px;
             margin-bottom: 60px;
         }
+        h2 {
+            font-size: 21px;
+        }
         .inputText {
             width: 360px;
         }
         .inputText:nth-last-of-type(2) {
             margin-bottom: 60px;
         }
-        label {
-            font-size: 16px;
-        }
-        input {
+        input[type="text"], input[type="password"] {
             border-radius: 24px;
             font-size: 18px;
             height: 48px;
+        }
+        label {
+            border-radius: 24px;
+            height: 48px;
+            font-size: 16px;
+            line-height: 48px;
         }
         .btnWrapper {
             width: 360px;
@@ -158,10 +257,10 @@
             font-size: 16px;
             border-radius: 24px;
         }
-        span:first-of-type {
+        .btnWrapper span:first-of-type {
             padding-right: 8px;
         }
-        span:last-of-type {
+        .btnWrapper span:last-of-type {
             padding-left: 8px;
         }
     }
@@ -199,10 +298,10 @@
             font-size: 18px;
             border-radius: 24px;
         }
-        span:first-of-type {
+        .btnWrapper span:first-of-type {
             padding-right: 10px;
         }
-        span:last-of-type {
+        .btnWrapper span:last-of-type {
             padding-left: 10px;
         }
     }

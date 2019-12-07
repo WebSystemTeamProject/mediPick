@@ -12,11 +12,11 @@
     <section>
         <h1 class="title">로그인</h1>
         <div class="inputText">
-            <label for="mail">이메일</label><br>
+            <h2>이메일</h2>
             <input v-model = 'email' type="text" id="mail">
         </div>
         <div class="inputText">
-            <label for="password">비밀번호</label><br>
+            <h2>비밀번호</h2>
             <input v-model = 'password' type="password" id="password">
         </div>
         <div class="btnWrapper">
@@ -81,6 +81,13 @@
         font-weight: 700;
         text-align: center;
         margin-bottom: 40px;
+    }
+    h2 {
+        margin-left: 20px;
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        color: #757575;
     }
     .inputText {
         width: 280px;
