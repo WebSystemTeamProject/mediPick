@@ -17,7 +17,7 @@
         },
         methods: {
             goNav(nav) {
-                this.$router.push({name: nav, params: {clickedPharmacy: this.pharmacy}});
+                this.$router.push({name: nav, params: {clickedPharmacy: this.pharmacy.company}});
             }
         }
     }

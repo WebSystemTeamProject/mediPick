@@ -62,7 +62,7 @@ const routes = [
   },
   {
     name: 'rankingPage',
-    path: '/rankingPage',
+    path: '/rankingPage/:clickedPharmacy',
     component: rankingPage
   },
   {

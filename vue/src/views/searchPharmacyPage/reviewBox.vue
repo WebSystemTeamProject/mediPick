@@ -17,10 +17,10 @@
             'reviewList': reviewList
         },
         async created(){
-            this.item = this.$route.params.item;
-            /*await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
+            //this.item = this.$route.params.item;
+            await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
                 this.item = response.data;
-            })*/
+            })
             console.log("in the reviewBox : ",this.item);
             console.log("_id !! : ",this.item._id);
             await this.$http.get('http://localhost:3000/main').then((response) => {
