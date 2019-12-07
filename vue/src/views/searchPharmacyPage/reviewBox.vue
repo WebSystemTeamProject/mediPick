@@ -16,11 +16,13 @@
         components: {
             'reviewList': reviewList
         },
-        created(){
-            this.item = this.$route.params.item;
+        async created(){
+            await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
+                this.item = response.data;
+            })
             console.log("in the reviewBox : ",this.item);
             console.log("_id !! : ",this.item._id);
-            this.$http.get('http://localhost:3000/main').then((response) => {
+            await this.$http.get('http://localhost:3000/main').then((response) => {
                 if(response.data.trig)
                     this.user = response.data.user;
             });

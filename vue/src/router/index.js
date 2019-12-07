@@ -22,7 +22,7 @@ const routes = [
   },
   {
     name: 'mdsNameSearch',
-    path: '/search',
+    path: '/search/:medicineName',
     component: mdsNameSearch
   },
   {
@@ -67,7 +67,7 @@ const routes = [
   },
   {
     name: 'medicineInfo',
-    path: '/medicineInfo',
+    path: '/medicineInfo/:medicineName',
     component: medicineInfo
   }
 

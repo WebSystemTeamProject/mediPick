@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
 router.post('/search', async function(req,res){ // body로 넘겨준 값을 가지고 맞는 디비 리스트를 json 형식으로 보내줌
   //console.log(req.body);
   const regex = new RegExp(req.body.search);
-  const result = await db.mediModel.find({medicineName: regex});
+  var result = await db.mediModel.find({medicineName: regex});
   if(result.length===0)
     result = await db.mediModel.find({medicineName: req.body.search});
-  console.log(result);
+  //console.log(result);
   await res.json(result);
 })
 
@@ -45,4 +45,11 @@ router.post('/pharmacy/company',async function(req,res,next){
   console.log(result);
   await res.json(result);
 });
+
+router.post('/info', async function(req,res,next) {
+  const result = await db.mediModel.findOne({medicineName: req.body.search});
+  console.log(result);
+  await res.json(result);
+});
+
 module.exports = router;

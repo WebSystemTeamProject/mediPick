@@ -24,7 +24,7 @@
         },
         methods: {
             goNav(nav) {
-                this.$router.push({name: nav, params: {searchMedicine: this.mdsName}});
+                this.$router.push({name: nav, params: {medicineName: this.mdsName}});
                 this.$store.commit('setIsHome', false);
             }
         }

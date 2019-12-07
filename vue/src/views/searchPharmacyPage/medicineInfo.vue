@@ -38,9 +38,12 @@
         components: {
           'reviewBox': reviewBox
         },
-        created(){
-          this.item = this.$route.params.item;
-          this.$http.get('http://localhost:3000/main').then((response) => {
+        async created(){
+          //this.item = this.$route.params.item;
+          await this.$http.post('http://localhost:3000/api/info',{search: this.$route.params.medicineName}).then((response)=>{
+            this.item = response.data;
+          })
+          await this.$http.get('http://localhost:3000/main').then((response) => {
             if(response.data.trig)
               this.user = response.data.user;
           });

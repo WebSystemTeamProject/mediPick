@@ -3,9 +3,10 @@
         <h1 class="title">해당하는 의약품</h1>
         <div class="searchBox">
             <input type="text" class="searchInput" placeholder="의약품 이름을 입력해주세요" v-model="inputText">
-            <button class="searchBtn" @click="btnClick">검색</button>
+            <button class="searchBtn" @click="goNav('mdsNameSearch')">검색</button>
         </div>
-        <search-list v-for="item in mediList" v-bind:item="item"></search-list>
+        <div class="emptyMessage" v-if="mediList.length===0">검색 결과가 없습니다.</div>
+        <search-list v-if='mediList.length' v-for="item in mediList" v-bind:item="item"></search-list>
 
     </section>
 </template>
@@ -17,23 +18,22 @@
         data() {
             return  {
                 mediList:[],
-                inputText:""
+                inputText: this.$route.params.medicineName
             }
         },
         async created(){
-            const result = await this.$http.post("http://localhost:3000/api/search",{search: this.$route.params.searchMedicine}).then((res)=>{
-                return res.data;
-            })
-            this.input=this.$route.params.searchMedicine;
-            this.mediList=result;
+            this.fetchData();
         },
-        computed: {
-            
+        watch: {
+            '$route': 'fetchData'
         },
         methods: {
-            async btnClick() {
-                const result = await this.$http.post("http://localhost:3000/api/search",{search: this.inputText}).then((res)=>{
-                return res.data;
+            async goNav(nav) {
+                this.$router.push({name: nav, params: {medicineName: this.inputText}});
+            },
+            async fetchData(){
+                const result = await this.$http.post("http://localhost:3000/api/search",{search: this.$route.params.medicineName}).then((res)=>{
+                    return res.data;
                 })
                 this.mediList=result;
             }
@@ -56,6 +56,14 @@
         font-weight: 700;
         margin: 0 0 20px 10px;
     }
+
+    .emptyMessage{
+        margin: 0 auto;
+        text-align: center;
+        font-size: 32px;
+        padding-top: 50px;
+    }
+
     .searchBox {
         padding: 10px;
         background-color: #EEFDFF;
