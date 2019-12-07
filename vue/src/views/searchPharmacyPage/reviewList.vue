@@ -16,8 +16,8 @@
           <button @click="rew">수정</button>
         </div>
       </div>
-      <div v-if="trig">
-        <input type="text" v-model="content" style="border: 2px solid black">
+      <div v-if="trig" class="modify">
+        <textarea v-model="content" cols="22" rows="4"></textarea>
         <button @click="review_up" class="writeBtn">확인</button>
       </div>
       <p v-else class="reviewText">
@@ -118,12 +118,44 @@
     font-size: 14px;
     font-weight: 400;
   }
+  .date button {
+    float: right;
+    font-size: 14px;
+  }
+  .date::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
   .reviewText {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
   }
-
+  .modify::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .modify textarea {
+    padding: 10px;
+    border: 1px solid #bdbdbd;
+    width: 100%;
+    height: 100px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+  }
+  .modify .writeBtn {
+    float: right;
+    margin-top: 10px;
+    width: 25%;
+    height: 40px;
+    font-size: 14px;
+    background-color: #bdbdbd;
+    color: white;
+  }
   @media(min-width: 600px) {
     .floatedBox {
       margin-bottom: 40px;
@@ -145,7 +177,20 @@
     .date {
       font-size: 16px;
     }
+    .date button {
+      font-size: 16px;
+    }
     .reviewText {
+      font-size: 16px;
+    }
+    .modify textarea {
+      padding: 20px;
+      height: 150px;
+      font-size: 16px;
+    }
+    .modify .writeBtn {
+      width: 140px;
+      height: 48px;
       font-size: 16px;
     }
   }
@@ -174,7 +219,18 @@
     .date {
       font-size: 18px;
     }
+    .date button {
+      font-size: 18px;
+    }
     .reviewText {
+      font-size: 18px;
+    }
+    .modify textarea {
+      font-size: 18px;
+    }
+    .modify .writeBtn {
+      width: 180px;
+      height: 50px;
       font-size: 18px;
     }
   }
