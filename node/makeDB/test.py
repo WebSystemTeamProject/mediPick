@@ -41,13 +41,14 @@ def makeDB(url, index):
         db2.insert_one(search)
         #print(idx ," ",  arr[idx])
     #print(len(bsObject.find_all('h3',{'class':'cont_title3'})))
+    saveAdditive = ""
     for cover in bsObject.find_all('h3',{'class':'cont_title3'}):
         if '유효성분' in cover.get_text() :
             dict['activeInGredient']=cover.get_text()
         else:
-            dict['additive']=cover.get_text()
-
-    dict['efficacy']=bsObject.find('p',{'class':'indent0'}).get_text()
+            saveAdditive = saveAdditive + cover.get_text() + '\n'
+    dict['additive']=saveAdditive
+    dict['efficacy']=bsObject.find('div',{'id':'_ee_doc'}).get_text()
     dict['dosage']=bsObject.find('div',{'id':'_ud_doc'}).get_text()
 
     dict['precautions']=bsObject.find('div',{'id':'_nb_doc'}).get_text()
