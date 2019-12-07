@@ -7,12 +7,12 @@
         <div class="userBox">
           <div>
             <span class="userName">{{info.email}}</span>
-            <span class="userInfo">{{info.age}}세, {{info.gender}}<!--20세, 남성--></span>
+            <span class="userInfo">{{info.age}}, {{info.gender}}<!--20세, 남성--></span>
           </div>
         </div>
         <div class="date">
           {{info.time}}<br>
-          <button @click="del">삭제하기</button><br>
+          <button @click="del">삭제하기</button>
           <button @click="rew">수정</button>
         </div>
       </div>
@@ -115,12 +115,13 @@
   }
   .date {
     float: right;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
   }
   .date button {
     float: right;
     font-size: 14px;
+    clear: both;
   }
   .date::after {
     content: "";
@@ -175,7 +176,7 @@
       font-size: 14px;
     }
     .date {
-      font-size: 16px;
+      font-size: 14px;
     }
     .date button {
       font-size: 16px;
@@ -217,7 +218,7 @@
       font-size: 18px;
     }
     .date {
-      font-size: 18px;
+      font-size: 16px;
     }
     .date button {
       font-size: 18px;
