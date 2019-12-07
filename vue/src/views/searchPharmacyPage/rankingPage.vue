@@ -1,9 +1,9 @@
 <template>
     <section>
         <h1 class="title">{{title}}</h1>
-        <div class="searchBox">
-            <input type="text" class="searchInput" placeholder="제약사 이름을 입력해주세요" v-model="inputText">
-        </div>
+        <!--<div class="searchBox">-->
+            <!--<input type="text" class="searchInput" placeholder="제약사 이름을 입력해주세요" v-model="inputText">-->
+        <!--</div>-->
         <pharmacy-medicine></pharmacy-medicine>
     </section>
 </template>

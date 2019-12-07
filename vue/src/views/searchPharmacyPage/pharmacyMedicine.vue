@@ -2,7 +2,7 @@
     <div>
         <div v-for="item in medilist">
             <div class="mediList" @click="goNav('medicineInfo', item)">
-                <div class="rank">1</div>
+                <!--<div class="rank">1</div>-->
                 <div class="imgBox">
                     <img src="../../assets/medi.png">
                 </div>
@@ -112,7 +112,7 @@
     }
     .recommend, .review {
         float: left;
-        width: 8.3333%;
+        width: 12.5%;
         line-height: 60px;
     }
     .recommend .material-icons, .review .material-icons {

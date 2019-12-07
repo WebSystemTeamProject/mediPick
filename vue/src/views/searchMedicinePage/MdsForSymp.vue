@@ -59,11 +59,14 @@
     }
     .imgBox {
         float: left;
-        width: 20%;
+        width: 25%;
+        height: 100%;
         line-height: 60px;
     }
     img {
-        height: 50px
+        width: 70%;
+        height: 50px;
+        vertical-align: middle;
     }
     .titleBox {
         float: left;
@@ -104,6 +107,9 @@
         .imgBox {
             line-height: 100px;
         }
+        img {
+            height: 80px;
+        }
         .titleBox {
             width: 60%;
             font-size: 16px;
@@ -138,7 +144,7 @@
             text-align: center;
         }
         .imgBox img {
-            width: 70%;
+            height: 100px;
         }
         .titleBox {
             line-height: 130px;
