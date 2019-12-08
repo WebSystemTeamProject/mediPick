@@ -61,8 +61,8 @@ passport.use('local-join',new LocalStrategy({ //local-join 이라는 이름의 S
 
 
 router.post('/',passport.authenticate('local-join',{ //authentic 수행시 local-join 에서 수행
-        successRedirect: '/main',
-        failureRedirect: '/join',
+        successRedirect: 'http://localhost/main',
+        failureRedirect: 'http://localhost/join',
         failureFlash: true
     })
 )

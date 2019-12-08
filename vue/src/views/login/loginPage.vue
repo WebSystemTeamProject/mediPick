@@ -48,7 +48,7 @@
                         }
                         if(response.data.trig) {
                             alert("yes ok");
-                            window.location.href="/";
+                            window.location.href="http://localhost/";
                         }
                     })
             },
