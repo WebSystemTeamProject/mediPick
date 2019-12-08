@@ -65,7 +65,7 @@
             }
         },
         created(){
-            this.$http.get('http://localhost:80/main').then((response) => {
+            this.$http.get('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/main').then((response) => {
                 if(response.data.trig)
                     this.user = response.data.user;
             })
@@ -77,7 +77,7 @@
         },
         methods: {
             async logout(){
-                await this.$http.get('http://localhost:80/logout', {
+                await this.$http.get('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/logout', {
                 }).then((response)=>{
                     window.location.href="/";
                 })

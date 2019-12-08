@@ -40,10 +40,10 @@
         },
         async created(){
           //this.item = this.$route.params.item;
-          await this.$http.post('http://localhost:80/api/info',{search: this.$route.params.medicineName}).then((response)=>{
+          await this.$http.post('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/api/info',{search: this.$route.params.medicineName}).then((response)=>{
             this.item = response.data;
           })
-          await this.$http.get('http://localhost:80/main').then((response) => {
+          await this.$http.get('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/main').then((response) => {
             if(response.data.trig)
               this.user = response.data.user;
           });

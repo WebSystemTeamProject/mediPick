@@ -19,7 +19,7 @@
             }
         },
         created() {
-            this.$http.get('http://localhost:80/api/pharmacy').then((response) => {
+            this.$http.get('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/api/pharmacy').then((response) => {
                 this.pharmacys = response.data;
                 console.log("respnse : ",response.data);
             })
