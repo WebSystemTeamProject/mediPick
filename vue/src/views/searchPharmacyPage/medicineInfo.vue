@@ -72,17 +72,17 @@
               this.user.recommend[this.item._id] = false;
               alert("추천이 취소되었습니다.");
             }
-            await this.$http.post('http://localhost:80/userManage/update',{
+            await this.$http.post('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/userManage/update',{
               user : this.user
             }).then((response) => {
                 this.user = response.data;
-                this.$http.post('http://localhost:80/main/update',{
+                this.$http.post('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/main/update',{
                   user : this.user
                 }).then((response) => {
                   this.user = response.data;
               });
             });
-            await this.$http.post('http://localhost:80/mediManage/update',{
+            await this.$http.post('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/mediManage/update',{
                 medi_id : this.item._id,
                 recommend : this.item.recommend
             });
