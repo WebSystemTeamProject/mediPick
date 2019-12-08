@@ -10,8 +10,6 @@
             <input v-model="password" type="password" id="password">
         </div>
         <div class="inputText">
-            <!--<label for="gender">성별</label><br>-->
-            <!--<input v-model = 'gender' type="text" id="gender">-->
             <h2>성별</h2>
             <span class="radioWrapGender">
                 <input type="radio" id="male" name="gender" v-model="gender" value="male">

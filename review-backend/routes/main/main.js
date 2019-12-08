@@ -10,7 +10,7 @@ router.get('/',function(req,res){ //localhosd:3000/main url에서도 main.html�
     console.log('main js loaded',req.user); // user로 session에 저장된 정보 접근
     var email = req.user;
     console.log('in the main : '+email);
-    if(!email) res.render('login.ejs');
+    //if(!email) res.render('login.ejs');
     res.json({trig : true,'user' : req.user});
 });
 
