@@ -36,7 +36,7 @@
             async Login(){
                     console.log("email :"+this.email);
                     console.log("password : "+this.password);
-                    await this.$http.post('http://localhost/login', {
+                    await this.$http.post('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/login', {
                         email : this.email,
                         password : this.password
                     }).then((response)=>{
@@ -48,7 +48,7 @@
                         }
                         if(response.data.trig) {
                             alert("yes ok");
-                            window.location.href="http://localhost/";
+                            window.location.href="http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/";
                         }
                     })
             },

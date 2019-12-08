@@ -36,7 +36,7 @@
             comment : ""
         },
         created(){
-            this.$http.post('http://localhost:80/review/comment',{
+            this.$http.post('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/review/comment',{
                 id : this.item._id
             }).then((response) => {
                 this.comment = response.data.cnt;

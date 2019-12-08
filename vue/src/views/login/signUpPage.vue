@@ -83,7 +83,7 @@
                     alert("빈칸을 모두 채워주세요");
                     return false;
                 }
-                await this.$http.post('http://localhost/join', {
+                await this.$http.post('http://ec2-52-78-110-228.ap-northeast-2.compute.amazonaws.com/join', {
                     email : this.email,
                     password : this.password,
                     gender : this.gender,
