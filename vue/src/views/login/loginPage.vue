@@ -1,13 +1,3 @@
-<!--<template>
-    <div>
-    <div>
-        <input v-model="email" type = "text" placeholder="이메일을 입력해주세요"><br><br>
-        <input v-model="password" type = "text" placeholder="비밀번호를 입력해주세요"><br><br>
-        <input v-on:click = "Login" type = "submit" value = "Login">
-    </div>
-    </div>
-</template>-->
-
 <template>
     <section>
         <h1 class="title">로그인</h1>
