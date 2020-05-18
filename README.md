@@ -1,28 +1,21 @@
-# mediPick
-19년도 2학기 웹시설 팀프로젝트
+mediPick
+========
+2019-2 Web System Project 
+-----------------------------
+### 일반의약품 정보&리뷰 제공 서비스
+>### member : 김민규 김준서 박용재 한지은
 
+##### 기술스택 : Vue.js, Node.js, ExpressJS, MongoDB, Atlas, AWS EC2, Git, Python
 
-항상 작업하기 전에 git pull origin master 한 후 작업할 것.
-주의할 점
-AWS에서 서버를 동작할때 포트 권한 때문에 명령어 앞에 sudo를 꼭 붙일 것.
+작업 시 주의 사항
 
-npm install request : api 연동을 위한 패키지
+1. git pull을 자주 합시다.
+2. master로 바로 push하지 맙시다.
 
+### 해당 프로젝트는 AWS EC2 위에서 동작하게 작성되었습니다.
 
-
-
-### searchMedicinePage
--
-searchMedicine.vue
-
-    searchBox: 증상 카테고리 선택 -> '완료' 누르면 해당하는 증상 카테고리 페이지로 이동
-
-searchSymptoms.vue
-    
-    symptomsList: 세부적인 증상 선택 -> '의약품 보기' 누르면 해당하는 의약품 페이지로 이동
-    
-MdsForSymp.vue
-
-    해당하는 의약품 보여줘야 함(DB에서)
-
-
+>## 사용 법
+> >### 1. /vue와 /review-backend에서 npm install
+> >### 2. /vue에서 npm run build
+> >### 3. /review-backend에서 npm start
+> >### 4. http://localhost 접속
